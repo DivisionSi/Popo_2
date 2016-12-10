@@ -20,7 +20,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        img.setImageResource(R.drawable.poponfa);
+      //  img.setImageResource(R.drawable.poponfa);
 
     }
 
