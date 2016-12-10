@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 
 
 import com.gmail.saadbnwhd.popo_2.R;
@@ -34,19 +35,13 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       /* toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*//*
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        /*tabLayout.setTabTextColors(getResources().getColorStateList(R.color.colorPrimaryDark1));*/
+
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-     /*tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorPrimaryDark1));*/
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -76,6 +71,7 @@ public class MainMenu extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+
             return mFragmentList.get(position);
         }
 
@@ -87,6 +83,7 @@ public class MainMenu extends AppCompatActivity {
         public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
+
         }
 
         @Override
