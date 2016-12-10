@@ -1,14 +1,16 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 public class SplashScreen extends AppCompatActivity {
 ImageView img,img1;
@@ -36,7 +38,7 @@ ImageView img,img1;
                 } catch (InterruptedException e) {
 
                 } finally {
-                    Intent main=new Intent(SplashScreen.this, MainMenu.class);
+                    Intent main=new Intent("android.intent.action.mainmenu");
                     startActivity(main);
                 }
             }
@@ -44,9 +46,9 @@ ImageView img,img1;
         timer.start();
     };
 
-  /*  @Override
+    @Override
     protected void onPause() {
         super.onPause();
         finish();
-    }*/
+    }
 }
