@@ -22,11 +22,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".pl_teams"
-            android:label="@string/title_activity_pl_teams"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
-        </activity>
+
     </application>
 
 </manifest>
