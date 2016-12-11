@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/popo_2_admin" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
