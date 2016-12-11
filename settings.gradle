@@ -1,1 +1,1 @@
-include ':app', ':popo_2_admin'
+include ':popo_2_admin', ':app'

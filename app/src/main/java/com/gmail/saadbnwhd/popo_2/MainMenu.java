@@ -1,5 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.*;
 
 
 import com.gmail.saadbnwhd.popo_2.R;
@@ -42,6 +44,8 @@ public class MainMenu extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+
     }
 
     private void setupViewPager(ViewPager viewPager) {

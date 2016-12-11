@@ -21,6 +21,34 @@
     </intent-filter>
 
 </activity>
+        <activity android:name=".Teams">
+            <intent-filter>
+                <action android:name="android.intent.action.Teams"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".TeamReal">
+            <intent-filter>
+                <action android:name="android.intent.action.TeamReal"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".TeamBarcelona">
+            <intent-filter>
+                <action android:name="android.intent.action.TeamBarcelona"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".TeamPopo">
+            <intent-filter>
+                <action android:name="android.intent.action.TeamPopo"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
 
     </application>
 
