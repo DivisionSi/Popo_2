@@ -40,18 +40,7 @@ public class Teams extends AppCompatActivity{
                 // TODO Auto-generated method stub
                 String Slecteditem = teams[+position];
                 Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
-                if (Slecteditem == "Popo") {
-                    Intent outfitters = new Intent("android.intent.action.outfitters");
-                    startActivity(outfitters);
-                }
-                if (Slecteditem == "Real Madrid") {
-                    Intent stoneage = new Intent("android.intent.action.stoneage");
-                    startActivity(stoneage);
-                }
-                if (Slecteditem == "Barcelona") {
-                    Intent cougar = new Intent("android.intent.action.cougar");
-                    startActivity(cougar);
-                }
+
 
             }
         });
