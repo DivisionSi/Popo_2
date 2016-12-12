@@ -25,12 +25,12 @@ public class Teams extends AppCompatActivity{
     ArrayList<String> locations = new ArrayList<String>(); //String array for Team Locations
 
     Integer[] imgid = {
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.logo,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3,
+            R.drawable.logo2,
 
     };
     @Override
