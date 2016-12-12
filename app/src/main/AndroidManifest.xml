@@ -2,54 +2,56 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gmail.saadbnwhd.popo_2" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".SplashScreen">
+        android:theme="@style/Theme.AppCompat.NoActionBar" >
+        <activity android:name=".SplashScreen" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<activity android:name=".MainMenu">
-    <intent-filter>
-        <action android:name="android.intent.action.mainmenu"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-    </intent-filter>
-
-</activity>
-        <activity android:name=".Teams">
+        <activity android:name=".MainMenu" >
             <intent-filter>
-                <action android:name="android.intent.action.Teams"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <action android:name="android.intent.action.mainmenu" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".TeamReal">
+        <activity android:name=".Teams" >
             <intent-filter>
-                <action android:name="android.intent.action.TeamReal"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <action android:name="android.intent.action.Teams" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".TeamBarcelona">
+        <activity android:name=".TeamReal" >
             <intent-filter>
-                <action android:name="android.intent.action.TeamBarcelona"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <action android:name="android.intent.action.TeamReal" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".TeamPopo">
+        <activity android:name=".TeamBarcelona" >
             <intent-filter>
-                <action android:name="android.intent.action.TeamPopo"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.TeamBarcelona" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".TeamPopo" >
+            <intent-filter>
+                <action android:name="android.intent.action.TeamPopo" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
