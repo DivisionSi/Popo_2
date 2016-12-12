@@ -1,6 +1,5 @@
 package com.gmail.saadbnwhd.popo_2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,11 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.*;
 
-
-import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +24,7 @@ public class MainMenu extends AppCompatActivity {
             R.drawable.playericon,
             R.drawable.newsicon,
             R.drawable.football,
-            R.drawable.playericon
+            R.drawable.playericon,R.drawable.playericon,
     };
 
     @Override
@@ -54,7 +49,8 @@ public class MainMenu extends AppCompatActivity {
         adapter.addFragment(new FixturesFragment(),"Fixtures");
        adapter.addFragment(new NewsFragment(),"News");
         adapter.addFragment(new PoponfaFragment(),"PopoNFA");
-        adapter.addFragment(new PlayersFragment(), "Players profile");
+        adapter.addFragment(new LeagueFragment(), "League");
+        adapter.addFragment(new PlayersFragment(),"Players Profile");
         viewPager.setAdapter(adapter);
     }
     private void setupTabIcons() {
@@ -63,6 +59,7 @@ public class MainMenu extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
         tabLayout.getTabAt(4).setIcon(tabIcons[4]);
+        tabLayout.getTabAt(5).setIcon(tabIcons[5]);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
