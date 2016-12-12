@@ -18,7 +18,7 @@ public class Teams extends AppCompatActivity{
             "BARCELONA",
             "REAL MADRID",
     };
-
+nks
     Integer[] imgid = {
             R.drawable.logo,
             R.drawable.logo,
