@@ -30,13 +30,14 @@
         />
     <TextView
         android:id="@+id/text"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/image"
+        android:layout_marginTop="41dp"
         android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:layout_height="wrap_content"
-        android:text="Loading..."
+        android:text="Loading"
         android:textColor="#BDBDBD"
-        />
+        android:layout_below="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
 </RelativeLayout>

@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 
 public class Teams extends AppCompatActivity{
     ListView list;
+    Firebase ref; //Reference to our DB
     String[] teams = {
             "POPO",
             "BARCELONA",
@@ -26,6 +29,8 @@ public class Teams extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team);
+        Firebase.setAndroidContext(this);  //Setting up Firebase
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         CustomListView adapter = new CustomListView(this, teams, imgid);
         list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
