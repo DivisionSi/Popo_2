@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,7 +15,7 @@ public class Teams extends AppCompatActivity{
             "BARCELONA",
             "REAL MADRID",
     };
-nks
+
     Integer[] imgid = {
             R.drawable.logo,
             R.drawable.logo,
