@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "61176759453",
+    "firebase_url": "https://poponfa-8a11a.firebaseio.com",
+    "project_id": "poponfa-8a11a",
+    "storage_bucket": "poponfa-8a11a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61176759453:android:11e69f8929f877ad",
+        "android_client_info": {
+          "package_name": "com.gmail.saadbnwhd.popo_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61176759453-nlaha4rp2f2k4isdek1l2g8q5is8lpqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAG72YBFwhN4gjHI7iJOw7Iy-Tb1e4ikw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
