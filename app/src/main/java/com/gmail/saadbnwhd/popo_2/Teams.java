@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
@@ -15,6 +16,7 @@ import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 
+import static android.view.View.INVISIBLE;
 import static android.widget.Toast.LENGTH_SHORT;
 
 
@@ -22,6 +24,8 @@ public class Teams extends AppCompatActivity{
     ListView list;
     Firebase ref; //Reference to our DB
 FloatingActionButton fab;
+
+    ProgressBar pb;
 
     ArrayList<String> teams = new ArrayList<String>(); //String array for Team Names
     ArrayList<String> locations = new ArrayList<String>(); //String array for Team Locations
@@ -41,6 +45,9 @@ FloatingActionButton fab;
         setContentView(R.layout.activity_team);
         Firebase.setAndroidContext(this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+
+        pb = (ProgressBar)this.findViewById(R.id.wait);
+        pb.setVisibility(INVISIBLE);
 
 
 fab=(FloatingActionButton) findViewById(R.id.fab);
@@ -75,6 +82,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
     @Override
     protected void onStart()
     {
+
         super.onStart();
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("Teams");  //Traversing to Teams
@@ -114,6 +122,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
 
             }
         });
+
     }
 
 
