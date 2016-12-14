@@ -10,7 +10,7 @@
         <shape
             android:shape="rectangle"  >
             <corners
-                android:radius="5dp" />
+                android:radius="5dip" />
             <gradient
                 android:startColor="@color/darkGreen"
                 android:endColor="@color/darkGreen"/>
@@ -22,7 +22,7 @@
         android:state_pressed="true"
         android:background="@color/darkGreen">
         <shape android:shape="rectangle"  >
-            <corners android:radius="5dp" />
+            <corners android:radius="5dip" />
             <gradient
                 android:startColor="@color/darkGreen"
                 android:endColor="@color/darkGreen"/>

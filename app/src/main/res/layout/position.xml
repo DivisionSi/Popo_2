@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="40dp"
+
+
+    android:background="@color/White">
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Goal Keeper"
+        android:id="@+id/goalkeeper"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Defender"
+        android:id="@+id/defender"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Midfielder"
+        android:id="@+id/midfielder"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Striker"
+        android:id="@+id/striker"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Winger"
+        android:id="@+id/winger"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+
+
+</LinearLayout>

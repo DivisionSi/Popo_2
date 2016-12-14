@@ -25,25 +25,25 @@
     <ImageButton
         android:layout_toRightOf="@+id/text"
         android:id="@+id/button11"
+        android:layout_marginBottom="5dp"
         android:background="@color/White"
         android:layout_width="75dp"
         android:layout_height="40dp"
        android:layout_below="@+id/playername"
         android:scaleType="fitXY"
         android:src="@android:drawable/btn_dropdown"/>
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:clickable="false"
+        android:layout_marginBottom="5dp"
         android:id="@+id/text"
-        android:ems="10"
-        android:padding="3dp"
-        android:textSize="17sp"
+        android:hint="Jersey Number"
         android:background="@drawable/textbackground"
-        android:text="JERSEY NUMBER"
+        android:textSize="17sp"
         android:textColor="@color/Black"
-        android:textAlignment="gravity"
-        android:gravity="center_vertical"
+        android:textColorHint="@color/Black"
+        android:padding="3dp"
+        android:ems="10"
         android:layout_below="@+id/playername"/>
     <TextView
         android:layout_toRightOf="@+id/text"
@@ -54,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
+        android:layout_marginBottom="5dp"
         android:text="00"
         android:textAlignment="gravity"
         android:gravity="center_horizontal"
@@ -61,10 +62,11 @@
         android:textColor="@color/Black"
         android:layout_below="@+id/playername"
         />
-    <EditText
+    <Button
         android:id="@+id/position"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:layout_below="@+id/text"
         android:hint="POSITION"
         android:background="@drawable/textbackground"
@@ -75,7 +77,8 @@
         android:ems="10"
 
         />
-    <EditText
+    <Button
+
         android:id="@+id/dob"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -90,6 +93,7 @@
         android:hint="Date of Birth"
 
         />
+
     <Button
         android:layout_width="90dp"
         android:layout_height="50dp"
@@ -99,4 +103,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"/>
+
+
 </RelativeLayout>

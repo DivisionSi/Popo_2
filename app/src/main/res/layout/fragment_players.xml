@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorAccent"
+    android:background="@color/lightgrey"
     tools:context="com.gmail.saadbnwhd.popo_2.PlayersFragment">
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/playersfab"
