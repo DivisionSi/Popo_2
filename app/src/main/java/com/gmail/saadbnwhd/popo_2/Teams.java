@@ -1,6 +1,8 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
@@ -19,7 +21,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class Teams extends AppCompatActivity{
     ListView list;
     Firebase ref; //Reference to our DB
-
+FloatingActionButton fab;
 
     ArrayList<String> teams = new ArrayList<String>(); //String array for Team Names
     ArrayList<String> locations = new ArrayList<String>(); //String array for Team Locations
@@ -41,7 +43,14 @@ public class Teams extends AppCompatActivity{
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
 
-
+fab=(FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent teamseditor=new Intent("android.intent.action.TeamsEditor");
+                startActivity(teamseditor);
+            }
+        });
 
 
 
