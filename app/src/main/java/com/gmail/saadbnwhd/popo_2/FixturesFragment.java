@@ -11,6 +11,7 @@ import android.view.ViewGroup;
  */
 public class FixturesFragment extends Fragment {
     public FixturesFragment() {
+
 //fragment
     }
 
