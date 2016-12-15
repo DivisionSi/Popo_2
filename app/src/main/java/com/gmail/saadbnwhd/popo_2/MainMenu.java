@@ -1,5 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +50,9 @@ public class MainMenu extends AppCompatActivity {
        adapter.addFragment(new NewsFragment(),"News");
         adapter.addFragment(new PoponfaFragment(),"PopoNFA");
         adapter.addFragment(new LeagueFragment(), "League");
-        adapter.addFragment(new PlayersFragment(),"Players Profile");
+        adapter.addFragment(new PlayersFragment(), "Players Profile");
         viewPager.setAdapter(adapter);
+
     }
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);

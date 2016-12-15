@@ -12,32 +12,44 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
 
 import java.util.Calendar;
 
 
 public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
 
-
-
-
+    Firebase ref;
     TextView txt_dob;
-    public ImageButton b;
-
-    Button done,dob;
-    EditText txt_jersey,txt_position;
+    ImageButton b;
+    Button done,btn_dob;
+    EditText txt_name,txt_jersey,txt_position;
+    String name,jersey,position,dob;
     static Dialog p;
     static Dialog d ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_editor);
+        Firebase.setAndroidContext(this);
 
+
+        txt_name=(EditText) findViewById(R.id.txt_name);
         txt_jersey=(EditText) findViewById(R.id.txt_jersey);
         txt_position=(EditText) findViewById(R.id.txt_position);
         txt_dob=(TextView) findViewById(R.id.txt_dob);
 
-     b = (ImageButton) findViewById(R.id.button11);
+        done=(Button) findViewById(R.id.btn_done);
+        b = (ImageButton) findViewById(R.id.button11);
+
+        ref=new Firebase("https://popo-951d9.firebaseio.com/");
+        ref=ref.child("Players_popo");
+
+
+
+
         b.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -45,12 +57,13 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                 show();
             }
         });
-        dob=(Button) findViewById(R.id.dob);
-        dob.setOnClickListener(new View.OnClickListener() {
+        btn_dob=(Button) findViewById(R.id.dob);
+
+        btn_dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              // Intent dob = new Intent("android.intent.action.Datepicker");
-               // startActivity(dob);
+                // Intent dob = new Intent("android.intent.action.Datepicker");
+                // startActivity(dob);
 
                 showDialog(999);
 
@@ -65,7 +78,30 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                            }
         });
 
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name=txt_name.getText().toString();
+                jersey=txt_jersey.getText().toString();
+                position=txt_position.getText().toString();
+                dob=txt_dob.getText().toString();
+
+                ref=ref.child(txt_name.getText().toString());
+                ref.child("Name").setValue(name);
+                ref.child("Position").setValue(position);
+                ref.child("Jersey Number").setValue(jersey);
+                ref.child("DoB").setValue(dob);
+
+                Toast.makeText(getApplicationContext(), "Player Added",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
     }
+
+
+
     @Override
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
@@ -121,6 +157,8 @@ public void txt_positionitionshow(){
 p.show();
 
 }
+
+
     public void show()
     {
 
@@ -163,7 +201,7 @@ p.show();
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
-            return new DatePickerDialog(this, myDateListener, year, month, day);
+            return new DatePickerDialog(this, myDateListener, 2000, month, day);
         }
         return null;
     }
@@ -185,4 +223,8 @@ p.show();
        txt_dob.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
+
+
+
+
 }
