@@ -1,29 +1,42 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
+
 public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
-TextView tv;
+
+
+
+
+    TextView txt_dob;
     public ImageButton b;
-   static Button dob,pos;
-    Button done,tv1;
+
+    Button done,dob;
+    EditText txt_jersey,txt_position;
     static Dialog p;
     static Dialog d ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_editor);
-        tv = (TextView) findViewById(R.id.textView1);
-        tv1 = (Button) findViewById(R.id.text);
+
+        txt_jersey=(EditText) findViewById(R.id.txt_jersey);
+        txt_position=(EditText) findViewById(R.id.txt_position);
+        txt_dob=(TextView) findViewById(R.id.txt_dob);
+
      b = (ImageButton) findViewById(R.id.button11);
         b.setOnClickListener(new View.OnClickListener() {
 
@@ -36,17 +49,19 @@ TextView tv;
         dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent dob = new Intent("android.intent.action.Datepicker");
-                startActivity(dob);
+              // Intent dob = new Intent("android.intent.action.Datepicker");
+               // startActivity(dob);
+
+                showDialog(999);
 
             }
         });
-        pos=(Button)findViewById(R.id.position);
 
-        pos.setOnClickListener(new View.OnClickListener() {
+
+        txt_position.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                positionshow();
+                txt_positionitionshow();
                            }
         });
 
@@ -57,9 +72,9 @@ TextView tv;
         Log.i("value is", "" + newVal);
 
     }
-public void positionshow(){
+public void txt_positionitionshow(){
     final Dialog p = new Dialog(this);
-    p.setTitle("Position");
+    p.setTitle("txt_positionition");
     p.setContentView(R.layout.position);
 
     final Button g, s, d, m, w;
@@ -71,35 +86,35 @@ public void positionshow(){
     g.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            pos.setText("Goal Keeper");
+            txt_position.setText("Goal Keeper");
             p.dismiss();
         }
     });
     d.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            pos.setText("Defender");
+            txt_position.setText("Defender");
             p.dismiss();
         }
     });
     m.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            pos.setText("Midfielder");
+            txt_position.setText("Midfielder");
             p.dismiss();
         }
     });
     s.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            pos.setText("Striker");
+            txt_position.setText("Striker");
             p.dismiss();
         }
     });
     w.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            pos.setText("Winger");
+            txt_position.setText("Winger");
             p.dismiss();
         }
     });
@@ -122,8 +137,8 @@ p.show();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv.setText("");
-                tv1.setText(String.valueOf(np.getValue()));
+
+                txt_jersey.setText(String.valueOf(np.getValue()));
                 d.dismiss();
             }
         });
@@ -136,5 +151,38 @@ p.show();
         d.show();
 
 
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        // TODO Auto-generated method stub
+        if (id == 999) {
+
+           Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(this, myDateListener, year, month, day);
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            // arg1 = year;
+            /// arg2 = month;
+             //arg3 = day;
+
+            setDate(arg1, arg2 + 1, arg3);
+        }
+
+    };
+
+    private void setDate(int year, int month, int day) {
+       txt_dob.setText(new StringBuilder().append(day).append("/")
+                .append(month).append("/").append(year));
     }
 }

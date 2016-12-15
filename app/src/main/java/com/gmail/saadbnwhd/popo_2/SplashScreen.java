@@ -38,7 +38,7 @@ ImageView img,img1;
                 } catch (InterruptedException e) {
 
                 } finally {
-                    FirebaseCrash.report(new Exception("My first Android non-fatal error"));
+                  //  FirebaseCrash.report(new Exception("My first Android non-fatal error"));
                     Intent main=new Intent("android.intent.action.mainmenu");
                     startActivity(main);
                 }
