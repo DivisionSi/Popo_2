@@ -82,18 +82,25 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name=txt_name.getText().toString();
-                jersey=txt_jersey.getText().toString();
-                position=txt_position.getText().toString();
-                dob=txt_dob.getText().toString();
+                if(txt_name!=null && txt_jersey!=null && txt_position!=null && txt_dob!=null) {
+                    name = txt_name.getText().toString();
+                    jersey = txt_jersey.getText().toString();
+                    position = txt_position.getText().toString();
+                    dob = txt_dob.getText().toString();
 
-                ref=ref.child(txt_name.getText().toString());
-                ref.child("Name").setValue(name);
-                ref.child("Position").setValue(position);
-                ref.child("Jersey Number").setValue(jersey);
-                ref.child("DoB").setValue(dob);
+                    ref = ref.child(txt_name.getText().toString());
+                    ref.child("Name").setValue(name);
+                    ref.child("Position").setValue(position);
+                    ref.child("Jersey Number").setValue(jersey);
+                    ref.child("DoB").setValue(dob);
 
-                Toast.makeText(getApplicationContext(), "Player Added",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Player Added", Toast.LENGTH_LONG).show();
+                }
+
+                else
+                    Toast.makeText(getApplicationContext(), "Kindly fill in all the fields!",Toast.LENGTH_LONG).show();
+
+
             }
         });
 
