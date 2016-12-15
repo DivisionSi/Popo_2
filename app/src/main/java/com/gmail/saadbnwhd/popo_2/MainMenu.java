@@ -1,6 +1,5 @@
 package com.gmail.saadbnwhd.popo_2;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -20,11 +19,12 @@ public class MainMenu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private int[] tabIcons = {
-            R.drawable.home,
+            R.drawable.homeicon2,
             R.drawable.playericon,
-            R.drawable.newsicon,
+            R.drawable.newsicon2,
             R.drawable.football,
-            R.drawable.playericon,R.drawable.playericon,
+            R.drawable.leagueicon2,
+            R.drawable.playericon2,
     };
 
     @Override
