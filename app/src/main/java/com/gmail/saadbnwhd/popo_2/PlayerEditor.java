@@ -82,7 +82,7 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txt_name!=null && txt_jersey!=null && txt_position!=null && txt_dob!=null) {
+                if(!txt_name.equals("") && !txt_jersey.equals("") && !txt_position.equals("") && !txt_dob.equals("")) {
                     name = txt_name.getText().toString();
                     jersey = txt_jersey.getText().toString();
                     position = txt_position.getText().toString();
