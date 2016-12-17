@@ -19,11 +19,11 @@ public class MainMenu extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private int[] tabIcons = {
-            R.drawable.homeicon2,
+            R.drawable.homeicon,
             R.drawable.playericon,
-            R.drawable.newsicon2,
+            R.drawable.newsicon,
             R.drawable.football,
-            R.drawable.leagueicon2,
+            R.drawable.leagueicon,
             R.drawable.playericon2,
     };
 
