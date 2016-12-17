@@ -175,7 +175,7 @@ p.show();
         Button b1 = (Button) d.findViewById(R.id.button1);
         Button b2 = (Button) d.findViewById(R.id.button2);
         final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
-        np.setMaxValue(100);
+        np.setMaxValue(99);
         np.setMinValue(0);
 
         np.setOnValueChangedListener(this);

@@ -17,11 +17,12 @@ public class LeagueFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
        View view= inflater.inflate(R.layout.fragment_league, container, false);
         Button button = (Button) view.findViewById(R.id.teams);
         button.setOnClickListener(new View.OnClickListener()
