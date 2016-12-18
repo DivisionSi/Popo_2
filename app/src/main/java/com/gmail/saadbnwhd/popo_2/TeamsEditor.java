@@ -1,25 +1,40 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.Manifest;
+
+import com.firebase.client.Firebase;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 public class TeamsEditor extends Activity {
-Button logo;
+    Button logo,btn_done;
+    EditText team_name,team_location;
+    String logo_link;
+    Firebase ref;
+    StorageReference storageRef,imagesRef;
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
     private static final String TAG = "TeamsEditor";
@@ -27,6 +42,67 @@ Button logo;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams_editor);
+        Firebase.setAndroidContext(this);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        final ImageView imgView = (ImageView) findViewById(R.id.team_logo);
+        team_name=(EditText) findViewById(R.id.team_name);
+        team_location=(EditText) findViewById(R.id.team_location);
+
+
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+
+        storageRef = storage.getReferenceFromUrl("gs://poponfa-8a11a.appspot.com/");
+
+
+        btn_done=(Button) findViewById(R.id.btn_done);
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imagesRef = storageRef.child("Team_Logos/" + team_name.getText().toString());
+                // Get the data from an ImageView as bytes
+                imgView.setDrawingCacheEnabled(true);
+                imgView.buildDrawingCache();
+                Bitmap bitmap =  imgView.getDrawingCache();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                byte[] byte_data = baos.toByteArray();
+
+                UploadTask uploadTask =imagesRef.putBytes(byte_data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+
+
+                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                        //and you can convert it to string like this:
+                        String string_dwload = downloadUrl.toString();
+
+                        Firebase teamsRef = ref.child("League").child("Teams").child(team_name.getText().toString());
+
+
+                        teamsRef.child("Location").setValue(team_location.getText().toString());
+                        teamsRef.child("Logo").setValue(string_dwload);
+
+                        Toast.makeText(getApplicationContext(), "Team succesfully Added", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+            }
+        });
+
+
+
 
     }
 
@@ -79,6 +155,8 @@ Button logo;
                 // Set the Image in ImageView after decoding the String
                 imgView.setImageBitmap(BitmapFactory
                         .decodeFile(imgDecodableString));
+
+
             } else {
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
