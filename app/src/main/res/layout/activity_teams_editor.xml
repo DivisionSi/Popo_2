@@ -7,6 +7,44 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.TeamsEditor">
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/team_name"
+    android:hint="TEAM NAME"
+    android:textColor="@color/Black"
+    android:textColorHint="#6a6969" />
+    <EditText
+        android:layout_below="@+id/team_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_location"
+        android:hint="LOCATION"
+        android:textColor="@color/Black"
+        android:textColorHint="#6a6969" />
+    <Button
+        android:layout_below="@+id/team_location"
+        android:id="@+id/browselogo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:onClick="loadImagefromGallery"
+        android:background="@color/White"
+        android:text="Choose Logo"
+        android:textColor="#6a6969"
+        android:textAlignment="center"
+        />
+    <ImageView
+        android:layout_below="@+id/team_location"
+        android:layout_toRightOf="@+id/browselogo"
+        android:id="@+id/team_logo"
+        android:padding="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#ababab"
+
+        />
 
 </RelativeLayout>

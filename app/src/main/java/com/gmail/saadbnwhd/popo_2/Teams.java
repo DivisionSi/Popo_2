@@ -37,7 +37,6 @@ FloatingActionButton fab;
             R.drawable.logo2,
             R.drawable.logo3,
             R.drawable.logo2,
-
     };
     @Override
     public void onCreate(Bundle savedInstanceState) {
