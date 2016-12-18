@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#ffffff"
     tools:context="com.gmail.saadbnwhd.popo_2.FixturesFragment">
 
     <TextView
@@ -17,16 +17,17 @@
         android:layout_centerInParent="true"/>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fix_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:id="@+id/fix_add"
-        app:backgroundTint="@android:color/white"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="18dp"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        app:backgroundTint="@color/darkGreen"
+        android:tint="@android:color/white"
+        app:fabSize="normal"
+        />
 
 </RelativeLayout>

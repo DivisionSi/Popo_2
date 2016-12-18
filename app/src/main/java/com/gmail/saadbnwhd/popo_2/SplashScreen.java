@@ -10,8 +10,6 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
-import com.google.firebase.crash.FirebaseCrash;
-
 public class SplashScreen extends AppCompatActivity {
 ImageView img,img1;
     @Override
@@ -34,7 +32,7 @@ ImageView img,img1;
             @Override
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(1000);
                 } catch (InterruptedException e) {
 
                 } finally {

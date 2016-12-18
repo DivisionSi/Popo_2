@@ -2,6 +2,7 @@ package com.gmail.saadbnwhd.popo_2;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -12,9 +13,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseException;
+
 import java.util.Calendar;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 
 /**
@@ -28,12 +35,14 @@ public class FixturesFragment extends Fragment {
 
     FloatingActionButton add;
     EditText rivals;
-    TextView date;
-    EditText time;
+    TextView date,time;
+    Firebase ref;
+    private TimePicker timePicker1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        Firebase.setAndroidContext(getContext());  //Setting up Firebase
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         super.onCreate(savedInstanceState);
 
     }
@@ -43,16 +52,19 @@ public class FixturesFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_fixtures, container, false);
 
+
+
         add = (FloatingActionButton) view.findViewById(R.id.fix_add);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog a = new Dialog(getContext());
+               final Dialog a = new Dialog(getContext());
                 a.setContentView(R.layout.add_fixtures);
                 rivals = (EditText)a.findViewById(R.id.t_name);
                 date = (TextView)a.findViewById(R.id.t_date);
-                time= (EditText)a.findViewById(R.id.t_time);
+               time=(TextView) a.findViewById(R.id.t_time);
+
                 final Button done = (Button)a.findViewById(R.id.done);
 
                 date.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +82,35 @@ public class FixturesFragment extends Fragment {
                     }
                 });
 
+                time.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Calendar c = Calendar.getInstance();
+                        int hour = c.get(Calendar.HOUR_OF_DAY);
+                        int minute = c.get(Calendar.MINUTE);
+
+                        TimePickerDialog tp = new TimePickerDialog(getContext(), myTimeListener, hour,minute,false);
+
+                        tp.show();
+                    }
+                });
+
                 done.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                            Toast.makeText(getContext(), "Please Fill all fields", Toast.LENGTH_LONG).show();
+                        try {
+                            Firebase popo_fixtures_ref = ref.child("Popo").child("Fixtures");
+                            popo_fixtures_ref.child(rivals.getText().toString()).child("Date").setValue(date.getText().toString());
+                            popo_fixtures_ref.child(rivals.getText().toString()).child("Time").setValue(time.getText().toString());
+                            Toast.makeText(getContext(),"Fixture Added", LENGTH_SHORT).show();
+
+                        }
+                        catch (FirebaseException i)
+                        {
+                            Toast.makeText(getContext(), i.toString(), LENGTH_SHORT).show();
+                        }
+                        a.dismiss();
                     }
                 });
 
@@ -97,6 +133,27 @@ public class FixturesFragment extends Fragment {
         }
 
     };
+
+    private TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
+
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            setTime(hourOfDay, minute);
+        }
+
+    };
+
+    private void setTime(int hour, int min) {
+        String AM_PM ;
+        if(hour < 12) {
+            AM_PM = "AM";
+        } else {
+            hour=hour-12;
+            AM_PM = "PM";
+        }
+        time.setText(new StringBuilder().append(hour).append(":").append(min).append(" ").append(AM_PM));
+    }
 
     private void setDate(int year, int month, int day) {
         date.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
