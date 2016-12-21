@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="@string/app_name"
+        android:label="POPO"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".SplashScreen">
@@ -39,10 +39,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayerEditor">
+        <activity android:name=".PlayerEditor"
+            android:label="Players"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

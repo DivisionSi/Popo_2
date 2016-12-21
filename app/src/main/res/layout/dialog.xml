@@ -3,34 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="@color/lightgrey"
+android:background="@color/White"
+
     >
 
     <NumberPicker
         android:id="@+id/numberPicker1"
+        android:scaleX="1.25"
+        android:theme="@style/AppTheme.Picker"
+        android:scaleY="1.25"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/lightgrey"
+        android:background="@color/White"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
-        android:solidColor="@color/lightgrey"
+        android:solidColor="@color/White"
         android:divider="#91be63"
-        android:dividerPadding="5dp" />
+        android:dividerPadding="1dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="100dp"
+
         android:layout_height="wrap_content"
         android:layout_below="@+id/numberPicker1"
-
+        android:textColor="@color/White"
         android:text="Cancel"
         android:layout_toRightOf="@+id/button1"
-        android:background="@color/lightgrey"/>
+        android:background="@color/darkGreen"/>
 
     <Button
+        android:textColor="@color/White"
         android:id="@+id/button1"
-        android:background="@color/lightgrey"
+        android:background="@color/darkGreen"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/numberPicker1"
