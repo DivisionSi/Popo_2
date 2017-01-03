@@ -33,7 +33,6 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_editor);
-        getSupportActionBar().setTitle("Your title");
         Firebase.setAndroidContext(this);
         txt_name=(EditText) findViewById(R.id.txt_name);
         txt_jersey=(EditText) findViewById(R.id.txt_jersey);
