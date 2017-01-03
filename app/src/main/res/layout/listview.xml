@@ -28,7 +28,7 @@
             android:background="@color/White"
             android:layout_marginLeft="10dp"/>
         <TextView
-            android:id="@+id/team"
+            android:id="@+id/team1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team Name"
@@ -53,8 +53,8 @@
         android:layout_marginRight="10dp"
         android:textColor="#6d6a6a"
 
-        android:layout_below="@+id/team"
-        android:layout_alignStart="@+id/team"
+        android:layout_below="@+id/team1"
+        android:layout_alignStart="@+id/team1"
         android:gravity="top"
         android:paddingBottom="10dp"
         android:background="@android:color/transparent" />

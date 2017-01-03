@@ -11,7 +11,6 @@
         app:cardElevation="7dp"
         android:id="@+id/cards"
         app:cardBackgroundColor="@android:color/background_light"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         app:cardCornerRadius="5dp" />
 

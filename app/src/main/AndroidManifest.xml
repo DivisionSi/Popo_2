@@ -51,12 +51,13 @@
             android:name=".Fixtures"
             android:label="@string/title_activity_fixtures"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
-
             <intent-filter>
                 <action android:name="android.intent.action.Fixtures" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity android:name=".AddFixture" >
         </activity>
     </application>
 
