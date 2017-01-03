@@ -125,10 +125,6 @@ public class FixturesFragment extends Fragment {
 
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            // arg1 = year;
-            /// arg2 = month;
-            //arg3 = day;
-
             setDate(arg1, arg2 + 1, arg3);
         }
 

@@ -71,6 +71,8 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
                                     int position, long id) {
                 // TODO Auto-generated method stub
                 String Slecteditem = teams.get(+position);
+                Intent playersactivity=new Intent("android.intent.action.PlayerEditor");
+                startActivity(playersactivity);
                 Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();
 
 
