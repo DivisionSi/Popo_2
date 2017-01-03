@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Activity;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,10 @@ public class FixtureListView extends ArrayAdapter<String> {
     private final ArrayList<String> DateTime;
     private final Integer[] imgid1;
     private final Integer[] imgid2;
+
+
     public FixtureListView(Activity context, ArrayList<String> team1, ArrayList<String> team2, ArrayList<String> DateTime, Integer[] imgid1,Integer[] imgid2) {
-        super(context, R.layout.fixtures_list,team1);
+        super(context, R.layout.fixtures_list, team1);
         // TODO Auto-generated constructor stub
 
         this.context=context;
