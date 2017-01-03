@@ -20,7 +20,7 @@
         android:textColor="@color/Black"
         android:background="@color/White"
         android:layout_below="@+id/teams"
-        android:id="@+id/fixtures"
+        android:id="@+id/btn_fixtures"
         android:text="FIXTURES"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -28,8 +28,8 @@
         android:layout_marginTop="7dp"
         android:textColor="@color/Black"
         android:background="@color/White"
-        android:layout_below="@+id/fixtures"
-        android:id="@+id/results"
+        android:layout_below="@+id/btn_fixtures"
+        android:id="@+id/btn_results"
         android:text="RESULTS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
