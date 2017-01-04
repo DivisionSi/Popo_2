@@ -34,6 +34,17 @@ public class LeagueFragment extends Fragment{
                 startActivity(Team);
             }
         });
+
+        Button btn_fixtures=(Button) view.findViewById(R.id.btn_fixtures);
+        btn_fixtures.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Fixtures=new Intent("android.intent.action.Fixtures");
+                startActivity(Fixtures);
+            }
+        });
         return view;
     }
+
+
 }
