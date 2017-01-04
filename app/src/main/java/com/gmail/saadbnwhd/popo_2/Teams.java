@@ -63,22 +63,31 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
 
 
         list = (ListView) findViewById(R.id.list);
-       // list.setAdapter(adapter);
+
         list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
-                // TODO Auto-generated method stub
-                String Slecteditem = teams.get(+position);
-                Intent playersactivity=new Intent("android.intent.action.PlayerEditor");
-                startActivity(playersactivity);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();
-
+                if (position == 0) {
+                    Intent intent = new Intent("android.intent.action.LeaguePlayer");
+                    startActivity(intent);
+                }
+                else if (position == 1) {
+                    Intent intent = new Intent("android.intent.action.LeaguePlayer");
+                    startActivity(intent);
+                }
+                else if (position == 2) {
+                    Intent intent = new Intent("android.intent.action.LeaguePlayer");
+                    startActivity(intent);
+                }
 
             }
         });
     }
+
+
+
 
     @Override
     protected void onStart()
