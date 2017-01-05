@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    android:orientation="vertical"
+    android:padding="20dp">
+    <Button
+
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Alliance FC"
+        android:id="@+id/Alliance"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Arsenal FC"
+        android:id="@+id/Arsenal"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="POPO FC"
+        android:id="@+id/POPO"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Barcelona FC"
+        android:id="@+id/Barcelona"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Real Madrid"
+        android:id="@+id/RealMadrid"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Cake FC"
+        android:id="@+id/Cake"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Gladiators FC"
+        android:id="@+id/Gladiators"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Cake FC"
+        android:id="@+id/Cake1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@color/darkGreen"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:text="Gladiators FC"
+        android:id="@+id/Gladiators1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+
+</LinearLayout>
+    </ScrollView>

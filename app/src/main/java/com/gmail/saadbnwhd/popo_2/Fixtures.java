@@ -61,7 +61,7 @@ public class Fixtures extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),AddFixture.class);
+                Intent i=new Intent("android.intent.action.AddFixture");
                 startActivity(i);
             }
         });
