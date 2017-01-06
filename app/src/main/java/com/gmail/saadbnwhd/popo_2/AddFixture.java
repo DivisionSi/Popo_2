@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,10 +22,27 @@ import java.util.ArrayList;
 
 public class AddFixture extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText txt_t1,txt_t2;
-    ArrayList<String> teams = new ArrayList<String>(); //String array for Team Names
     Firebase ref; //Reference to our DB
-    Spinner spinner1;
-    Spinner spinner2;
+    ListView fixtureteamlist;
+    ArrayList<String> team1 = new ArrayList<String>(); //String array for Team1 Names
+    ArrayList<String> team2 = new ArrayList<String>(); //String array for Team2 Names
+    ArrayList<String> DateTime=new ArrayList<String>();
+    Integer[] imgid1 = {
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3,
+            R.drawable.logo2,
+    };
+    Integer[] imgid2 = {
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3,
+            R.drawable.logo2,
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +63,9 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                 txt_teamshow2();
             }
         });
+        fixtureteamlist = (ListView) findViewById(R.id.fixturelist);
+
+
     }
 
     @Override
@@ -58,147 +80,70 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         // TODO Auto-generated method stub
     }
     public void txt_teamshow1() {
+        onStart();
         final Dialog p = new Dialog(this);
         p.setTitle("txt_Team");
         p.setContentView(R.layout.leaguefixture);
+        fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
-        final Button a, ar, b, r, g,po,c;
-        a = (Button) p.findViewById(R.id.Alliance);
-        ar = (Button) p.findViewById(R.id.Arsenal);
-        b = (Button) p.findViewById(R.id.Barcelona);
-        r = (Button) p.findViewById(R.id.RealMadrid);
-        g = (Button) p.findViewById(R.id.Gladiators);
-        po = (Button) p.findViewById(R.id.POPO);
-        c = (Button) p.findViewById(R.id.Cake);
-        a.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                txt_t1.setText("Alliance FC");
-                p.dismiss();
-            }
-        });
-        ar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t1.setText("Arsenal FC");
-                p.dismiss();
-            }
-        });
-        r.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t1.setText("Real Madrid");
-                p.dismiss();
-            }
-        });
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t1.setText("Barcelona FC");
-                p.dismiss();
-            }
-        });
-        po.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t1.setText("POPO FC");
-                p.dismiss();
-            }
-        });
-        c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t1.setText("Cake FC");
-                p.dismiss();
-            }
-        });
-        g.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t1.setText("Gladiators FC");
-                p.dismiss();
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if (position == 0) {
+                    txt_t1.setText(position);
+                    p.dismiss();
+                } else if (position == 1) {
+
+                } else if (position == 2) {
+
+                }
+
             }
         });
         p.show();
     }
     public void txt_teamshow2() {
+        onStart();
         final Dialog p = new Dialog(this);
         p.setTitle("txt_Team");
         p.setContentView(R.layout.leaguefixture);
+        fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
-        final Button a, ar, b, r, g,po,c;
-        a = (Button) p.findViewById(R.id.Alliance);
-        ar = (Button) p.findViewById(R.id.Arsenal);
-        b = (Button) p.findViewById(R.id.Barcelona);
-        r = (Button) p.findViewById(R.id.RealMadrid);
-        g = (Button) p.findViewById(R.id.Gladiators);
-        po = (Button) p.findViewById(R.id.POPO);
-        c = (Button) p.findViewById(R.id.Cake);
-        a.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                txt_t2.setText("Alliance FC");
-                p.dismiss();
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if (position == 0) {
+                    txt_t1.setText(position);
+                    p.dismiss();
+                } else if (position == 1) {
+
+                } else if (position == 2) {
+
+                }
+
             }
         });
-        ar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t2.setText("Arsenal FC");
-                p.dismiss();
-            }
-        });
-        r.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t2.setText("Real Madrid");
-                p.dismiss();
-            }
-        });
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t2.setText("Barcelona FC");
-                p.dismiss();
-            }
-        });
-        po.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t2.setText("POPO FC");
-                p.dismiss();
-            }
-        });
-        c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t2.setText("Cake FC");
-                p.dismiss();
-            }
-        });
-        g.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txt_t2.setText("Gladiators FC");
-                p.dismiss();
-            }
-        });
+
         p.show();
     }
 
-    @Override
     protected void onStart() {
 
         super.onStart();
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
+        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
+        //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
+        fixtureteamlist.setAdapter(fixtureadapter);
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
-                teams.add(dataSnapshot.getKey().toString());
+                team1.add(dataSnapshot.getKey().toString());
+                team2.add(dataSnapshot.getKey().toString());
+
 
             }
 

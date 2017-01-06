@@ -18,6 +18,7 @@ public class FixtureListView extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> team1;
     private final ArrayList<String> team2;
+
     private final ArrayList<String> DateTime;
     private final Integer[] imgid1;
     private final Integer[] imgid2;
@@ -30,9 +31,10 @@ public class FixtureListView extends ArrayAdapter<String> {
         this.context=context;
         this.team1=team1;
         this.team2=team2;
+        this.DateTime=DateTime;
         this.imgid1=imgid1;
         this.imgid2=imgid2;
-        this.DateTime=DateTime;
+
     }
 
     public View getView(int position,View view,ViewGroup parent) {
