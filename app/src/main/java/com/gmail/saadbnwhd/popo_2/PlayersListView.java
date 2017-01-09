@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.storage.FirebaseStorage;
-
 import java.util.ArrayList;
 
 /**
@@ -17,11 +15,11 @@ import java.util.ArrayList;
  */
 public class PlayersListView extends ArrayAdapter<String> {
     private final Activity context;
-    private final String[] players;
+    private final ArrayList<String> players;
     private final String[] postion;
     private final Integer[] playerimgid;
 
-    public PlayersListView(Activity context, String[] players, String[] postion, Integer[] playerimgid) {
+    public PlayersListView(Activity context, ArrayList<String> players, String[] postion, Integer[] playerimgid) {
         super(context, R.layout.listview, players);
         // TODO Auto-generated constructor stub
 
@@ -41,7 +39,7 @@ public class PlayersListView extends ArrayAdapter<String> {
         TextView txtlocation = (TextView) rowView.findViewById(R.id.location);
 
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-        txtTitle.setText(players[position]);
+        txtTitle.setText(players.get(position));
         txtlocation.setText(postion[position]);
         imageView.setImageResource(playerimgid[position]);
 
