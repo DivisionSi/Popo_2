@@ -80,14 +80,8 @@ public class Fixtures extends AppCompatActivity {
 
             }
         });
-    }
 
 
-    @Override
-    protected void onStart()
-    {
-
-        super.onStart();
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("League").child("Fixtures");  //Traversing to Fixtures
 
@@ -99,7 +93,7 @@ public class Fixtures extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
-                Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                 team1.add(dataSnapshot.child("Team1").getValue().toString());
                 team2.add(dataSnapshot.child("Team2").getValue().toString());
                 DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
@@ -127,6 +121,14 @@ public class Fixtures extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    protected void onStart()
+    {
+
+    super.onStart();
 
     }
 

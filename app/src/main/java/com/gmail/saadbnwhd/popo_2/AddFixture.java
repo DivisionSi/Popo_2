@@ -1,16 +1,12 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
@@ -65,7 +61,43 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         });
         fixtureteamlist = (ListView) findViewById(R.id.fixturelist);
 
+        Firebase teamRef; //Reference to Teams node
+        teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
+        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
+        //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
+        fixtureteamlist.setAdapter(fixtureadapter);
+
+        teamRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                // Map<String,String> map=dataSnapshot.getValue(Map.class);
+                team1.add(dataSnapshot.getKey().toString());
+                team2.add(dataSnapshot.getKey().toString());
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -130,43 +162,7 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
     protected void onStart() {
 
         super.onStart();
-        Firebase teamRef; //Reference to Teams node
-        teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
-        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
-        //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
-        fixtureteamlist.setAdapter(fixtureadapter);
-
-        teamRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                // Map<String,String> map=dataSnapshot.getValue(Map.class);
-                team1.add(dataSnapshot.getKey().toString());
-                team2.add(dataSnapshot.getKey().toString());
-
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
 
     }
 
