@@ -43,6 +43,16 @@ public class LeagueFragment extends Fragment{
                 startActivity(Fixtures);
             }
         });
+
+        Button btn_results=(Button) view.findViewById(R.id.btn_results);
+        btn_results.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Res=new Intent(getContext(),League_res_fix.class);
+                startActivity(Res);
+            }
+        });
+
         return view;
     }
 

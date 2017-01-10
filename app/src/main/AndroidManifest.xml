@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gmail.saadbnwhd.popo_2" >
+    package="com.gmail.saadbnwhd.popo_2">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -11,36 +11,36 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar" >
-        <activity android:name=".SplashScreen" >
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainMenu" >
+        <activity android:name=".MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.mainmenu" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Teams" >
+        <activity android:name=".Teams">
             <intent-filter>
                 <action android:name="android.intent.action.Teams" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TeamsEditor" >
+        <activity android:name=".TeamsEditor">
             <intent-filter>
                 <action android:name="android.intent.action.TeamsEditor" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayerEditor" >
+        <activity android:name=".PlayerEditor">
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />
 
@@ -50,15 +50,16 @@
         <activity
             android:name=".Fixtures"
             android:label="@string/title_activity_fixtures"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.Fixtures" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddFixture" >
-        </activity>
+        <activity android:name=".AddFixture" />
+        <activity android:name=".League_res_fix" />
+        <activity android:name=".sore_scorers"></activity>
     </application>
 
 </manifest>

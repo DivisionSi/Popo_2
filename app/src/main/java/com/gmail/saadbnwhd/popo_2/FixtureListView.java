@@ -1,7 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Activity;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,4 +58,5 @@ public class FixtureListView extends ArrayAdapter<String> {
         return rowView;
 
     };
+
 }
