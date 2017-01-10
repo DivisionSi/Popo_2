@@ -48,7 +48,7 @@ public class score_scorers extends AppCompatActivity {
                 a.setContentView(R.layout.team_listt);
                 list = (ListView) a.findViewById(R.id.tlist);
 
-                final team_list_Adap adapter = new team_list_Adap(score_scorers.this, x1);
+                final team_List_Adap adapter = new team_List_Adap(score_scorers.this, x1);
                 list.setAdapter(adapter);
                 a.show();
             }
@@ -61,7 +61,7 @@ public class score_scorers extends AppCompatActivity {
                 a.setContentView(R.layout.team_listt);
                 list = (ListView) a.findViewById(R.id.tlist);
 
-                final team_list_Adap adapter = new team_list_Adap(score_scorers.this, x2);
+                final team_List_Adap adapter = new team_List_Adap(score_scorers.this, x2);
                 list.setAdapter(adapter);
                 a.show();
             }

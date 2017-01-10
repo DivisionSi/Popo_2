@@ -48,7 +48,7 @@ public class LeagueFragment extends Fragment{
         btn_results.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Res=new Intent(getContext(),League_Res_fix.class);
+                Intent Res=new Intent(getContext(),League_Res_Fix.class);
                 startActivity(Res);
             }
         });
