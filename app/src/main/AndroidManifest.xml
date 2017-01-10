@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gmail.saadbnwhd.popo_2">
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="@string/app_name"
+        android:label="POPO"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".SplashScreen">
@@ -40,26 +39,35 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayerEditor">
+        <activity android:name=".PlayerEditor"
+            android:label="Players"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Fixtures"
-            android:label="@string/title_activity_fixtures"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".LeaguePlayer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.LeaguePlayer" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Fixtures"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.Fixtures" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddFixture" />
-        <activity android:name=".League_res_fix" />
-        <activity android:name=".sore_scorers"></activity>
+        <activity android:name=".AddFixture"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.AddFixture" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

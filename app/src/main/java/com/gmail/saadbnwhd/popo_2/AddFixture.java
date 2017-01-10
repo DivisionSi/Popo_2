@@ -1,11 +1,12 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
@@ -16,69 +17,64 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 
 public class AddFixture extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
-    ArrayList<String> teams = new ArrayList<String>(); //String array for Team Names
+    EditText txt_t1,txt_t2;
     Firebase ref; //Reference to our DB
-    Spinner spinner1;
-    Spinner spinner2;
+    ListView fixtureteamlist;
+    ArrayList<String> team1 = new ArrayList<String>(); //String array for Team1 Names
+    ArrayList<String> team2 = new ArrayList<String>(); //String array for Team2 Names
+    ArrayList<String> DateTime=new ArrayList<String>();
+    Integer[] imgid1 = {
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3,
+            R.drawable.logo2,
+    };
+    Integer[] imgid2 = {
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3,
+            R.drawable.logo2,
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fixture);
         Firebase.setAndroidContext(this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        txt_t1=(EditText) findViewById(R.id.T1);
+        txt_t2=(EditText) findViewById(R.id.T2);
+        txt_t1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_teamshow1();
+            }
+        });
+        txt_t2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_teamshow2();
+            }
+        });
+        fixtureteamlist = (ListView) findViewById(R.id.fixturelist);
 
-        spinner1=(Spinner) findViewById(R.id.spinner);
-        spinner2=(Spinner) findViewById(R.id.spinner2);
-
-
-        // Spinner click listener
-        spinner1.setOnItemSelectedListener(this);
-
-        spinner2.setOnItemSelectedListener(this);
-
-        // Spinner Drop down elements
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teams);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinner1.setAdapter(dataAdapter);
-        spinner2.setAdapter(dataAdapter);
-
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-    }
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
-    }
-
-
-
-    @Override
-    protected void onStart() {
-
-        super.onStart();
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
+        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
+        //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
+        fixtureteamlist.setAdapter(fixtureadapter);
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
-                teams.add(dataSnapshot.getKey().toString());
+                team1.add(dataSnapshot.getKey().toString());
+                team2.add(dataSnapshot.getKey().toString());
+
 
             }
 
@@ -102,6 +98,71 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
 
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
+    public void txt_teamshow1() {
+        onStart();
+        final Dialog p = new Dialog(this);
+        p.setTitle("txt_Team");
+        p.setContentView(R.layout.leaguefixture);
+        fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if (position == 0) {
+                    txt_t1.setText(position);
+                    p.dismiss();
+                } else if (position == 1) {
+
+                } else if (position == 2) {
+
+                }
+
+            }
+        });
+        p.show();
+    }
+    public void txt_teamshow2() {
+        onStart();
+        final Dialog p = new Dialog(this);
+        p.setTitle("txt_Team");
+        p.setContentView(R.layout.leaguefixture);
+        fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if (position == 0) {
+                    txt_t1.setText(position);
+                    p.dismiss();
+                } else if (position == 1) {
+
+                } else if (position == 2) {
+
+                }
+
+            }
+        });
+
+        p.show();
+    }
+
+    protected void onStart() {
+
+        super.onStart();
+
 
     }
 

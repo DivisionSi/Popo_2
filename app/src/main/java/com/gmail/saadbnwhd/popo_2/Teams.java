@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -17,7 +16,6 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 
 import static android.view.View.INVISIBLE;
-import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class Teams extends AppCompatActivity{
@@ -63,28 +61,22 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
 
 
         list = (ListView) findViewById(R.id.list);
-       // list.setAdapter(adapter);
+
         list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
-                // TODO Auto-generated method stub
-                String Slecteditem = teams.get(+position);
-                Intent playersactivity=new Intent("android.intent.action.PlayerEditor");
-                startActivity(playersactivity);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();
+
+                String passingTeamName=parent.getItemAtPosition(position).toString();
+                Intent intent = new Intent("android.intent.action.LeaguePlayer");
+                intent.putExtra("passingTeamName", passingTeamName);
+                 startActivity(intent);
 
 
             }
         });
-    }
 
-    @Override
-    protected void onStart()
-    {
-
-        super.onStart();
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("Teams");  //Traversing to Teams
 
@@ -95,7 +87,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               // Map<String,String> map=dataSnapshot.getValue(Map.class);
+                // Map<String,String> map=dataSnapshot.getValue(Map.class);
                 teams.add(dataSnapshot.getKey().toString());
                 locations.add(dataSnapshot.child("Location").getValue().toString());
 
@@ -123,6 +115,17 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
 
             }
         });
+    }
+
+
+
+
+    @Override
+    protected void onStart()
+    {
+
+        super.onStart();
+
 
     }
 
