@@ -18,7 +18,7 @@ public class score_scorers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_league_res_fix);
+        setContentView(R.layout.activity_league_res_fixx);
         Bundle bundle = getIntent().getExtras();
         String t1 = bundle.getString("t1");
         String t2 = bundle.getString("t2");
@@ -45,10 +45,10 @@ public class score_scorers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Dialog a = new Dialog(score_scorers.this);
-                a.setContentView(R.layout.team_list);
+                a.setContentView(R.layout.team_listt);
                 list = (ListView) a.findViewById(R.id.tlist);
 
-                final team_list_adap adapter = new team_list_adap(score_scorers.this, x1);
+                final team_list_Adap adapter = new team_list_Adap(score_scorers.this, x1);
                 list.setAdapter(adapter);
                 a.show();
             }
@@ -58,10 +58,10 @@ public class score_scorers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Dialog a = new Dialog(score_scorers.this);
-                a.setContentView(R.layout.team_list);
+                a.setContentView(R.layout.team_listt);
                 list = (ListView) a.findViewById(R.id.tlist);
 
-                final team_list_adap adapter = new team_list_adap(score_scorers.this, x2);
+                final team_list_Adap adapter = new team_list_Adap(score_scorers.this, x2);
                 list.setAdapter(adapter);
                 a.show();
             }
