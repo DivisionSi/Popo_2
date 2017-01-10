@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlayerEditor"
-            android:label="Players"
+
             >
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />

@@ -1,5 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class LeaguePlayer extends AppCompatActivity {
     ListView  playerlist;
-FloatingActionButton playerfab;
+FloatingActionButton playeradd;
     ArrayList<String> players;
 
     String[] position={"Mid","Striker","Keeper"};
@@ -38,7 +39,14 @@ FloatingActionButton playerfab;
         String passingTeamName = getIntent().getStringExtra("passingTeamName");
         Firebase.setAndroidContext(this);
         players=new ArrayList<String>();
-
+playeradd=(FloatingActionButton) findViewById(R.id.playerfab);
+playeradd.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent addplayers=new Intent("android.intent.action.PlayerEditor");
+        startActivity(addplayers);
+    }
+});
         playerlist = (ListView) findViewById(R.id.list);
       playerlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
