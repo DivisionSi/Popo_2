@@ -7,6 +7,7 @@
     <color name="lightgreen">#b3f203</color>
     <color name="plgreen">#8ec63f</color>
     <color name="Black">#000000</color>
+    <color name="dark">#3b561c</color>
     <color name="White">#FFFFFF</color>
     <color name="lightBlue">#c8e8ff</color>
 </resources>

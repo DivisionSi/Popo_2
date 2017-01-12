@@ -61,6 +61,7 @@
         android:id="@+id/done"
         android:editable="true"
         android:textSize="20dp"
+        android:background="@drawable/button"
         android:layout_below="@+id/t_time"
         android:layout_alignParentEnd="true" />
 

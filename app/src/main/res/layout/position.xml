@@ -10,7 +10,7 @@
 
     <Button
         android:layout_marginTop="40dp"
-        android:background="@color/darkGreen"
+        android:background="@drawable/button"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:text="Goal Keeper"
@@ -19,7 +19,7 @@
         android:layout_weight="0.06" />
     <Button
         android:layout_marginTop="15dp"
-        android:background="@color/darkGreen"
+        android:background="@drawable/button"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:text="Defender"
@@ -28,7 +28,7 @@
         android:layout_weight="0.06" />
     <Button
         android:layout_marginTop="15dp"
-        android:background="@color/darkGreen"
+        android:background="@drawable/button"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:text="Midfielder"
@@ -37,7 +37,7 @@
         android:layout_weight="0.06" />
     <Button
         android:layout_marginTop="15dp"
-        android:background="@color/darkGreen"
+        android:background="@drawable/button"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:text="Striker"
@@ -46,7 +46,7 @@
         android:layout_weight="0.06" />
     <Button
         android:layout_marginTop="15dp"
-        android:background="@color/darkGreen"
+        android:background="@drawable/button"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:text="Winger"
