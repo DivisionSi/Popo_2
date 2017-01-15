@@ -7,10 +7,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-/**
- * Created by Musab on 12/12/2016.
- */
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
 public class PlayersFragment extends Fragment {
+    ListView list;
+    ArrayList<String> teams = new ArrayList<String>();
+
+    private ArrayAdapter<String> listAdapter ;
+
+    String[] TN = {
+            "Fahad","SBW","Musab"
+    };
+
     public PlayersFragment() {
 
     }
@@ -21,9 +33,10 @@ public class PlayersFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view= inflater.inflate(R.layout.fragment_players, container, false);
+
        FloatingActionButton fab=(FloatingActionButton) view.findViewById(R.id.playersfab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +45,27 @@ public class PlayersFragment extends Fragment {
                 startActivity(teamseditor);
             }
         });
-return view;
+
+        list = (ListView) view.findViewById(R.id.players_list);
+
+
+        teams.add("Fahad");
+        teams.add("SBW");
+        teams.add("Musab");
+        popo_players_adap adapter = new popo_players_adap(getActivity().getBaseContext(), TN);
+
+
+
+        list.setAdapter(adapter);
+
+
+
+
+
+        Toast.makeText(getActivity(), "aaaaa", Toast.LENGTH_SHORT).show();
+
+        return view;
     }
+
+
 }
