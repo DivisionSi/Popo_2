@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/background"
+    android:paddingTop="10dp"
     >
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -19,13 +20,14 @@
         app:backgroundTint="@color/darkGreen"
         android:tint="@android:color/white"
         app:fabSize="normal"
+
         />
     <ListView
+
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
 
-        android:background="@drawable/background"
         android:cacheColorHint="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp"

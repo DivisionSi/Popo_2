@@ -6,26 +6,26 @@
     <item
         android:state_focused="true"
         android:state_pressed="true"
-        android:background="@color/dark">
+        android:background="@color/darkGreen">
         <shape
             android:shape="rectangle"  >
             <corners
-                android:radius="5dip" />
+                android:radius="7dip" />
             <gradient
-                android:startColor="@color/dark"
-                android:endColor="@color/dark"/>
+                android:startColor="@color/darkGreen"
+                android:endColor="@color/darkGreen"/>
         </shape>
     </item>
     <item
 
         android:state_focused="false"
         android:state_pressed="true"
-        android:background="@color/darkGreen">
+        android:background="@color/dark">
         <shape android:shape="rectangle"  >
-            <corners android:radius="5dip" />
+            <corners android:radius="7dip" />
             <gradient
-                android:startColor="@color/darkGreen"
-                android:endColor="@color/darkGreen"/>
+                android:startColor="@color/dark"
+                android:endColor="@color/dark"/>
 
 
         </shape>
@@ -33,8 +33,8 @@
 
     <item android:background="@color/darkGreen">
         <shape android:shape="rectangle"  >
-            <corners android:radius="5dip" />
-            <stroke android:width="5dip"
+            <corners android:radius="7dip" />
+            <stroke android:width="0.5dip"
                 android:color="@color/darkGreen" />
             <gradient
                 android:startColor="@color/darkGreen"
