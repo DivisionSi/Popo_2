@@ -2,12 +2,13 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="lightgrey">#cacaca</color>
+    <color name="lightgrey">#dedede</color>
     <color name="darkGreen">#78be20</color>
-    <color name="lightgreen">#b3f203</color>
+    <color name="lightgreen">#ffffff</color>
     <color name="plgreen">#8ec63f</color>
     <color name="Black">#000000</color>
     <color name="dark">#3b561c</color>
     <color name="White">#FFFFFF</color>
     <color name="lightBlue">#c8e8ff</color>
+    <color name="grey">#6b6b6b</color>
 </resources>
