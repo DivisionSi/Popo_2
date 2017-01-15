@@ -4,13 +4,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <provider android:authorities="com.facebook.app.FacebookContentProvider757719757718898"
+        android:name="com.facebook.FacebookContentProvider"
+        android:exported="true" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="POPO"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlayerEditor"
-            android:label="Players"
+
             >
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />
@@ -68,6 +71,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
