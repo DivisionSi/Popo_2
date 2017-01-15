@@ -9,7 +9,7 @@
     android:background="@color/lightgrey">
 
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/button"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
