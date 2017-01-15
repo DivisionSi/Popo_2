@@ -54,15 +54,8 @@ public class PlayersFragment extends Fragment {
         teams.add("Musab");
         popo_players_adap adapter = new popo_players_adap(getActivity().getBaseContext(), TN);
 
-
-
         list.setAdapter(adapter);
 
-
-
-
-
-        Toast.makeText(getActivity(), "aaaaa", Toast.LENGTH_SHORT).show();
 
         return view;
     }
