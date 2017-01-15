@@ -6,7 +6,8 @@
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.gmail.saadbnwhd.popo_2.PlayerEditor"
-    android:background="@drawable/playeradder"
+    android:background="@drawable/playeradder3"
+
 
     >
 <EditText
@@ -36,6 +37,7 @@
         android:layout_width="75dp"
         android:layout_height="40dp"
         android:scaleType="fitXY"
+        android:backgroundTint="@android:color/transparent"
         android:src="@android:drawable/btn_dropdown"
         android:layout_above="@+id/txt_position"
         android:layout_alignEnd="@+id/txt_position" />
