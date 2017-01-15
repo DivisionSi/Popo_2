@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/lightgrey</item>
 
     </style>
-    <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="AppTheme.Picker" parent="Theme.AppCompat.NoActionBar" >
         <item name="android:textColorPrimary">@android:color/black</item>
     </style>
     <style name="AppTheme.StatusBar" parent="Theme.AppCompat.NoActionBar">
