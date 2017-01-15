@@ -1,2 +1,6 @@
 <resources>>
+
+    <style name="AppTheme.StatusBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:statusBarColor">@color/dark</item>
+    </style>
 </resources>
