@@ -126,12 +126,6 @@ public class Fixtures extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart()
-    {
 
-    super.onStart();
-
-    }
 
 }

@@ -72,6 +72,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".League_Res_Fix">
+
+        </activity>
+        <activity android:name=".score_scorers">
+
+        </activity>
+
     </application>
 
 </manifest>

@@ -56,32 +56,6 @@ public class League_Res_Fix extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.list);
         // list.setAdapter(adapter);
-        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(android.widget.AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-               /* String Slecteditem = team1.get(+position);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
-
-                Intent i=new Intent(getApplicationContext(),score_scorers.class);
-                i.putExtra("t1",team1.get(position));
-                i.putExtra("t2",team2.get(position));
-                startActivity(i);
-
-                /*Dialog a = new Dialog(League_Res_Fix.this);
-                a.setContentView(R.layout.activity_league_res_fixx);
-                a.show();*/
-            }
-        });
-    }
-
-    @Override
-    protected void onStart()
-    {
-
-        super.onStart();
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("League").child("Fixtures");  //Traversing to Fixtures
 
@@ -93,7 +67,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
-          //      Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
+                //      Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
                 team1.add(dataSnapshot.child("Team1").getValue().toString());
                 team2.add(dataSnapshot.child("Team2").getValue().toString());
                 DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
@@ -122,6 +96,32 @@ public class League_Res_Fix extends AppCompatActivity {
             }
         });
 
+
+        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+               /* String Slecteditem = team1.get(+position);
+                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
+
+                Intent i=new Intent(getApplicationContext(),score_scorers.class);
+                i.putExtra("t1",team1.get(position));
+                i.putExtra("t2",team2.get(position));
+                startActivity(i);
+
+                /*Dialog a = new Dialog(League_Res_Fix.this);
+                a.setContentView(R.layout.activity_league_res_fixx);
+                a.show();*/
+            }
+        });
     }
 
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+
+    }
 }
