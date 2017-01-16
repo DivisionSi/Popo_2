@@ -26,7 +26,7 @@ public class MainMenu extends AppCompatActivity {
             R.drawable.homeicon,
             R.drawable.playericon,
             R.drawable.newsicon,
-            R.drawable.football,
+            R.drawable.football1,
             R.drawable.leagueicon,
             R.drawable.playericon2,
     };

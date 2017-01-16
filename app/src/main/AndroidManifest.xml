@@ -74,6 +74,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".League_Res_Fix"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.League_Res_Fix" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 
