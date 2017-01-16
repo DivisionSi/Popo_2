@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:padding="20dp"
+    android:padding="17dp"
+    android:background="@color/newclr1"
     tools:context="com.gmail.saadbnwhd.popo_2.NewsFragment">
 
     <WebView android:id="@+id/webview"
@@ -12,5 +12,4 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
-
 </RelativeLayout>

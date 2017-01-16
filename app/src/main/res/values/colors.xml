@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="lightgrey">#fadcdcdc</color>
     <color name="darkGreen">#79be24</color>
-
+    <color name="newclr">#14864e</color>
+    <color name="newclr1">#0f643a</color>
+    <color name="newclr2">#8608311d</color>
     <color name="plgreen">#7fba51</color>
     <color name="Black">#000000</color>
     <color name="dark">#3b561c</color>
