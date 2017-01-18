@@ -17,14 +17,13 @@ public class FixtureListView extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> team1;
     private final ArrayList<String> team2;
-
     private final ArrayList<String> DateTime;
     private final Integer[] imgid1;
     private final Integer[] imgid2;
 
 
     public FixtureListView(Activity context, ArrayList<String> team1, ArrayList<String> team2, ArrayList<String> DateTime, Integer[] imgid1,Integer[] imgid2) {
-        super(context, R.layout.fixtures_list, team1);
+        super(context, R.layout.fixtures_list,team1);
         // TODO Auto-generated constructor stub
 
         this.context=context;

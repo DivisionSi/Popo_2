@@ -14,7 +14,7 @@
         android:label="POPO"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
-
+        android:largeHeap="true"
         >
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity android:name=".SplashScreen">
