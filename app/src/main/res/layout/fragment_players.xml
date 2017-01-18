@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background"
+    android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.PlayersFragment">
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/playersfab"
@@ -19,8 +19,19 @@
         android:tint="@android:color/white"
         app:fabSize="normal"
         />
-
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginTop="5dp"
+        android:text="POPO Players"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/plr.txt"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
     <ListView
+        android:layout_below="@+id/plr.txt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"

@@ -1,5 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,7 @@ public class MainMenu extends AppCompatActivity {
             R.drawable.homeicon,
             R.drawable.playericon,
             R.drawable.newsicon,
-            R.drawable.football,
+            R.drawable.football1,
             R.drawable.leagueicon,
             R.drawable.playericon2,
     };
@@ -31,7 +35,12 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(getResources().getColor(R.color.newclr1));
+        }
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 

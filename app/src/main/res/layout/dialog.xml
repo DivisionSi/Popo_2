@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="@color/White"
+android:background="@color/darkGreen"
 
     >
 
@@ -17,8 +17,8 @@ android:background="@color/White"
         android:layout_alignParentTop="true"
         android:background="@color/White"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:solidColor="@color/White"
+        android:layout_marginTop="0dp"
+        android:solidColor="@color/dark"
         android:divider="#91be63"
         android:dividerPadding="1dp"
 
@@ -33,12 +33,12 @@ android:background="@color/White"
         android:textColor="@color/White"
         android:text="Cancel"
         android:layout_toRightOf="@+id/button1"
-        android:background="@color/darkGreen"/>
+        android:background="@drawable/button"/>
 
     <Button
         android:textColor="@color/White"
         android:id="@+id/button1"
-        android:background="@color/darkGreen"
+        android:background="@drawable/button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/numberPicker1"

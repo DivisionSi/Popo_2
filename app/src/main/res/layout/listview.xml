@@ -10,32 +10,34 @@
     android:elevation="10dp"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
-
     app:cardElevation="4dp"
     app:cardCornerRadius="7dp"
-    app:cardBackgroundColor="@color/White">
+    app:cardBackgroundColor="@color/newclr2">
 
 <RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
 
         <ImageView
+            android:alpha="1"
             android:id="@+id/icon"
             android:layout_width="wrap_content"
             android:adjustViewBounds="true"
             android:layout_height="50dp"
             android:padding="13dp"
-            android:background="@color/White"
+            android:backgroundTint="@android:color/transparent"
             android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/team1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team Name"
-
+            android:alpha="1"
             android:textAlignment="textStart"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/Black"
+            android:textColor="@color/White"
             android:textSize="25dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/icon"
@@ -43,6 +45,7 @@
             android:background="@android:color/transparent" />
 
     <TextView
+        android:alpha="1"
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,7 +54,7 @@
         android:textAlignment="textStart"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginRight="10dp"
-        android:textColor="#6d6a6a"
+        android:textColor="@color/White"
 
         android:layout_below="@+id/team1"
         android:layout_alignStart="@+id/team1"

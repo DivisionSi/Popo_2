@@ -2,30 +2,27 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:statusBarBackground="@color/darkGreen">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        >
 
-      <!--  <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryDark"
-            app:layout_scrollFlags="scroll|enterAlways"
-             />-->
+
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/darkGreen"
-            app:tabIndicatorColor="@color/dark"
-            app:tabSelectedTextColor="@color/dark"
+            android:background="@color/newclr"
+            app:tabIndicatorColor="@color/White"
+            app:tabSelectedTextColor="@color/White"
             app:tabMode="scrollable"
             app:tabGravity="fill"
+            android:scaleType="fitXY"
+            app:tabTextColor="@color/lightgrey"
            />
     </android.support.design.widget.AppBarLayout>
 
