@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class LeaguePlayer extends AppCompatActivity {
     ListView  playerlist;
-FloatingActionButton playeradd;
+FloatingActionButton pladd;
     ArrayList<String> players;
 
     String[] position={"Mid","Striker","Keeper"};
@@ -39,14 +39,14 @@ FloatingActionButton playeradd;
         String passingTeamName = getIntent().getStringExtra("passingTeamName");
         Firebase.setAndroidContext(this);
         players=new ArrayList<String>();
-playeradd=(FloatingActionButton) findViewById(R.id.playerfab);
-playeradd.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent addplayers=new Intent("android.intent.action.PlayerEditor");
-        startActivity(addplayers);
-    }
-});
+        pladd=(FloatingActionButton) findViewById(R.id.playerfab);
+        pladd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent plr=new Intent("android.intent.action.PlayerEditor");
+                startActivity(plr);
+            }
+        });
         playerlist = (ListView) findViewById(R.id.list);
       playerlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override

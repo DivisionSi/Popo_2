@@ -29,6 +29,7 @@ public class MainMenu extends AppCompatActivity {
             R.drawable.football1,
             R.drawable.leagueicon,
             R.drawable.playericon2,
+            R.drawable.more,
     };
 
     @Override
@@ -60,6 +61,7 @@ public class MainMenu extends AppCompatActivity {
         adapter.addFragment(new PoponfaFragment(),"PopoNFA");
         adapter.addFragment(new LeagueFragment(), "League");
         adapter.addFragment(new PlayersFragment(), "Players Profile");
+        adapter.addFragment(new MoreFragment(), "More");
         viewPager.setAdapter(adapter);
 
     }
@@ -70,6 +72,7 @@ public class MainMenu extends AppCompatActivity {
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
         tabLayout.getTabAt(4).setIcon(tabIcons[4]);
         tabLayout.getTabAt(5).setIcon(tabIcons[5]);
+        tabLayout.getTabAt(6).setIcon(tabIcons[6]);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

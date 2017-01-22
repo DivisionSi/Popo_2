@@ -55,7 +55,7 @@ public class Fixtures extends AppCompatActivity {
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
         pb = (ProgressBar)this.findViewById(R.id.wait);
-        pb.setVisibility(INVISIBLE);
+        pb.setVisibility(View.VISIBLE);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
