@@ -54,8 +54,8 @@ public class FixtureListView extends ArrayAdapter<String> {
         txtTeam2.setText(team2.get(position));
         txtDateTime.setText(DateTime.get(position));
 
-        icon.setImageResource(imgid1[position]);
-        icon2.setImageResource(imgid2[position]);
+    //    icon.setImageResource(imgid1[position]);
+     //  icon2.setImageResource(imgid2[position]);
 
         return rowView;
 
