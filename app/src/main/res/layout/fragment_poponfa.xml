@@ -5,9 +5,16 @@
     android:layout_height="match_parent"
     android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.PoponfaFragment">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginTop="7dp"
+    android:id="@+id/admin_img"
+    android:background="@drawable/popo_admin"
+    />
 
     <Button
-
+        android:layout_below="@+id/admin_img"
         android:scaleY=".9"
         android:id="@+id/form"
         android:text="Registration Form"
@@ -15,7 +22,6 @@
         android:textColor="@color/colorPrimary"
         android:background="@color/White"
         android:layout_width="match_parent"
-
         android:layout_height="75dp"
         android:textSize="20sp"
         android:layout_marginTop="7dp"/>
