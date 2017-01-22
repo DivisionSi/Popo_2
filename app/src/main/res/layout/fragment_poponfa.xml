@@ -6,13 +6,18 @@
     android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.PoponfaFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="POPONFA"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:textColor="@color/Black"
-        android:layout_centerInParent="true"/>
+    <Button
+
+        android:scaleY=".9"
+        android:id="@+id/form"
+        android:text="Registration Form"
+        android:alpha="0.96"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/White"
+        android:layout_width="match_parent"
+
+        android:layout_height="75dp"
+        android:textSize="20sp"
+        android:layout_marginTop="7dp"/>
 
 </RelativeLayout>
