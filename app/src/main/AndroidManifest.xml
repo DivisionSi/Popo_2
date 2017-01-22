@@ -2,21 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     package="com.gmail.saadbnwhd.popo_2">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <provider android:authorities="com.facebook.app.FacebookContentProvider757719757718898"
+
+    <provider
         android:name="com.facebook.FacebookContentProvider"
+        android:authorities="com.facebook.app.FacebookContentProvider757719757718898"
         android:exported="true" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/logo"
         android:label="POPO"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
         android:largeHeap="true"
-        >
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,43 +52,42 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayerEditor"
-
-            >
+        <activity android:name=".PlayerEditor">
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LeaguePlayer"
-            >
+        <activity android:name=".LeaguePlayer">
             <intent-filter>
                 <action android:name="android.intent.action.LeaguePlayer" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fixtures"
-            >
+        <activity android:name=".Fixtures">
             <intent-filter>
                 <action android:name="android.intent.action.Fixtures" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddFixture"
-            >
+        <activity android:name=".AddFixture">
             <intent-filter>
                 <action android:name="android.intent.action.AddFixture" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".League_Res_Fix"
-            >
+        <activity android:name=".League_Res_Fix">
             <intent-filter>
                 <action android:name="android.intent.action.League_Res_Fix" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".MoreFragment"></activity>
     </application>
 
 </manifest>

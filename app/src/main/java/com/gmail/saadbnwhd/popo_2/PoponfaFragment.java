@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ViewFlipper;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -37,6 +38,7 @@ import java.net.URLConnection;
  */
 public class PoponfaFragment extends Fragment {
   public DownloadManager dm;
+   
     public PoponfaFragment() {
 
     }
@@ -51,6 +53,7 @@ public class PoponfaFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view= inflater.inflate(R.layout.fragment_poponfa, container, false);
         Button form = (Button) view.findViewById(R.id.form);
+
         form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +62,7 @@ public class PoponfaFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
     return view;
     }
 

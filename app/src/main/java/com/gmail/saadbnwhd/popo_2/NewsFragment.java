@@ -3,6 +3,7 @@ package com.gmail.saadbnwhd.popo_2;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -50,8 +51,12 @@ public class NewsFragment extends Fragment {
         // Force links and redirects to open in the WebView instead of in a browser
         mWebView.setWebViewClient(new WebViewClient()
         );
+
         return view;
     }
 
 
 }
+
+
+
