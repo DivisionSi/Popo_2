@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,9 @@ FloatingActionButton pladd;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_player);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
+        getSupportActionBar().setTitle("LEAGUE PLAYERS");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String passingTeamName = getIntent().getStringExtra("passingTeamName");
         Firebase.setAndroidContext(this);
         players=new ArrayList<String>();
@@ -104,5 +108,30 @@ FloatingActionButton pladd;
         super.onStart();
 
 
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        onLeaveThisActivity();
+    }
+
+    protected void onLeaveThisActivity() {
+        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 }
