@@ -1,9 +1,13 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -42,7 +46,9 @@ FloatingActionButton fab;
         setContentView(R.layout.activity_team);
         Firebase.setAndroidContext(this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
-
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
+        getSupportActionBar().setTitle("TEAMS");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pb = (ProgressBar)this.findViewById(R.id.wait);
         pb.setVisibility(INVISIBLE);
 
@@ -52,7 +58,9 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
             @Override
             public void onClick(View v) {
                 Intent teamseditor=new Intent("android.intent.action.TeamsEditor");
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                 startActivity(teamseditor);
+
             }
         });
 
@@ -118,7 +126,11 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
     }
 
 
-
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 
     @Override
     protected void onStart()
@@ -128,7 +140,31 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
 
 
     }
+    @Override
+    public void finish() {
+        super.finish();
+        onLeaveThisActivity();
+    }
 
+    protected void onLeaveThisActivity() {
+        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
 
 
 }

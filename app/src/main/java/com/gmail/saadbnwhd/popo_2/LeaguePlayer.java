@@ -105,4 +105,29 @@ FloatingActionButton pladd;
 
 
     }
+    @Override
+    public void finish() {
+        super.finish();
+        onLeaveThisActivity();
+    }
+
+    protected void onLeaveThisActivity() {
+        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
 }

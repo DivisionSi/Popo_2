@@ -31,7 +31,8 @@ public class LeagueFragment extends Fragment{
             public void onClick(View v)
             {
                 Intent Team=new Intent("android.intent.action.Teams");
-                startActivity(Team);
+             startActivity(Team);
+
             }
         });
 
@@ -55,6 +56,20 @@ public class LeagueFragment extends Fragment{
 
         return view;
     }
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
 
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        getActivity().overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +48,9 @@ public class League_Res_Fix extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fixtures);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
+        getSupportActionBar().setTitle("RESULTS");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ProgressBar wait = (ProgressBar) findViewById(R.id.wait);
         wait.setVisibility(INVISIBLE);
@@ -76,7 +80,36 @@ public class League_Res_Fix extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void finish() {
+        super.finish();
+        onLeaveThisActivity();
+    }
 
+    protected void onLeaveThisActivity() {
+        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     @Override
     protected void onStart()
     {
