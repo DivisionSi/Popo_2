@@ -55,6 +55,7 @@ public class FixtureListView extends ArrayAdapter<String> {
     //    icon.setImageResource(imgid1[position]);
      //  icon2.setImageResource(imgid2[position]);
 
+
         return rowView;
 
     };
