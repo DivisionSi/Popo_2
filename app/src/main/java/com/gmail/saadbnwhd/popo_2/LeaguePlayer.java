@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,9 @@ FloatingActionButton pladd;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_player);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
+        getSupportActionBar().setTitle("LEAGUE PLAYERS");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String passingTeamName = getIntent().getStringExtra("passingTeamName");
         Firebase.setAndroidContext(this);
         players=new ArrayList<String>();
