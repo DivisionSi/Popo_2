@@ -8,5 +8,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:paddingTop="10dp"
-        android:id="@+id/tlist" />
+        android:id="@+id/tlist"
+        android:elevation="24dp" />
 </RelativeLayout>

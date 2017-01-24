@@ -3,6 +3,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
@@ -12,13 +13,16 @@
     android:paddingLeft="10dp"
     app:cardElevation="4dp"
     app:cardCornerRadius="7dp"
-    app:cardBackgroundColor="@color/newclr2">
+    app:cardBackgroundColor="@color/White"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    >
+    android:paddingTop="10dp"
+    android:background="#7fa87f">
 
         <ImageView
             android:alpha="1"
@@ -37,7 +41,7 @@
             android:alpha="1"
             android:textAlignment="textStart"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/White"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="25dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/icon"
@@ -54,7 +58,7 @@
         android:textAlignment="textStart"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginRight="10dp"
-        android:textColor="@color/White"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
 
         android:layout_below="@+id/team1"
         android:layout_alignStart="@+id/team1"

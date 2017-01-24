@@ -38,10 +38,9 @@ public class CustomListView extends ArrayAdapter<String> {
         TextView txtTitle = (TextView) rowView.findViewById(R.id.team1);
         TextView txtlocation = (TextView) rowView.findViewById(R.id.location);
 
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         txtTitle.setText(teams.get(position));
         txtlocation.setText(locations.get(position));
-        imageView.setImageResource(imgid[position]);
+
 
         return rowView;
 
