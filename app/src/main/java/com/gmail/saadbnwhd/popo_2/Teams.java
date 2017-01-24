@@ -46,6 +46,7 @@ FloatingActionButton fab;
         setContentView(R.layout.activity_team);
         Firebase.setAndroidContext(this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("TEAMS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -86,7 +87,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
         });
 
         Firebase teamRef; //Reference to Teams node
-        teamRef=ref.child("Teams");  //Traversing to Teams
+        teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
         final CustomListView adapter = new CustomListView(this, teams,locations, imgid);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
