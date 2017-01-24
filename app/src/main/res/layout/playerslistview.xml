@@ -17,12 +17,12 @@
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-    android:paddingTop="10dp"
-    android:background="#7fa87f">
+        android:paddingTop="10dp"
+        android:background="#7fa87f">
 
         <ImageView
             android:alpha="1"
@@ -34,10 +34,10 @@
             android:backgroundTint="@android:color/transparent"
             android:layout_marginLeft="10dp"/>
         <TextView
-            android:id="@+id/team1"
+            android:id="@+id/leagueplr_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Team Name"
+            android:text="Player Name"
             android:alpha="1"
             android:textAlignment="textStart"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -48,23 +48,40 @@
             android:layout_marginStart="35dp"
             android:background="@android:color/transparent" />
 
-    <TextView
-        android:alpha="1"
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medium Text"
+        <TextView
+            android:alpha="1"
+            android:id="@+id/leagueplr_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
 
 
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
 
-        android:layout_below="@+id/team1"
-        android:layout_alignStart="@+id/team1"
-        android:gravity="top"
-        android:paddingBottom="10dp"
-        android:background="@android:color/transparent" />
+            android:layout_below="@+id/leagueplr_name"
+            android:layout_alignStart="@+id/leagueplr_name"
+            android:gravity="top"
+            android:paddingBottom="10dp"
+            android:background="@android:color/transparent" />
+        <TextView
+            android:alpha="1"
+            android:id="@+id/leagueplr_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
 
-</RelativeLayout>
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+
+            android:layout_below="@+id/leagueplr_name"
+            android:layout_toRightOf="@+id/leagueplr_position"
+            android:gravity="top"
+            android:paddingBottom="10dp"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class LeaguePlayer extends AppCompatActivity {
     ListView  playerlist;
 FloatingActionButton pladd;
-    ArrayList<String> players=new ArrayList<String>();;
-
+    ArrayList<String> players=new ArrayList<String>();
+    ArrayList<String> number=new ArrayList<String>();
     String[] position={"Mid","Striker","Keeper"};
     Integer[] playerimgid = {
             R.drawable.logo2,
@@ -35,7 +35,6 @@ FloatingActionButton pladd;
     Firebase ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        players.add("musab");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_player);
         String passingTeamName = getIntent().getStringExtra("passingTeamName");
@@ -45,6 +44,7 @@ FloatingActionButton pladd;
 
         Firebase.setAndroidContext(this);
         players=new ArrayList<String>();
+
         pladd=(FloatingActionButton) findViewById(R.id.playerfab);
         pladd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ FloatingActionButton pladd;
       });
 
 
-        final PlayersListView adapter = new PlayersListView(this, players,position,playerimgid);
+        final PlayersListView adapter = new PlayersListView(this, players,position,number,playerimgid);
         playerlist.setAdapter(adapter);
 
 
