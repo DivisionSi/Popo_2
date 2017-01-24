@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class LeaguePlayer extends AppCompatActivity {
     ListView  playerlist;
 FloatingActionButton pladd;
-    ArrayList<String> players;
+    ArrayList<String> players=new ArrayList<String>();;
 
     String[] position={"Mid","Striker","Keeper"};
     Integer[] playerimgid = {
@@ -35,12 +35,14 @@ FloatingActionButton pladd;
     Firebase ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        players.add("musab");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_player);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
-        getSupportActionBar().setTitle("LEAGUE PLAYERS");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String passingTeamName = getIntent().getStringExtra("passingTeamName");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
+        getSupportActionBar().setTitle(passingTeamName);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Firebase.setAndroidContext(this);
         players=new ArrayList<String>();
         pladd=(FloatingActionButton) findViewById(R.id.playerfab);
@@ -55,6 +57,12 @@ FloatingActionButton pladd;
       playerlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+              String passingPlayerName=parent.getItemAtPosition(position).toString();
+              Intent intent = new Intent("android.intent.action.LeaguePlayer_Stats");
+              intent.putExtra("passingPlayerName", passingPlayerName);
+              startActivity(intent);
+
 
           }
       });
@@ -133,5 +141,10 @@ FloatingActionButton pladd;
 
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }
