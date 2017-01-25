@@ -23,9 +23,19 @@ import java.util.Calendar;
 
 public class PlayersFragment extends Fragment {
     ListView list_sr, list_u16, list_u14;
-    ArrayList<String> Popo_players_sr = new ArrayList<String>();
+    ArrayList<String> Popo_players = new ArrayList<String>();
+    ArrayList<String> Popo_players_numbers = new ArrayList<String>();
+    ArrayList<String> Popo_players_postion = new ArrayList<String>();
+
     ArrayList<String> Popo_players_u16 = new ArrayList<String>();
-    ArrayList<String> Popo_players_u14 = new ArrayList<String>();
+    ArrayList<String> Popo_players_u16_numbers = new ArrayList<String>();
+    ArrayList<String> Popo_players_u16_postion = new ArrayList<String>();
+
+    ArrayList<String> Popo_players_u14= new ArrayList<String>();
+    ArrayList<String> Popo_players_u14_numbers = new ArrayList<String>();
+    ArrayList<String> Popo_players_u14_postion = new ArrayList<String>();
+
+
 
     private ArrayAdapter<String> listAdapter;
 
@@ -60,9 +70,9 @@ public class PlayersFragment extends Fragment {
         list_u16 = (ListView) view.findViewById(R.id.players_list1);
         list_u14 = (ListView) view.findViewById(R.id.players_list2);
 
-        final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players_sr);
-        final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16);
-        final popo_players_adap adapter_u14 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u14);
+        final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_numbers,Popo_players_postion);
+        final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16,Popo_players_u16_numbers,Popo_players_u16_postion);
+        final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_u14_numbers,Popo_players_u14_postion);
 
         list_sr.setAdapter(adapter_sr);
 
@@ -81,13 +91,22 @@ public class PlayersFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
 
-                Popo_players_sr.add(dataSnapshot.getKey().toString());
+                Popo_players.add(dataSnapshot.getKey().toString());
+                Popo_players_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                Popo_players_postion.add(dataSnapshot.child("Position").getValue().toString());
                 adapter_sr.notifyDataSetChanged();
 
                 Popo_players_u16.add(dataSnapshot.getKey().toString());
+                Popo_players_u16_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                Popo_players_u16_postion.add(dataSnapshot.child("Position").getValue().toString());
                 adapter_u16.notifyDataSetChanged();
+
                 Popo_players_u14.add(dataSnapshot.getKey().toString());
+                Popo_players_u14_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                Popo_players_u14_postion.add(dataSnapshot.child("Position").getValue().toString());
                 adapter_u14.notifyDataSetChanged();
+
+
                 ListUtils.setDynamicHeight(list_sr);
                 ListUtils.setDynamicHeight(list_u16);
                 ListUtils.setDynamicHeight(list_u14);
