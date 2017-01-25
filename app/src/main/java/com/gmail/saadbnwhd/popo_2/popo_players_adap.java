@@ -19,7 +19,7 @@ public class popo_players_adap extends ArrayAdapter<String> {
     private Holder holder;
 
     public popo_players_adap(Context context, String[] teams) {
-        super(context, R.layout.listview, teams);
+        super(context, R.layout.popoplayers_listview, teams);
         this.context=context;
         this.teams=teams;
     }
@@ -28,15 +28,15 @@ public class popo_players_adap extends ArrayAdapter<String> {
 
 
         LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView=inflater.inflate(R.layout.listview, null, true);
+        View rowView=inflater.inflate(R.layout.popoplayers_listview, null, true);
 
         holder=new Holder();
 
-        holder.Title = (TextView) rowView.findViewById(R.id.team1);
-        holder.location = (TextView) rowView.findViewById(R.id.location);
+        holder.name = (TextView) rowView.findViewById(R.id.popoplayer_name);
+        holder.number = (TextView) rowView.findViewById(R.id.popoplayer_position);
 
-        holder.img = (ImageView) rowView.findViewById(R.id.icon);
-        holder.Title.setText(teams[position]);
+        holder.img = (ImageView) rowView.findViewById(R.id.popoplayer_img);
+        holder.name.setText(teams[position]);
        // txtlocation.setText(locations.get(position));
         holder.img.setImageResource(R.drawable.football_player);
 
@@ -47,8 +47,8 @@ public class popo_players_adap extends ArrayAdapter<String> {
 
     public class Holder
     {
-        TextView Title;
-        TextView location;
+        TextView name;
+        TextView number;
        ImageView img;
     }
 

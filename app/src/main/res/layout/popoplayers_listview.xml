@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:drawSelectorOnTop="true"
+    android:elevation="10dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
+
+
+        <ImageView
+            android:alpha="1"
+            android:id="@+id/popoplayer_img"
+            android:layout_width="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_height="50dp"
+            android:padding="13dp"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/popoplayer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player Name"
+            android:alpha="1"
+            android:textAlignment="textStart"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/Black"
+            android:textSize="18dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/popoplayer_img"
+            android:layout_marginStart="35dp"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:alpha="1"
+            android:id="@+id/popoplayer_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textSize="14sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/Black"
+            android:layout_below="@+id/popoplayer_name"
+            android:layout_alignStart="@+id/popoplayer_name"
+            android:gravity="top"
+            android:paddingBottom="10dp"
+            android:background="@android:color/transparent" />
+        <TextView
+            android:alpha="1"
+            android:id="@+id/popoplayer_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textSize="14sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/Black"
+            android:layout_below="@+id/popoplayer_name"
+            android:layout_toRightOf="@+id/popoplayer_position"
+            android:gravity="top"
+            android:paddingBottom="10dp"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
