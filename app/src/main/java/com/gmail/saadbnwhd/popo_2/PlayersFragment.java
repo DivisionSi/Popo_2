@@ -139,4 +139,21 @@ public class PlayersFragment extends Fragment {
         }
 
     }
+
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        getActivity().overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
 }
