@@ -36,14 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:layout_marginTop="5dp"
         android:text="POPO Players"
         android:textColor="@color/colorPrimary"
         android:id="@+id/plr.txt"
         android:background="@color/White"
         android:textStyle="bold"
-
-        android:layout_marginBottom="5dp"/>
+/>
 
     <TextView
         android:paddingLeft="10dp"
@@ -53,7 +51,7 @@
         android:id="@+id/senior_players"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="23dp" />
+        android:layout_height="25dp" />
     <ListView
         android:layout_below="@+id/senior_players"
         android:layout_width="match_parent"
@@ -70,7 +68,7 @@
         android:id="@+id/u16_players"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
-        android:layout_height="23dp" />
+        android:layout_height="25dp" />
     <ListView
         android:layout_below="@+id/u16_players"
         android:layout_width="match_parent"
@@ -87,7 +85,7 @@
         android:id="@+id/u14_players"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
-        android:layout_height="23dp" />
+        android:layout_height="25dp" />
     <ListView
         android:layout_below="@+id/u14_players"
         android:layout_width="match_parent"
