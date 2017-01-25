@@ -14,9 +14,9 @@ public class SplashScreen extends AppCompatActivity {
 ImageView img,img1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        */super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash__screen);
         img=(ImageView) findViewById(R.id.image);
         img.setImageResource(R.drawable.poponfa);

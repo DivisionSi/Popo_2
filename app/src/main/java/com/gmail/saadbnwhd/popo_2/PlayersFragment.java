@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,13 +22,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class PlayersFragment extends Fragment {
-    ListView list_sr,list_u16,list_u14;
+    ListView list_sr, list_u16, list_u14;
     ArrayList<String> Popo_players_sr = new ArrayList<String>();
     ArrayList<String> Popo_players_u16 = new ArrayList<String>();
     ArrayList<String> Popo_players_u14 = new ArrayList<String>();
 
-    private ArrayAdapter<String> listAdapter ;
-
+    private ArrayAdapter<String> listAdapter;
 
 
     public PlayersFragment() {
@@ -40,19 +40,18 @@ public class PlayersFragment extends Fragment {
         Firebase.setAndroidContext(getActivity().getApplicationContext());
 
 
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_players, container, false);
+        View view = inflater.inflate(R.layout.fragment_players, container, false);
 
-       FloatingActionButton fab=(FloatingActionButton) view.findViewById(R.id.playersfab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.playersfab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent teamseditor=new Intent("android.intent.action.PlayerEditor");
+                Intent teamseditor = new Intent("android.intent.action.PlayerEditor");
                 startActivity(teamseditor);
             }
         });
@@ -66,11 +65,13 @@ public class PlayersFragment extends Fragment {
         final popo_players_adap adapter_u14 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u14);
 
         list_sr.setAdapter(adapter_sr);
+
         list_u16.setAdapter(adapter_u16);
+
         list_u14.setAdapter(adapter_u14);
 
-        Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
-        Firebase popo_player_ref=ref.child("Popo").child("Players");
+        Firebase ref = new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        Firebase popo_player_ref = ref.child("Popo").child("Players");
         Integer age;
 
 
@@ -87,8 +88,9 @@ public class PlayersFragment extends Fragment {
                 adapter_u16.notifyDataSetChanged();
                 Popo_players_u14.add(dataSnapshot.getKey().toString());
                 adapter_u14.notifyDataSetChanged();
-
-
+                ListUtils.setDynamicHeight(list_sr);
+                ListUtils.setDynamicHeight(list_u16);
+                ListUtils.setDynamicHeight(list_u14);
 
             }
 
@@ -116,5 +118,25 @@ public class PlayersFragment extends Fragment {
         return view;
     }
 
+    public static class ListUtils {
+        public static void setDynamicHeight(ListView mListView) {
+            ListAdapter mListAdapter = mListView.getAdapter();
+            if (mListAdapter == null) {
+                // when adapter is null
+                return;
+            }
+            int height = 0;
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(mListView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+            for (int i = 0; i < mListAdapter.getCount(); i++) {
+                View listItem = mListAdapter.getView(i, null, mListView);
+                listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+                height += listItem.getMeasuredHeight();
+            }
+            ViewGroup.LayoutParams params = mListView.getLayoutParams();
+            params.height = height + (mListView.getDividerHeight() * (mListAdapter.getCount() - 1));
+            mListView.setLayoutParams(params);
+            mListView.requestLayout();
+        }
 
+    }
 }

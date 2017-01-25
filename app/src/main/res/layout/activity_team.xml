@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/White"
-    android:paddingTop="10dp"
-    android:largeHeap="true"
+
     >
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -29,7 +28,6 @@
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="3dp"
         android:cacheColorHint="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="0.1dp"
