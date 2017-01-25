@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,8 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
     ImageButton b;
     Button done,btn_dob;
     EditText txt_name,txt_jersey,txt_position;
-    String name,jersey,position,dob;
+    String name,jersey,position,dob,AgeGroup;
+    RadioGroup rad_AgeGroup;
     static Dialog p;
     static Dialog d ;
     @Override
@@ -43,6 +45,9 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         txt_jersey=(EditText) findViewById(R.id.txt_jersey);
         txt_position=(EditText) findViewById(R.id.txt_position);
         txt_dob=(TextView) findViewById(R.id.txt_dob);
+        rad_AgeGroup=(RadioGroup) findViewById(R.id.AgeGroup);
+
+        AgeGroup="";
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("Add Player");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,18 +70,13 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         });
         btn_dob=(Button) findViewById(R.id.dob);
 
-        btn_dob.setOnClickListener(new View.OnClickListener() {
+
+        txt_dob.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Intent dob = new Intent("android.intent.action.Datepicker");
-                // startActivity(dob);
-
+            public void onClick(View view) {
                 showDialog(999);
-
             }
         });
-
-
         txt_position.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,22 +84,45 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                            }
         });
 
+        txt_jersey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                show();
+            }
+        });
+
+
+
+        rad_AgeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int id=rad_AgeGroup.getCheckedRadioButtonId();
+
+                if(id==0)
+                    AgeGroup="Senior";
+                else if(id==1)
+                    AgeGroup="Under 16";
+                else
+                    AgeGroup="Under 14";
+            }
+        });
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!txt_name.equals("") && !txt_jersey.equals("") && !txt_position.equals("") && !txt_dob.equals("")) {
+                if(!txt_name.equals("") && !txt_jersey.equals("") && !txt_position.equals("") && !txt_dob.equals("") && !AgeGroup.equals("")) {
                     name = txt_name.getText().toString();
                     jersey = txt_jersey.getText().toString();
                     position = txt_position.getText().toString();
                     dob = txt_dob.getText().toString();
+
 
                     ref = ref.child(txt_name.getText().toString());
                     ref.child("Name").setValue(name);
                     ref.child("Position").setValue(position);
                     ref.child("Jersey Number").setValue(jersey);
                     ref.child("DoB").setValue(dob);
-
+                    ref.child("Age Group").setValue(AgeGroup);
                     Toast.makeText(getApplicationContext(), "Player Added", Toast.LENGTH_LONG).show();
 
 
@@ -113,32 +136,7 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
             }
         });
 
-        ref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
 
     }
 

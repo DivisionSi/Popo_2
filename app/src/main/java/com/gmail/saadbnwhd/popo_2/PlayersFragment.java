@@ -34,6 +34,7 @@ public class PlayersFragment extends Fragment {
     ArrayList<String> Popo_players_u14_numbers = new ArrayList<String>();
     ArrayList<String> Popo_players_u14_postion = new ArrayList<String>();
 
+    String AgeGroup;
 
 
     private ArrayAdapter<String> listAdapter;
@@ -90,20 +91,29 @@ public class PlayersFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
 
-                Popo_players.add(dataSnapshot.getKey().toString());
+                AgeGroup=dataSnapshot.child("Age Group").getValue().toString();
+                Toast.makeText(getContext(),AgeGroup,Toast.LENGTH_SHORT).show();
+
+                if(AgeGroup.equals("Senior"))
+
+                { Popo_players.add(dataSnapshot.getKey().toString());
                 Popo_players_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 Popo_players_postion.add(dataSnapshot.child("Position").getValue().toString());
-                adapter_sr.notifyDataSetChanged();
+                adapter_sr.notifyDataSetChanged();}
 
-                Popo_players_u16.add(dataSnapshot.getKey().toString());
-                Popo_players_u16_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
-                Popo_players_u16_postion.add(dataSnapshot.child("Position").getValue().toString());
-                adapter_u16.notifyDataSetChanged();
-
+                if (AgeGroup.equals("Under 16"))
+                {
+                    Popo_players_u16.add(dataSnapshot.getKey().toString());
+                    Popo_players_u16_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                    Popo_players_u16_postion.add(dataSnapshot.child("Position").getValue().toString());
+                    adapter_u16.notifyDataSetChanged();
+                }
+                //else if (AgeGroup.equals("Under 14"))
+                {
                 Popo_players_u14.add(dataSnapshot.getKey().toString());
                 Popo_players_u14_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 Popo_players_u14_postion.add(dataSnapshot.child("Position").getValue().toString());
-                adapter_u14.notifyDataSetChanged();
+                adapter_u14.notifyDataSetChanged();}
 
 
                 ListUtils.setDynamicHeight(list_sr);
