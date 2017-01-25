@@ -31,17 +31,7 @@
     android:background="@color/newclr1"
     >
 
-    <TextView
-        android:paddingLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="POPO Players"
-        android:textColor="@color/colorPrimary"
-        android:id="@+id/plr.txt"
-        android:background="@color/White"
-        android:textStyle="bold"
-/>
+
 
     <TextView
         android:paddingLeft="10dp"
@@ -94,6 +84,7 @@
         android:id="@+id/players_list2"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"/>
+
 </RelativeLayout>
 </ScrollView>
 </RelativeLayout>

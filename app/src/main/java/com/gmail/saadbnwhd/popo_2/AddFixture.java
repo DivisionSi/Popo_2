@@ -73,9 +73,9 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
-        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2,DateTime,imgid1,imgid2);
+        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
-        fixtureteamlist.setAdapter(fixtureadapter);
+//        fixtureteamlist.setAdapter(fixtureadapter);
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -83,7 +83,7 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
                 team1.add(dataSnapshot.getKey().toString());
                 team2.add(dataSnapshot.getKey().toString());
-                DateTime.add(dataSnapshot.getKey().toString() + " | " + dataSnapshot.getKey().toString());
+
 
             }
 
