@@ -67,6 +67,7 @@ public class PlayersFragment extends Fragment {
 
         popo_player_ref.addChildEventListener(new ChildEventListener() {
             @Override
+
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Popo_players.add(dataSnapshot.getKey().toString());
                 adapter.notifyDataSetChanged();
