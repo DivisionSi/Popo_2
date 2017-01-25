@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:drawSelectorOnTop="true"
+    android:elevation="10dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="7dp"
+    app:cardBackgroundColor="@color/White"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="10dp"
+        android:background="#7fa87f">
+
+        <ImageView
+            android:alpha="1"
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_height="50dp"
+            android:padding="13dp"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/leagueplr_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player Name"
+            android:alpha="1"
+            android:textAlignment="textStart"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_marginStart="35dp"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:alpha="1"
+            android:id="@+id/leagueplr_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+
+            android:layout_below="@+id/leagueplr_name"
+            android:layout_alignStart="@+id/leagueplr_name"
+            android:gravity="top"
+            android:paddingBottom="10dp"
+            android:background="@android:color/transparent" />
+        <TextView
+            android:alpha="1"
+            android:id="@+id/leagueplr_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+
+            android:layout_below="@+id/leagueplr_name"
+            android:layout_toRightOf="@+id/leagueplr_position"
+            android:gravity="top"
+            android:paddingBottom="10dp"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

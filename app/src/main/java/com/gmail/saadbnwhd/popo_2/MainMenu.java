@@ -51,8 +51,8 @@ public class MainMenu extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
-        int tabIconColor = getResources().getColor((R.color.icon));
+        /*setupTabIcons();*/
+       /* int tabIconColor = getResources().getColor((R.color.icon));
         tabLayout.getTabAt(0).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
 
         tabLayout.setOnTabSelectedListener(
@@ -78,7 +78,7 @@ public class MainMenu extends AppCompatActivity {
                     }
                 }
         );
-
+*/
 
     }
 
