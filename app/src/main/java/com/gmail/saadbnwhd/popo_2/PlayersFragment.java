@@ -18,10 +18,13 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PlayersFragment extends Fragment {
-    ListView list;
-    ArrayList<String> Popo_players = new ArrayList<String>();
+    ListView list_sr,list_u16,list_u14;
+    ArrayList<String> Popo_players_sr = new ArrayList<String>();
+    ArrayList<String> Popo_players_u16 = new ArrayList<String>();
+    ArrayList<String> Popo_players_u14 = new ArrayList<String>();
 
     private ArrayAdapter<String> listAdapter ;
 
@@ -35,8 +38,6 @@ public class PlayersFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(getActivity().getApplicationContext());
-
-
 
 
 
@@ -56,21 +57,36 @@ public class PlayersFragment extends Fragment {
             }
         });
 
-        list = (ListView) view.findViewById(R.id.players_list);
+        list_sr = (ListView) view.findViewById(R.id.players_list);
+        list_u16 = (ListView) view.findViewById(R.id.players_list1);
+        list_u14 = (ListView) view.findViewById(R.id.players_list2);
 
-        final popo_players_adap adapter = new popo_players_adap(getActivity().getBaseContext(), Popo_players);
+        final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players_sr);
+        final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16);
+        final popo_players_adap adapter_u14 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u14);
 
-        list.setAdapter(adapter);
+        list_sr.setAdapter(adapter_sr);
+        list_u16.setAdapter(adapter_u16);
+        list_u14.setAdapter(adapter_u14);
+
         Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         Firebase popo_player_ref=ref.child("Popo").child("Players");
+        Integer age;
 
 
         popo_player_ref.addChildEventListener(new ChildEventListener() {
             @Override
 
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Popo_players.add(dataSnapshot.getKey().toString());
-                adapter.notifyDataSetChanged();
+
+
+                Popo_players_sr.add(dataSnapshot.getKey().toString());
+                adapter_sr.notifyDataSetChanged();
+
+                Popo_players_u16.add(dataSnapshot.getKey().toString());
+                adapter_u16.notifyDataSetChanged();
+                Popo_players_u14.add(dataSnapshot.getKey().toString());
+                adapter_u14.notifyDataSetChanged();
 
 
 
