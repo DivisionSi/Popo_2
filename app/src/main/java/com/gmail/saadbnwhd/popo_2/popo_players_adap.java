@@ -38,7 +38,7 @@ public class popo_players_adap extends ArrayAdapter<String> {
 
         holder=new Holder();
 
-        holder.Name = (TextView) rowView.findViewById(R.id.popoplayer_name);
+        holder.Name = (TextView) rowView.findViewById(R.id.scorer_name);
         holder.Number = (TextView) rowView.findViewById(R.id.popoplayer_number);
         holder.Position = (TextView) rowView.findViewById(R.id.popoplayer_position);
         holder.img = (ImageView) rowView.findViewById(R.id.popoplayer_img);
