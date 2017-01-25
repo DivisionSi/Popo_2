@@ -1,7 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -48,9 +47,6 @@ public class League_Res_Fix extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fixtures);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
-        getSupportActionBar().setTitle("RESULTS");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ProgressBar wait = (ProgressBar) findViewById(R.id.wait);
         wait.setVisibility(INVISIBLE);
@@ -59,62 +55,9 @@ public class League_Res_Fix extends AppCompatActivity {
             ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
         list = (ListView) findViewById(R.id.list);
+        fb = (FloatingActionButton) findViewById(R.id.fab);
+        fb.setVisibility(INVISIBLE);
         // list.setAdapter(adapter);
-        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(android.widget.AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-               /* String Slecteditem = team1.get(+position);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
-
-                Intent i=new Intent(getApplicationContext(),score_scorers.class);
-                i.putExtra("t1",team1.get(position));
-                i.putExtra("t2",team2.get(position));
-                startActivity(i);
-
-                /*Dialog a = new Dialog(League_Res_Fix.this);
-                a.setContentView(R.layout.activity_league_res_fixx);
-                a.show();*/
-            }
-        });
-    }
-    @Override
-    public void finish() {
-        super.finish();
-        onLeaveThisActivity();
-    }
-
-    protected void onLeaveThisActivity() {
-        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
-    }
-
-    @Override
-    public void startActivity(Intent intent) {
-        super.startActivity(intent);
-        onStartNewActivity();
-    }
-
-    @Override
-    public void startActivity(Intent intent, Bundle options) {
-        super.startActivity(intent, options);
-        onStartNewActivity();
-    }
-
-    protected void onStartNewActivity() {
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-    }
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
-    }
-    @Override
-    protected void onStart()
-    {
-
-        super.onStart();
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("League").child("Fixtures");  //Traversing to Fixtures
 
@@ -126,7 +69,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
-          //      Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
+                //      Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
                 team1.add(dataSnapshot.child("Team1").getValue().toString());
                 team2.add(dataSnapshot.child("Team2").getValue().toString());
                 DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
@@ -155,6 +98,32 @@ public class League_Res_Fix extends AppCompatActivity {
             }
         });
 
+
+        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+               /* String Slecteditem = team1.get(+position);
+                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
+
+                Intent i=new Intent(getApplicationContext(),score_scorers.class);
+                i.putExtra("t1",team1.get(position));
+                i.putExtra("t2",team2.get(position));
+                startActivity(i);
+
+                /*Dialog a = new Dialog(League_Res_Fix.this);
+                a.setContentView(R.layout.activity_league_res_fixx);
+                a.show();*/
+            }
+        });
     }
 
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+
+    }
 }

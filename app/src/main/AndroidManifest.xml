@@ -91,13 +91,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LeaguePlayer_Stats">
-            <intent-filter>
-                <action android:name="android.intent.action.LeaguePlayer_Stats" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MoreFragment" />
+        <activity android:name=".scorers_goals"></activity>
+        <activity android:name=".score_scorers"></activity>
     </application>
 
 </manifest>
