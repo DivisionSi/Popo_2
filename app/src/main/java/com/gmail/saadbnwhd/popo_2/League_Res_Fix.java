@@ -55,6 +55,8 @@ public class League_Res_Fix extends AppCompatActivity {
             ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
         list = (ListView) findViewById(R.id.list);
+        fb = (FloatingActionButton) findViewById(R.id.fab);
+        fb.setVisibility(INVISIBLE);
         // list.setAdapter(adapter);
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("League").child("Fixtures");  //Traversing to Fixtures

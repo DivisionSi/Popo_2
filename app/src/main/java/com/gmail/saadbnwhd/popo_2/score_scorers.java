@@ -1,6 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
-import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,26 +44,32 @@ public class score_scorers extends AppCompatActivity {
         T1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog a = new Dialog(score_scorers.this);
+          /*      Dialog a = new Dialog(score_scorers.this);
                 a.setContentView(R.layout.team_listt);
                 list = (ListView) a.findViewById(R.id.tlist);
 
                 final team_List_Adap adapter = new team_List_Adap(score_scorers.this, x1);
                 list.setAdapter(adapter);
-                a.show();
+                a.show();*/
+                Intent i = new Intent(score_scorers.this, scorers_goals.class);
+                i.putStringArrayListExtra("team", x1);
+                startActivity(i);
             }
         });
 
         T2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog a = new Dialog(score_scorers.this);
+              /*  Dialog a = new Dialog(score_scorers.this);
                 a.setContentView(R.layout.team_listt);
                 list = (ListView) a.findViewById(R.id.tlist);
 
                 final team_List_Adap adapter = new team_List_Adap(score_scorers.this, x2);
                 list.setAdapter(adapter);
-                a.show();
+                a.show();*/
+                Intent i = new Intent(score_scorers.this, scorers_goals.class);
+                i.putStringArrayListExtra("team", x2);
+                startActivity(i);
             }
         });
 
