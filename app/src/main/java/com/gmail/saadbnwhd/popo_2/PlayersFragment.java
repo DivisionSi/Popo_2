@@ -3,6 +3,7 @@ package com.gmail.saadbnwhd.popo_2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 import java.util.ArrayList;
 
 public class PlayersFragment extends Fragment {
     ListView list;
-    ArrayList<String> teams = new ArrayList<String>();
+    ArrayList<String> Popo_players = new ArrayList<String>();
 
     private ArrayAdapter<String> listAdapter ;
 
-    String[] TN = {
-            "Fahad","SBW","Musab"
-    };
+
 
     public PlayersFragment() {
 
@@ -30,6 +34,12 @@ public class PlayersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(getActivity().getApplicationContext());
+
+
+
+
+
     }
 
     @Override
@@ -48,14 +58,43 @@ public class PlayersFragment extends Fragment {
 
         list = (ListView) view.findViewById(R.id.players_list);
 
-
-        teams.add("Fahad");
-        teams.add("SBW");
-        teams.add("Musab");
-        popo_players_adap adapter = new popo_players_adap(getActivity().getBaseContext(), TN);
+        final popo_players_adap adapter = new popo_players_adap(getActivity().getBaseContext(), Popo_players);
 
         list.setAdapter(adapter);
+        Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        Firebase popo_player_ref=ref.child("Popo").child("Players");
 
+
+        popo_player_ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Popo_players.add(dataSnapshot.getKey().toString());
+                adapter.notifyDataSetChanged();
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         return view;
     }

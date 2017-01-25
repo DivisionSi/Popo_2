@@ -2,6 +2,7 @@ package com.gmail.saadbnwhd.popo_2;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,7 +15,10 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.Calendar;
 
@@ -42,8 +46,8 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         done=(Button) findViewById(R.id.btn_done);
         b = (ImageButton) findViewById(R.id.button11);
 
-        ref=new Firebase("https://popo-951d9.firebaseio.com/");
-        ref=ref.child("Players_popo");
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        ref=ref.child("Popo").child("Players");
 
 
 
@@ -93,6 +97,9 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                     ref.child("DoB").setValue(dob);
 
                     Toast.makeText(getApplicationContext(), "Player Added", Toast.LENGTH_LONG).show();
+
+
+
                 }
 
                 else
@@ -102,6 +109,32 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
             }
         });
 
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
     }
 

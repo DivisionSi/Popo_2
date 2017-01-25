@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Fahaid on 1/10/2017.
  */
@@ -15,13 +17,13 @@ import android.widget.TextView;
 public class popo_players_adap extends ArrayAdapter<String> {
 
     private final Context context;
-    private final String[] teams;
+    ArrayList<String> popo_players=new ArrayList<>();
     private Holder holder;
 
-    public popo_players_adap(Context context, String[] teams) {
-        super(context, R.layout.listview, teams);
+    public popo_players_adap(Context context, ArrayList<String> popo_players) {
+        super(context, R.layout.listview, popo_players);
         this.context=context;
-        this.teams=teams;
+       this.popo_players=popo_players;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -36,7 +38,7 @@ public class popo_players_adap extends ArrayAdapter<String> {
         holder.location = (TextView) rowView.findViewById(R.id.location);
 
         holder.img = (ImageView) rowView.findViewById(R.id.icon);
-        holder.Title.setText(teams[position]);
+        holder.Title.setText(popo_players.get(position));
        // txtlocation.setText(locations.get(position));
         holder.img.setImageResource(R.drawable.football_player);
 
