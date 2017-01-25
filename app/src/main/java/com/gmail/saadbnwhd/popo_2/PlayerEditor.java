@@ -2,6 +2,8 @@ package com.gmail.saadbnwhd.popo_2;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,7 +16,10 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.Calendar;
 
@@ -38,12 +43,15 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         txt_jersey=(EditText) findViewById(R.id.txt_jersey);
         txt_position=(EditText) findViewById(R.id.txt_position);
         txt_dob=(TextView) findViewById(R.id.txt_dob);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
+        getSupportActionBar().setTitle("Add Player");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         done=(Button) findViewById(R.id.btn_done);
         b = (ImageButton) findViewById(R.id.button11);
 
-        ref=new Firebase("https://popo-951d9.firebaseio.com/");
-        ref=ref.child("Players_popo");
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        ref=ref.child("Popo").child("Players");
 
 
 
@@ -93,6 +101,9 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                     ref.child("DoB").setValue(dob);
 
                     Toast.makeText(getApplicationContext(), "Player Added", Toast.LENGTH_LONG).show();
+
+
+
                 }
 
                 else
@@ -102,6 +113,32 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
             }
         });
 
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
     }
 
@@ -195,7 +232,11 @@ p.show();
 
 
     }
-
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     @Override
     protected Dialog onCreateDialog(int id) {
         // TODO Auto-generated method stub
@@ -229,6 +270,39 @@ p.show();
                 .append(month).append("/").append(year));
     }
 
+    @Override
+    protected void onStart()
+    {
+
+        super.onStart();
+
+
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        onLeaveThisActivity();
+    }
+
+    protected void onLeaveThisActivity() {
+        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
 
 
 

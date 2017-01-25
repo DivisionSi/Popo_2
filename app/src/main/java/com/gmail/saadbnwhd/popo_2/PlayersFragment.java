@@ -3,24 +3,41 @@ package com.gmail.saadbnwhd.popo_2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PlayersFragment extends Fragment {
-    ListView list;
-    ArrayList<String> teams = new ArrayList<String>();
+    ListView list_sr, list_u16, list_u14;
+    ArrayList<String> Popo_players = new ArrayList<String>();
+    ArrayList<String> Popo_players_numbers = new ArrayList<String>();
+    ArrayList<String> Popo_players_postion = new ArrayList<String>();
 
-    private ArrayAdapter<String> listAdapter ;
+    ArrayList<String> Popo_players_u16 = new ArrayList<String>();
+    ArrayList<String> Popo_players_u16_numbers = new ArrayList<String>();
+    ArrayList<String> Popo_players_u16_postion = new ArrayList<String>();
 
-    String[] TN = {
-            "Fahad","SBW","Musab"
-    };
+    ArrayList<String> Popo_players_u14= new ArrayList<String>();
+    ArrayList<String> Popo_players_u14_numbers = new ArrayList<String>();
+    ArrayList<String> Popo_players_u14_postion = new ArrayList<String>();
+
+
+
+    private ArrayAdapter<String> listAdapter;
+
 
     public PlayersFragment() {
 
@@ -29,35 +46,115 @@ public class PlayersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(getActivity().getApplicationContext());
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_players, container, false);
+        View view = inflater.inflate(R.layout.fragment_players, container, false);
 
-       FloatingActionButton fab=(FloatingActionButton) view.findViewById(R.id.playersfab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.playersfab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent teamseditor=new Intent("android.intent.action.PlayerEditor");
+                Intent teamseditor = new Intent("android.intent.action.PlayerEditor");
                 startActivity(teamseditor);
             }
         });
 
-        list = (ListView) view.findViewById(R.id.players_list);
+        list_sr = (ListView) view.findViewById(R.id.players_list);
+        list_u16 = (ListView) view.findViewById(R.id.players_list1);
+        list_u14 = (ListView) view.findViewById(R.id.players_list2);
+
+        final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_numbers,Popo_players_postion);
+        final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16,Popo_players_u16_numbers,Popo_players_u16_postion);
+        final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_u14_numbers,Popo_players_u14_postion);
+
+        list_sr.setAdapter(adapter_sr);
+
+        list_u16.setAdapter(adapter_u16);
+
+        list_u14.setAdapter(adapter_u14);
+
+        Firebase ref = new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        Firebase popo_player_ref = ref.child("Popo").child("Players");
+        Integer age;
 
 
-        teams.add("Fahad");
-        teams.add("SBW");
-        teams.add("Musab");
-        popo_players_adap adapter = new popo_players_adap(getActivity().getBaseContext(), TN);
+        popo_player_ref.addChildEventListener(new ChildEventListener() {
+            @Override
 
-        list.setAdapter(adapter);
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+
+                Popo_players.add(dataSnapshot.getKey().toString());
+                Popo_players_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                Popo_players_postion.add(dataSnapshot.child("Position").getValue().toString());
+                adapter_sr.notifyDataSetChanged();
+
+                Popo_players_u16.add(dataSnapshot.getKey().toString());
+                Popo_players_u16_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                Popo_players_u16_postion.add(dataSnapshot.child("Position").getValue().toString());
+                adapter_u16.notifyDataSetChanged();
+
+                Popo_players_u14.add(dataSnapshot.getKey().toString());
+                Popo_players_u14_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
+                Popo_players_u14_postion.add(dataSnapshot.child("Position").getValue().toString());
+                adapter_u14.notifyDataSetChanged();
+
+
+                ListUtils.setDynamicHeight(list_sr);
+                ListUtils.setDynamicHeight(list_u16);
+                ListUtils.setDynamicHeight(list_u14);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         return view;
     }
 
+    public static class ListUtils {
+        public static void setDynamicHeight(ListView mListView) {
+            ListAdapter mListAdapter = mListView.getAdapter();
+            if (mListAdapter == null) {
+                // when adapter is null
+                return;
+            }
+            int height = 0;
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(mListView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+            for (int i = 0; i < mListAdapter.getCount(); i++) {
+                View listItem = mListAdapter.getView(i, null, mListView);
+                listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+                height += listItem.getMeasuredHeight();
+            }
+            ViewGroup.LayoutParams params = mListView.getLayoutParams();
+            params.height = height + (mListView.getDividerHeight() * (mListAdapter.getCount() - 1));
+            mListView.setLayoutParams(params);
+            mListView.requestLayout();
+        }
 
+    }
 }

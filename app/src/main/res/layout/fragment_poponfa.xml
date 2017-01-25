@@ -5,16 +5,49 @@
     android:layout_height="match_parent"
     android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.PoponfaFragment">
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/viewFlipper">
 <ImageView
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
     android:layout_marginTop="7dp"
     android:id="@+id/admin_img"
+    android:layout_gravity="center_horizontal"
+    android:scaleType="fitCenter"
     android:background="@drawable/popo_admin"
     />
-
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:id="@+id/admin_img2"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:background="@drawable/popo_admin2"
+            />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:id="@+id/admin_img3"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:background="@drawable/popo_admin3"
+            />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:id="@+id/admin_img4"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:background="@drawable/popo_admin4"
+            />
+    </ViewFlipper>
     <Button
-        android:layout_below="@+id/admin_img"
+        android:layout_below="@+id/viewFlipper"
         android:scaleY=".9"
         android:id="@+id/form"
         android:text="Registration Form"

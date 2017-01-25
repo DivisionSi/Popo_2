@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    package="com.gmail.saadbnwhd.popo_2" >
+    package="com.gmail.saadbnwhd.popo_2">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,12 +19,13 @@
         android:label="POPO"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat" >
+        android:theme="@style/Theme.AppCompat">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +33,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainMenu"
+        <activity
+            android:name=".MainMenu"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.mainmenu" />
@@ -40,56 +42,62 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Teams" >
+        <activity android:name=".Teams">
             <intent-filter>
                 <action android:name="android.intent.action.Teams" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TeamsEditor" >
+        <activity android:name=".TeamsEditor">
             <intent-filter>
                 <action android:name="android.intent.action.TeamsEditor" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayerEditor" >
+        <activity android:name=".PlayerEditor">
             <intent-filter>
                 <action android:name="android.intent.action.PlayerEditor" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LeaguePlayer" >
+        <activity android:name=".LeaguePlayer">
             <intent-filter>
                 <action android:name="android.intent.action.LeaguePlayer" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fixtures" >
+        <activity android:name=".Fixtures">
             <intent-filter>
                 <action android:name="android.intent.action.Fixtures" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddFixture" >
+        <activity android:name=".AddFixture">
             <intent-filter>
                 <action android:name="android.intent.action.AddFixture" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".League_Res_Fix" >
+        <activity android:name=".League_Res_Fix">
             <intent-filter>
                 <action android:name="android.intent.action.League_Res_Fix" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MoreFragment" />
+        <activity android:name=".LeaguePlayer_Stats">
+            <intent-filter>
+                <action android:name="android.intent.action.LeaguePlayer_Stats" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
