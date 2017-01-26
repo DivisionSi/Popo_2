@@ -38,22 +38,22 @@
         android:layout_below="@+id/plr.txt"
         android:text="Senior Players"
         android:background="@color/newclr1"
-        android:id="@+id/senior_players"
+        android:id="@+id/team1"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="25dp" />
     <ListView
-        android:layout_below="@+id/senior_players"
+        android:layout_below="@+id/team1"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
-        android:id="@+id/players_list" />
+        android:id="@+id/scorers_list" />
     <TextView
         android:paddingLeft="10dp"
         android:background="@color/newclr1"
-        android:layout_below="@+id/players_list"
+        android:layout_below="@+id/scorers_list"
         android:text="U16 Players"
         android:id="@+id/u16_players"
         android:layout_width="match_parent"
@@ -64,13 +64,13 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
-        android:id="@+id/players_list1"
+        android:id="@+id/scorers_list1"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"/>
     <TextView
         android:paddingLeft="10dp"
         android:background="@color/newclr1"
-        android:layout_below="@+id/players_list1"
+        android:layout_below="@+id/scorers_list1"
         android:text="U14 Players"
         android:id="@+id/u14_players"
         android:layout_width="match_parent"

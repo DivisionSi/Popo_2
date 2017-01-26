@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class score_scorers extends AppCompatActivity {
-    Button T1;
-    Button T2;
+    TextView T1,T2;
     ArrayList<String> x1 = new ArrayList<String>();
     ArrayList<String> x2 = new ArrayList<String>();
     ListView list;
@@ -35,8 +35,8 @@ public class score_scorers extends AppCompatActivity {
             x2.add(i,s);
         }
 
-        T1 = (Button) findViewById(R.id.team_1);
-        T2 = (Button) findViewById(R.id.team_2);
+        T1 = (TextView) findViewById(R.id.team1);
+        T2 = (TextView) findViewById(R.id.team2);
 
         T1.setText(t1);
         T2.setText(t2);
