@@ -7,24 +7,17 @@
     tools:context="com.gmail.saadbnwhd.popo_2.HomeFragment"
     android:background="@color/White">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HOME"
-        android:textSize="40sp"
-        android:textColor="@color/Black"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"
-        android:id="@+id/textView" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign in"
-        android:id="@+id/btn_signin"
-        android:layout_above="@+id/textView"
+        android:id="@+id/txt_username"
+        android:hint="Username"
+        android:textColorHint="#000000"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp" />
+        android:layout_marginTop="22dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -32,23 +25,22 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/txt_password"
-        android:layout_above="@+id/btn_signin"
-        android:layout_centerHorizontal="true"
         android:hint="Password"
         android:textColorHint="#000000"
         android:textAlignment="center"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:layout_below="@+id/txt_username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp" />
 
-    <EditText
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_username"
-        android:layout_above="@+id/txt_password"
-        android:layout_centerHorizontal="true"
-        android:hint="Username"
-        android:textColorHint="#000000"
-        android:textAlignment="center"
-        android:textColor="#000000" />
+        android:text="Sign in"
+        android:id="@+id/btn_signin"
+        android:layout_below="@+id/txt_password"
+        android:layout_alignEnd="@+id/txt_username"
+        android:layout_marginTop="18dp" />
 
 
 </RelativeLayout>

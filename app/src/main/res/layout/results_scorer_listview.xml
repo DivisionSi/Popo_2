@@ -23,7 +23,7 @@
         android:textAlignment="textStart"
 
         android:textColor="@color/Black"
-        android:textSize="24sp"
+        android:textSize="25dp"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />

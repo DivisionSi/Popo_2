@@ -6,12 +6,8 @@
     android:background="@color/White"
     android:drawSelectorOnTop="true"
     android:elevation="10dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
     android:paddingTop="6dp"
-    android:paddingBottom="6dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp">
+    android:paddingBottom="6dp">
 
 
         <ImageView
