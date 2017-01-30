@@ -6,12 +6,8 @@
     android:background="@color/White"
     android:drawSelectorOnTop="true"
     android:elevation="10dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
     android:paddingTop="6dp"
-    android:paddingBottom="6dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp">
+    android:paddingBottom="6dp">
 
 
         <ImageView
@@ -24,7 +20,7 @@
             android:backgroundTint="@android:color/transparent"
             android:layout_marginLeft="10dp"/>
         <TextView
-            android:id="@+id/popoplayer_name"
+            android:id="@+id/scorer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Player Name"
@@ -47,8 +43,8 @@
             android:textSize="14sp"
             android:layout_marginRight="10dp"
             android:textColor="@color/Black"
-            android:layout_below="@+id/popoplayer_name"
-            android:layout_alignStart="@+id/popoplayer_name"
+            android:layout_below="@+id/scorer_name"
+            android:layout_alignStart="@+id/scorer_name"
             android:gravity="top"
             android:paddingBottom="10dp"
             android:background="@android:color/transparent" />
@@ -61,7 +57,7 @@
             android:textSize="14sp"
             android:layout_marginRight="10dp"
             android:textColor="@color/Black"
-            android:layout_below="@+id/popoplayer_name"
+            android:layout_below="@+id/scorer_name"
             android:layout_toRightOf="@+id/popoplayer_position"
             android:gravity="top"
             android:paddingBottom="10dp"

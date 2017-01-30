@@ -17,7 +17,6 @@ import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 
-import static android.view.View.INVISIBLE;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class Fixtures extends AppCompatActivity {
@@ -58,7 +57,7 @@ public class Fixtures extends AppCompatActivity {
         getSupportActionBar().setTitle("FIXTURES");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pb = (ProgressBar)this.findViewById(R.id.wait);
-        pb.setVisibility(View.VISIBLE);
+        pb.setVisibility(View.INVISIBLE);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:drawSelectorOnTop="true"
+    android:elevation="10dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
+
+
+    <TextView
+        android:id="@+id/scorer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player Name"
+        android:alpha="1"
+        android:textAlignment="textStart"
+
+        android:textColor="@color/Black"
+        android:textSize="25dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/scorer_goals"
+        android:hint="Goals"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+        android:layout_alignBaseline="@+id/scorer_name"
+        android:layout_alignBottom="@+id/scorer_name"
+        android:layout_toEndOf="@+id/scorer_name"
+        android:textSize="24sp"
+        android:gravity="right"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

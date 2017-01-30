@@ -3,7 +3,6 @@ package com.gmail.saadbnwhd.popo_2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,6 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class PlayersFragment extends Fragment {
     ListView list_sr, list_u16, list_u14;
@@ -66,8 +64,8 @@ public class PlayersFragment extends Fragment {
             }
         });
 
-        list_sr = (ListView) view.findViewById(R.id.players_list);
-        list_u16 = (ListView) view.findViewById(R.id.players_list1);
+        list_sr = (ListView) view.findViewById(R.id.scorers_list);
+        list_u16 = (ListView) view.findViewById(R.id.scorers_list1);
         list_u14 = (ListView) view.findViewById(R.id.players_list2);
 
         final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_numbers,Popo_players_postion);
