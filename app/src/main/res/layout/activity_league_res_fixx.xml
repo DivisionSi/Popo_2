@@ -7,6 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.gmail.saadbnwhd.popo_2.PlayersFragment"
     android:background="@color/newclr1">
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/playersfab"
         android:layout_width="wrap_content"
