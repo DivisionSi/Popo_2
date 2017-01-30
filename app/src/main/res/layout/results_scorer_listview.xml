@@ -23,7 +23,7 @@
         android:textAlignment="textStart"
 
         android:textColor="@color/Black"
-        android:textSize="25dp"
+        android:textSize="18dp"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
@@ -40,7 +40,7 @@
         android:layout_alignBaseline="@+id/scorer_name"
         android:layout_alignBottom="@+id/scorer_name"
         android:layout_toEndOf="@+id/scorer_name"
-        android:textSize="24sp"
+        android:textSize="18dp"
         android:gravity="right"
         android:layout_alignParentRight="true" />
 
