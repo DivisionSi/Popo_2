@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -70,10 +71,7 @@ public class PlayersFragment extends Fragment {
 
         final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_numbers,Popo_players_postion);
         final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16,Popo_players_u16_numbers,Popo_players_u16_postion);
-        final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players_u14,Popo_players_u14_numbers,Popo_players_u14_postion);
-
-
-
+        final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_u14_numbers,Popo_players_u14_postion);
 
         list_sr.setAdapter(adapter_sr);
 
@@ -81,11 +79,9 @@ public class PlayersFragment extends Fragment {
 
         list_u14.setAdapter(adapter_u14);
 
-
-
         Firebase ref = new Firebase("https://poponfa-8a11a.firebaseio.com/");
         Firebase popo_player_ref = ref.child("Popo").child("Players");
-
+        Integer age;
 
 
         popo_player_ref.addChildEventListener(new ChildEventListener() {
@@ -95,7 +91,7 @@ public class PlayersFragment extends Fragment {
 
 
                 AgeGroup=dataSnapshot.child("Age Group").getValue().toString();
-
+                Toast.makeText(getContext(),AgeGroup,Toast.LENGTH_SHORT).show();
 
                 if(AgeGroup.equals("Senior"))
 
@@ -104,15 +100,14 @@ public class PlayersFragment extends Fragment {
                 Popo_players_postion.add(dataSnapshot.child("Position").getValue().toString());
                 adapter_sr.notifyDataSetChanged();}
 
-                else if (AgeGroup.equals("Under 16"))
+                if (AgeGroup.equals("Under 16"))
                 {
                     Popo_players_u16.add(dataSnapshot.getKey().toString());
                     Popo_players_u16_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
                     Popo_players_u16_postion.add(dataSnapshot.child("Position").getValue().toString());
                     adapter_u16.notifyDataSetChanged();
                 }
-
-                else if (AgeGroup.equals("Under 14"))
+                //else if (AgeGroup.equals("Under 14"))
                 {
                 Popo_players_u14.add(dataSnapshot.getKey().toString());
                 Popo_players_u14_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
@@ -120,12 +115,9 @@ public class PlayersFragment extends Fragment {
                 adapter_u14.notifyDataSetChanged();}
 
 
-
-
                 ListUtils.setDynamicHeight(list_sr);
                 ListUtils.setDynamicHeight(list_u16);
                 ListUtils.setDynamicHeight(list_u14);
-
 
             }
 

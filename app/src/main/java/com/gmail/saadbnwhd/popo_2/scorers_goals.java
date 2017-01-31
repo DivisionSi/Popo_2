@@ -1,11 +1,14 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ public class scorers_goals extends AppCompatActivity {
     ArrayList<String> T = new ArrayList<String>();
     ListView list;
     Button Proceed;
-
+    ArrayList<String> player_name = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +39,10 @@ public class scorers_goals extends AppCompatActivity {
                 ArrayList<String> t = adapter.Scorers();
                 if(t.size() > 0)
                 {
-                    Dialog a = new Dialog(scorers_goals.this);
+                    final Dialog a = new Dialog(scorers_goals.this);
                     a.setContentView(R.layout.team_listt);
                     Button Pr = (Button) a.findViewById(R.id.prcd);
                     list = (ListView) a.findViewById(R.id.tlist);
-
                     final league_scorers_adap adapter = new league_scorers_adap(scorers_goals.this, t);
                     list.setAdapter(adapter);
                     a.show();
@@ -48,7 +50,12 @@ public class scorers_goals extends AppCompatActivity {
                     Pr.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            a.dismiss();
+                            Intent intent = new Intent(scorers_goals.this,score_scorers.class);
+                            intent.putExtra("playername", T);
                             Toast.makeText(scorers_goals.this, "Added", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+
                         }
                     });
                 }

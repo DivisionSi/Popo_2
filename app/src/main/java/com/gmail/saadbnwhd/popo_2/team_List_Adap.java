@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class team_List_Adap extends ArrayAdapter<String>{
     private final Activity context;
 
-    TextView Team;
+    TextView Team,Goals;
     CheckBox check;
     ArrayList<String> team = new ArrayList<String>();
     ArrayList<String> scorers = new ArrayList<String>();

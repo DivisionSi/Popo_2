@@ -91,9 +91,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MoreFragment" />
-        <activity android:name=".scorers_goals"></activity>
-        <activity android:name=".score_scorers"></activity>
+        <activity android:name=".scorers_goals" />
+        <activity android:name=".score_scorers" />
+        <activity android:name=".Results_Teams"></activity>
     </application>
 
 </manifest>

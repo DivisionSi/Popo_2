@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="vs"
-            android:textAlignment="textStart"
+
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#615c5c"
             android:textSize="18dp"
@@ -64,7 +64,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team 2"
-            android:textAlignment="textStart"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Black"
             android:textSize="18sp"

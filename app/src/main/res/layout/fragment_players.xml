@@ -35,7 +35,6 @@
 
     <TextView
         android:paddingLeft="10dp"
-        android:layout_below="@+id/plr.txt"
         android:text="Senior Players"
         android:background="@color/newclr1"
         android:id="@+id/team1"

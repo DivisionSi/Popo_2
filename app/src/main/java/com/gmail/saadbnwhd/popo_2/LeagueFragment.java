@@ -50,7 +50,7 @@ public class LeagueFragment extends Fragment{
         btn_results.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Res=new Intent(getActivity(),League_Res_Fix.class);
+                Intent Res=new Intent(getActivity(),Results_Teams.class);
                 startActivity(Res);
             }
         });

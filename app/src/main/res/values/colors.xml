@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="lightgrey">#89000000</color>
+    <color name="lightgrey">#eaeaea</color>
     <color name="darkGreen">#24be24</color>
     <color name="newclr">#14864e</color>
     <color name="newclr1">#0f643a</color>

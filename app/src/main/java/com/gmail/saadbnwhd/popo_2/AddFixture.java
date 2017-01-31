@@ -65,13 +65,10 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
         final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
-        //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
-//        fixtureteamlist.setAdapter(fixtureadapter);
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                // Map<String,String> map=dataSnapshot.getValue(Map.class);
                 team1.add(dataSnapshot.getKey().toString());
                 team2.add(dataSnapshot.getKey().toString());
 
@@ -125,9 +122,11 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                     txt_t1.setText(position);
                     p.dismiss();
                 } else if (position == 1) {
-
+                    txt_t1.setText(position);
+                    p.dismiss();
                 } else if (position == 2) {
-
+                    txt_t1.setText(position);
+                    p.dismiss();
                 }
 
             }
@@ -145,12 +144,14 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
                 if (position == 0) {
-                    txt_t1.setText(position);
+                    txt_t2.setText(position);
                     p.dismiss();
                 } else if (position == 1) {
-
+                    txt_t2.setText(position);
+                    p.dismiss();
                 } else if (position == 2) {
-
+                    txt_t2.setText(position);
+                    p.dismiss();
                 }
 
             }
