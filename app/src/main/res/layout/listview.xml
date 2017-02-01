@@ -13,7 +13,9 @@
 
     app:cardElevation="4dp"
     app:cardCornerRadius="7dp"
-    app:cardBackgroundColor="@color/White">
+    app:cardBackgroundColor="@color/White"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,31 +23,6 @@
 
         android:paddingTop="10dp"
         android:background="#FFFFFF">
-
-            <ImageView
-                android:alpha="1"
-                android:id="@+id/icon"
-                android:layout_width="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_height="50dp"
-                android:padding="13dp"
-                android:backgroundTint="@android:color/transparent"
-
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/team1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Team Name"
-                android:alpha="1"
-                android:textAlignment="textStart"
-
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/icon"
-                android:layout_marginStart="35dp"
-                android:background="@android:color/transparent" />
 
         <TextView
             android:alpha="1"
@@ -61,7 +38,25 @@
             android:layout_alignStart="@+id/team1"
             android:gravity="top"
             android:paddingBottom="10dp"
-            android:background="@android:color/transparent" />
+            android:background="@android:color/transparent"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp" />
+
+        <TextView
+                android:id="@+id/team1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Team Name"
+                android:alpha="1"
+                android:textAlignment="textStart"
+
+                android:textColor="#000000"
+                android:textSize="18sp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

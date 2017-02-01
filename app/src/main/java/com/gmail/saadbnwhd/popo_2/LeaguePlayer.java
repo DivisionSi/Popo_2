@@ -18,6 +18,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.realtime.util.StringListReader;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,8 @@ public class LeaguePlayer extends AppCompatActivity {
 FloatingActionButton pladd;
     ArrayList<String> players=new ArrayList<String>();
     ArrayList<String> number=new ArrayList<String>();
-    String[] position={"Mid","Striker","Keeper"};
+    ArrayList<String> position=new ArrayList<>();
+
     Integer[] playerimgid = {
             R.drawable.logo2,
             R.drawable.logo2,
