@@ -107,6 +107,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 scorers2.add(dataSnapshot.getKey().toString());
 
                 adapter_scorers2.notifyDataSetChanged();
+
                 PlayersFragment.ListUtils.setDynamicHeight(scorer_list2);
             }
 
