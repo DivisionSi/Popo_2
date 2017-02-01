@@ -7,35 +7,60 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.gmail.saadbnwhd.popo_2.League_Table">
+    tools:context="com.gmail.saadbnwhd.popo_2.League_Table"
+    android:background="@color/White">
+    <ListView
+        android:layout_below="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/tablelist"
+        android:dividerHeight="0.1dp"
+        android:divider="@color/grey"
+        android:background="@color/White"/>
+
 <TableLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/header">
+    android:id="@+id/header"
+    android:divider="@color/Black"
+    android:showDividers="middle">
     <TableRow
 
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
         <TextView
-            android:id="@+id/position"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:id="@+id/pos"
             android:layout_width="33dp"
             android:layout_height="30dp"
-            android:text="POS"
+            android:text="Pos"
+            android:gravity="center"
             />
         <TextView
-            android:id="@+id/team"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:gravity="center"
+            android:id="@+id/clubs"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:text="Team"
             />
         <TextView
-            android:id="@+id/goals"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:gravity="center"
+            android:id="@+id/gols"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:text="Goals"
             />
         <TextView
-            android:id="@+id/points"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:gravity="center"
+            android:id="@+id/pts"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:text="PTS"
@@ -45,12 +70,6 @@
 
     </TableRow>
 </TableLayout>
-<ListView
-    android:layout_below="@+id/header"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/tablelist">
 
 
-</ListView>
 </RelativeLayout>

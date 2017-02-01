@@ -17,8 +17,8 @@ public class Table_adapter extends ArrayAdapter<String> {
     private final ArrayList<String> team_name;
     private final ArrayList<String> goals;
     private final ArrayList<String> points;
-    public Table_adapter(Context context, ArrayList<String> rank, ArrayList<String> team_name, ArrayList<String> goals, ArrayList<String> points) {
-        super(context, R.layout.activity_table_adapter);
+    public Table_adapter(Activity context, ArrayList<String> rank, ArrayList<String> team_name, ArrayList<String> goals, ArrayList<String> points) {
+        super(context, R.layout.activity_table_adapter,team_name);
         this.context=context;
         this.team_name=team_name;
         this.rank=rank;
