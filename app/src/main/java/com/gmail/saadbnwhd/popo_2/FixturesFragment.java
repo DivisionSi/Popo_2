@@ -71,7 +71,7 @@ public class FixturesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Firebase.setAndroidContext(getContext());  //Setting up Firebase
-        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         super.onCreate(savedInstanceState);
 
     }

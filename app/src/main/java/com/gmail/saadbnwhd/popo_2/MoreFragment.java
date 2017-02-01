@@ -51,8 +51,8 @@ public class MoreFragment extends Fragment {
 
     private void userLogin()
     {
-        String username=txt_username.getText().toString();
-        String password=txt_password.getText().toString();
+        username=txt_username.getText().toString();
+        password=txt_password.getText().toString();
 
 
         firebaseAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
