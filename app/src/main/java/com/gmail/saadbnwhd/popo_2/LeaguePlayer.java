@@ -27,7 +27,7 @@ public class LeaguePlayer extends AppCompatActivity {
 FloatingActionButton pladd;
     ArrayList<String> players=new ArrayList<String>();
     ArrayList<String> number=new ArrayList<String>();
-    ArrayList<String> position=new ArrayList<>();
+    ArrayList<String> positions=new ArrayList<>();
 
     Integer[] playerimgid = {
             R.drawable.playericon2
@@ -69,8 +69,12 @@ FloatingActionButton pladd;
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
               String passingPlayerName=parent.getItemAtPosition(position).toString();
-              Intent intent = new Intent("android.intent.action.LeaguePlayer_Stats");
+              String numb=number.get(position).toString();
+              String pos=positions.get(position).toString();
+              Intent intent = new Intent(LeaguePlayer.this,LeaguePlayer_Stats.class);
               intent.putExtra("passingPlayerName", passingPlayerName);
+              intent.putExtra("number",numb);
+              intent.putExtra("position",pos);
               startActivity(intent);
 
 
@@ -78,7 +82,7 @@ FloatingActionButton pladd;
       });
 
 
-        final PlayersListView adapter = new PlayersListView(this, players,position,number,playerimgid);
+        final PlayersListView adapter = new PlayersListView(this, players,positions,number,playerimgid);
         playerlist.setAdapter(adapter);
 
 
@@ -92,7 +96,7 @@ FloatingActionButton pladd;
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                 players.add(dataSnapshot.getKey().toString());
-                position.add(dataSnapshot.child("Position").getValue().toString());
+                positions.add(dataSnapshot.child("Position").getValue().toString());
                 number.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 adapter.notifyDataSetChanged();
             }
@@ -145,11 +149,11 @@ FloatingActionButton pladd;
         onStartNewActivity();
     }
 
-    @Override
+ /*   @Override
     public void startActivity(Intent intent, Bundle options) {
         super.startActivity(intent, options);
         onStartNewActivity();
-    }
+    }*/
 
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);

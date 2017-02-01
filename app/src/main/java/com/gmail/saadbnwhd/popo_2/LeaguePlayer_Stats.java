@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class LeaguePlayer_Stats extends AppCompatActivity {
 
@@ -14,10 +17,17 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         setContentView(R.layout.activity_league_player__stats);
         Bundle bundle = getIntent().getExtras();
         String passingPlayerName = bundle.getString("passingPlayerName");
+        String numb=bundle.getString("number");
+        String pos=bundle.getString("position");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingPlayerName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        TextView name=(TextView) findViewById(R.id.player_name);
+        TextView position=(TextView) findViewById(R.id.player_position);
+        TextView number=(TextView) findViewById(R.id.player_number);
+        name.setText(passingPlayerName);
+        position.setText(pos);
+        number.setText(numb);
     }
     @Override
     public void finish() {
