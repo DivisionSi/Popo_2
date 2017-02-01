@@ -192,6 +192,10 @@ public class FixturesFragment extends Fragment {
     }
 
     public void Start(){
+        team1.clear();
+        team2.clear();
+        DateTime.clear();
+
         Firebase.setAndroidContext(getActivity());  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
@@ -210,19 +214,19 @@ public class FixturesFragment extends Fragment {
 
 
         Firebase FixturesRef; //Reference to Teams node
-        FixturesRef=ref.child("League").child("Fixtures");  //Traversing to Fixtures
+        FixturesRef=ref.child("Popo").child("Fixtures");  //Traversing to Fixtures
 
         final FixtureListView adapter = new FixtureListView(getActivity(), team1,team2,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
-        FixturesRef.addChildEventListener(new ChildEventListener() {
+        FixturesRef.orderByChild("Date").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
                 //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
-                team1.add(dataSnapshot.child("Team1").getValue().toString());
-                team2.add(dataSnapshot.child("Team2").getValue().toString());
+                team1.add("Popo FC");
+                team2.add(dataSnapshot.getKey().toString());
                 DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
 
                 adapter.notifyDataSetChanged();
