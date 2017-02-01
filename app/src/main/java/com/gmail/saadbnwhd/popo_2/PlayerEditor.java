@@ -36,7 +36,7 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
     ImageButton b;
     Button done,btn_dob;
     EditText txt_name,txt_jersey,txt_position;
-    String name,jersey,position,dob,AgeGroup;
+    String name,jersey,position,dob,AgeGroup,passingTeamName;
     RadioGroup rad_AgeGroup;
     static Dialog p;
     static Dialog d ;
@@ -51,6 +51,13 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(getResources().getColor(R.color.newclr1));
         }
+
+       Boolean isPopo=getIntent().getBooleanExtra("isPopo",false);
+
+        if (!isPopo)
+            passingTeamName=getIntent().getStringExtra("passingTeamName");
+
+
         Firebase.setAndroidContext(this);
         txt_name=(EditText) findViewById(R.id.txt_name);
         txt_jersey=(EditText) findViewById(R.id.txt_jersey);
@@ -66,9 +73,13 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         done=(Button) findViewById(R.id.btn_done);
         b = (ImageButton) findViewById(R.id.button11);
 
-        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
-        ref=ref.child("Popo").child("Players");
-
+        if(isPopo) {
+            ref = new Firebase("https://poponfa-8a11a.firebaseio.com/");
+            ref = ref.child("Popo").child("Players");
+        }
+        else{
+            ref = new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        ref = ref.child("League").child("Teams").child(passingTeamName).child("Players");}
 
 
 
@@ -123,6 +134,8 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
             @Override
             public void onClick(View v) {
                 if(!txt_name.equals("") && !txt_jersey.equals("") && !txt_position.equals("") && !txt_dob.equals("") && !AgeGroup.equals("")) {
+
+
                     name = txt_name.getText().toString();
                     jersey = txt_jersey.getText().toString();
                     position = txt_position.getText().toString();

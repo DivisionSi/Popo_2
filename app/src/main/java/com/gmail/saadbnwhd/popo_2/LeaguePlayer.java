@@ -18,6 +18,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.realtime.util.StringListReader;
 
 import java.util.ArrayList;
 
@@ -26,14 +27,10 @@ public class LeaguePlayer extends AppCompatActivity {
 FloatingActionButton pladd;
     ArrayList<String> players=new ArrayList<String>();
     ArrayList<String> number=new ArrayList<String>();
-    String[] position={"Mid","Striker","Keeper"};
+    ArrayList<String> position=new ArrayList<>();
+
     Integer[] playerimgid = {
-            R.drawable.logo2,
-            R.drawable.logo2,
-            R.drawable.logo2,
-            R.drawable.logo2,
-            R.drawable.logo3,
-            R.drawable.logo2,
+            R.drawable.playericon2
     };
 
     Firebase ref;
@@ -41,7 +38,7 @@ FloatingActionButton pladd;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_player);
-        String passingTeamName = getIntent().getStringExtra("passingTeamName");
+        final String passingTeamName = getIntent().getStringExtra("passingTeamName");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingTeamName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,6 +56,10 @@ FloatingActionButton pladd;
             @Override
             public void onClick(View v) {
                 Intent plr=new Intent("android.intent.action.PlayerEditor");
+                Bundle b = new Bundle();
+                b.putBoolean("isPopo",false);
+                b.putString("passingTeamName",passingTeamName);
+                plr.putExtras(b);
                 startActivity(plr);
             }
         });
@@ -90,7 +91,9 @@ FloatingActionButton pladd;
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
-                players.add(dataSnapshot.getValue().toString());
+                players.add(dataSnapshot.getKey().toString());
+                position.add(dataSnapshot.child("Position").getValue().toString());
+                number.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 adapter.notifyDataSetChanged();
             }
 

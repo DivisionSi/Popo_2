@@ -15,4 +15,5 @@
     <color name="icon1">#920a311e</color>
     <color name="lightBlue">#c8e8ff</color>
     <color name="grey">#6b6b6b</color>
+    <color name="OpacityBG">#7dbf7d</color>
 </resources>

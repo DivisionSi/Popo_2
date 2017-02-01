@@ -62,6 +62,9 @@ public class PlayersFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent teamseditor = new Intent("android.intent.action.PlayerEditor");
+                Bundle b = new Bundle();
+                b.putBoolean("isPopo",true);
+                teamseditor.putExtras(b);
                 startActivity(teamseditor);
             }
         });

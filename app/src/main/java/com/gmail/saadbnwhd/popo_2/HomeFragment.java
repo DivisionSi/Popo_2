@@ -51,16 +51,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
-        txt_username=(EditText) view.findViewById(R.id.txt_username);
-        txt_password=(EditText) view.findViewById(R.id.txt_password);
-        Signin=(Button) view.findViewById(R.id.btn_signin);
 
-        Signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userLogin();
-            }
-        });
                 return view;
     }
 

@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class PlayersListView extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> players;
-    private final String[] postion;
+    private final ArrayList<String> postion;
     private final ArrayList<String> number;
     private final Integer[] playerimgid;
 
-    public PlayersListView(Activity context, ArrayList<String> players, String[] postion,ArrayList<String> number, Integer[] playerimgid) {
+    public PlayersListView(Activity context, ArrayList<String> players, ArrayList<String> postion,ArrayList<String> number, Integer[] playerimgid) {
         super(context, R.layout.listview, players);
         // TODO Auto-generated constructor stub
 
@@ -31,7 +31,7 @@ public class PlayersListView extends ArrayAdapter<String> {
         this.playerimgid=playerimgid;
     }
 
-    public View getView(int position,View view,ViewGroup parent) {
+    public View getView(int i,View view,ViewGroup parent) {
 
 
         LayoutInflater inflater=context.getLayoutInflater();
@@ -40,11 +40,12 @@ public class PlayersListView extends ArrayAdapter<String> {
         TextView txtTitle = (TextView) rowView.findViewById(R.id.leagueplr_name);
         TextView txtposition = (TextView) rowView.findViewById(R.id.leagueplr_position);
         TextView txtnumber = (TextView) rowView.findViewById(R.id.leagueplr_number);
+
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-        txtTitle.setText(players.get(position));
-        txtposition.setText(postion[position]);
-        txtnumber.setText(number.get(position));
-        imageView.setImageResource(playerimgid[position]);
+        txtTitle.setText(players.get(i));
+        txtposition.setText(postion.get(i));
+        txtnumber.setText(number.get(i));
+        imageView.setImageResource(playerimgid[0]);
 
         return rowView;
 

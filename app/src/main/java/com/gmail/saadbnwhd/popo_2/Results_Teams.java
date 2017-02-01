@@ -69,9 +69,15 @@ public class Results_Teams extends AppCompatActivity {
                /* String Slecteditem = team1.get(+position);
                 Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
 
+
                 Intent i=new Intent(getApplicationContext(),League_Res_Fix.class);
                 i.putExtra("t1",team1.get(position));
                 i.putExtra("t2",team2.get(position));
+
+                team1.clear();
+                team2.clear();
+                DateTime.clear();
+
                 startActivity(i);
 
                 /*Dialog a = new Dialog(League_Res_Fix.this);
