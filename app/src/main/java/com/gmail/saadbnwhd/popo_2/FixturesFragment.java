@@ -26,6 +26,7 @@ import com.firebase.client.FirebaseException;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -71,7 +72,7 @@ public class FixturesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Firebase.setAndroidContext(getContext());  //Setting up Firebase
-        Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         super.onCreate(savedInstanceState);
 
     }
@@ -175,8 +176,11 @@ public class FixturesFragment extends Fragment {
 
                 try {
                     Firebase popo_fixtures_ref = ref.child("Popo").child("Fixtures");
-                    popo_fixtures_ref.child(rivals.getText().toString()).child("Date").setValue(date.getText().toString());
-                    popo_fixtures_ref.child(rivals.getText().toString()).child("Time").setValue(time.getText().toString());
+                    String key=popo_fixtures_ref.push().getKey();
+
+                    popo_fixtures_ref.child(key).child("Rival").setValue(rivals.getText().toString());
+                    popo_fixtures_ref.child(key).child("Date").setValue(date.getText().toString());
+                    popo_fixtures_ref.child(key).child("Time").setValue(time.getText().toString());
                     Toast.makeText(getContext(),"Fixture Added", LENGTH_SHORT).show();
 
                 }
@@ -220,16 +224,19 @@ public class FixturesFragment extends Fragment {
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
-        FixturesRef.orderByChild("Date").addChildEventListener(new ChildEventListener() {
+        FixturesRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                // Map<String,String> map=dataSnapshot.getValue(Map.class);
+                 Map<String,String> map=dataSnapshot.getValue(Map.class);
                 //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                 team1.add("Popo FC");
-                team2.add(dataSnapshot.getKey().toString());
-                DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
+                team2.add(dataSnapshot.child("Rival").getValue().toString());
+                DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
+                        dataSnapshot.child("Time").getValue().toString());
 
                 adapter.notifyDataSetChanged();
+
+
             }
 
             @Override
