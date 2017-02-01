@@ -45,7 +45,7 @@ public class PlayersListView extends ArrayAdapter<String> {
         txtTitle.setText(players.get(i));
         txtposition.setText(postion.get(i));
         txtnumber.setText(number.get(i));
-        imageView.setImageResource(playerimgid[i]);
+        imageView.setImageResource(playerimgid[0]);
 
         return rowView;
 

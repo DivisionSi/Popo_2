@@ -30,12 +30,7 @@ FloatingActionButton pladd;
     ArrayList<String> position=new ArrayList<>();
 
     Integer[] playerimgid = {
-            R.drawable.logo2,
-            R.drawable.logo2,
-            R.drawable.logo2,
-            R.drawable.logo2,
-            R.drawable.logo3,
-            R.drawable.logo2,
+            R.drawable.playericon2
     };
 
     Firebase ref;
@@ -92,7 +87,9 @@ FloatingActionButton pladd;
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
-                players.add(dataSnapshot.getValue().toString());
+                players.add(dataSnapshot.getKey().toString());
+                position.add(dataSnapshot.getValue().toString());
+                number.add("Striker");
                 adapter.notifyDataSetChanged();
             }
 
