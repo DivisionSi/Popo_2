@@ -93,7 +93,8 @@
         </activity>
         <activity android:name=".scorers_goals" />
         <activity android:name=".score_scorers" />
-        <activity android:name=".Results_Teams"></activity>
+        <activity android:name=".Results_Teams" />
+        <activity android:name=".Show_Results"></activity>
     </application>
 
 </manifest>

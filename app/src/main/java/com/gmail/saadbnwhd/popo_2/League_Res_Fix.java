@@ -24,23 +24,21 @@ public class League_Res_Fix extends AppCompatActivity {
     ListView scorer_list1,scorer_list2;
     Button done;
     Firebase ref,team1ref,team2ref;
-    ArrayList<String> player_name = new ArrayList<String>();
-    ArrayList<Integer> goals = new ArrayList<Integer>(); //String array for goals of players
+    ArrayList<String> goals = new ArrayList<String>();
     ArrayList<String> scorers1= new ArrayList<String>();
     ArrayList<String> scorers2= new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_league_res_fixx);
         done=(Button) findViewById(R.id.result_done);
-        final Bundle b=this.getIntent().getExtras();
-        final int golazo;
-        golazo=b.getInt("goals");
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView goals=(TextView) findViewById(R.id.score_team1);
-                goals.setText(Integer.toString(golazo));
+                Intent intent=new Intent(League_Res_Fix.this,Show_Results.class);
+                intent.putStringArrayListExtra("goals", goals);
+                startActivity(intent);
             }
         });
         Bundle bundle=getIntent().getExtras();
