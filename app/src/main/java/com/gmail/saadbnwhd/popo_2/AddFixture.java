@@ -1,12 +1,14 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Dialog;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
@@ -17,7 +19,7 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 
 public class AddFixture extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    EditText txt_t1,txt_t2;
+    TextView txt_t1,txt_t2;
     Firebase ref; //Reference to our DB
     ListView fixtureteamlist;
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team1 Names
@@ -42,11 +44,13 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_add_fixture);
         Firebase.setAndroidContext(this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
-        txt_t1=(EditText) findViewById(R.id.T1);
-        txt_t2=(EditText) findViewById(R.id.T2);
+        txt_t1=(TextView) findViewById(R.id.T1);
+        txt_t2=(TextView) findViewById(R.id.T2);
         txt_t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

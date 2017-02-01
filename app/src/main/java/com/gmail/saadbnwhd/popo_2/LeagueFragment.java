@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.Button;
  * Created by Musab on 12/6/2016.
  */
 public class LeagueFragment extends Fragment{
-
+Button Table;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,14 @@ public class LeagueFragment extends Fragment{
                 startActivity(Res);
             }
         });
-
+        Table=(Button) view.findViewById(R.id.btn_table);
+        Table.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent table=new Intent(getActivity(),League_Table.class);
+                startActivity(table);
+            }
+        });
         return view;
     }
     @Override

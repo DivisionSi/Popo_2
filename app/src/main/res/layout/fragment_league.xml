@@ -46,8 +46,8 @@ android:background="@drawable/pl_league"
         android:layout_height="75dp" />
     <Button
         android:scaleY=".9"
-        android:id="@+id/btn_managers"
-        android:text="MANAGERS"
+        android:id="@+id/btn_table"
+        android:text="TABLE"
         android:layout_below="@+id/btn_results"
         android:alpha="0.96"
         android:textColor="@color/dark"

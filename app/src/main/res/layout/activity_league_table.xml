@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.gmail.saadbnwhd.popo_2.League_Table">
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/header">
+    <TableRow
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="33dp"
+            android:layout_height="30dp"
+            android:text="POS"
+            />
+        <TextView
+            android:id="@+id/team"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Team"
+            />
+        <TextView
+            android:id="@+id/goals"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Goals"
+            />
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="PTS"
+            />
+    </TableRow>
+    <TableRow>
+
+    </TableRow>
+</TableLayout>
+<ListView
+    android:layout_below="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tablelist">
+
+
+</ListView>
+</RelativeLayout>
