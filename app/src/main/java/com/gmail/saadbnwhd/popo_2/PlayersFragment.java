@@ -54,6 +54,7 @@ public class PlayersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        clearArrays();
         View view = inflater.inflate(R.layout.fragment_players, container, false);
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.playersfab);
@@ -88,6 +89,7 @@ public class PlayersFragment extends Fragment {
             @Override
 
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
 
 
                 AgeGroup=dataSnapshot.child("Age Group").getValue().toString();
@@ -143,6 +145,29 @@ public class PlayersFragment extends Fragment {
         });
 
         return view;
+    }
+    private void clearArrays()
+    {
+        Popo_players.clear();
+        Popo_players_u16.clear();
+        Popo_players_u14.clear();
+        Popo_players_postion.clear();
+        Popo_players_u16_postion.clear();
+        Popo_players_u14_postion.clear();
+        Popo_players_numbers.clear();
+        Popo_players_u16_numbers.clear();
+        Popo_players_u14_numbers.clear();
+
+
+
+
+    }
+
+    public void Start()
+    {
+
+
+
     }
 
     public static class ListUtils {
