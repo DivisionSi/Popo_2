@@ -38,7 +38,7 @@ FloatingActionButton pladd;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_player);
-        String passingTeamName = getIntent().getStringExtra("passingTeamName");
+        final String passingTeamName = getIntent().getStringExtra("passingTeamName");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingTeamName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,6 +56,10 @@ FloatingActionButton pladd;
             @Override
             public void onClick(View v) {
                 Intent plr=new Intent("android.intent.action.PlayerEditor");
+                Bundle b = new Bundle();
+                b.putBoolean("isPopo",false);
+                b.putString("passingTeamName",passingTeamName);
+                plr.putExtras(b);
                 startActivity(plr);
             }
         });
@@ -88,8 +92,8 @@ FloatingActionButton pladd;
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                 players.add(dataSnapshot.getKey().toString());
-                position.add(dataSnapshot.getValue().toString());
-                number.add("Striker");
+                position.add(dataSnapshot.child("Position").getValue().toString());
+                number.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 adapter.notifyDataSetChanged();
             }
 
