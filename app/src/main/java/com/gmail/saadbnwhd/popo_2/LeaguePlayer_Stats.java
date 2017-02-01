@@ -18,6 +18,7 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String passingPlayerName = bundle.getString("passingPlayerName");
         String numb=bundle.getString("number");
+        String club=bundle.getString("passingTeamName");
         String pos=bundle.getString("position");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingPlayerName);
@@ -25,9 +26,11 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         TextView name=(TextView) findViewById(R.id.player_name);
         TextView position=(TextView) findViewById(R.id.player_position);
         TextView number=(TextView) findViewById(R.id.player_number);
+        TextView team=(TextView) findViewById(R.id.player_club);
         name.setText(passingPlayerName);
         position.setText(pos);
         number.setText(numb);
+        team.setText(club);
     }
     @Override
     public void finish() {

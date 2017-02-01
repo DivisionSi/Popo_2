@@ -75,6 +75,7 @@ FloatingActionButton pladd;
               intent.putExtra("passingPlayerName", passingPlayerName);
               intent.putExtra("number",numb);
               intent.putExtra("position",pos);
+              intent.putExtra("passingTeamName",passingTeamName);
               startActivity(intent);
 
 
@@ -149,11 +150,11 @@ FloatingActionButton pladd;
         onStartNewActivity();
     }
 
- /*   @Override
+    @Override
     public void startActivity(Intent intent, Bundle options) {
         super.startActivity(intent, options);
         onStartNewActivity();
-    }*/
+    }
 
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
