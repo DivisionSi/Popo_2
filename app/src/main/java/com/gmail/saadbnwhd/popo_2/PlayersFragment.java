@@ -71,7 +71,7 @@ public class PlayersFragment extends Fragment {
 
         final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_numbers,Popo_players_postion);
         final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16,Popo_players_u16_numbers,Popo_players_u16_postion);
-        final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_u14_numbers,Popo_players_u14_postion);
+        final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players_u14,Popo_players_u14_numbers,Popo_players_u14_postion);
 
         list_sr.setAdapter(adapter_sr);
 
@@ -107,7 +107,7 @@ public class PlayersFragment extends Fragment {
                     Popo_players_u16_postion.add(dataSnapshot.child("Position").getValue().toString());
                     adapter_u16.notifyDataSetChanged();
                 }
-                //else if (AgeGroup.equals("Under 14"))
+                else if (AgeGroup.equals("Under 14"))
                 {
                 Popo_players_u14.add(dataSnapshot.getKey().toString());
                 Popo_players_u14_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());

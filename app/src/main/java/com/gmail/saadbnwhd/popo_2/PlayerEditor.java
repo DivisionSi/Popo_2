@@ -106,10 +106,11 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int id=rad_AgeGroup.getCheckedRadioButtonId();
+                Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
 
-                if(id==0)
+                if(id==2131493019)
                     AgeGroup="Senior";
-                else if(id==1)
+                else if(id==2131493021)
                     AgeGroup="Under 16";
                 else
                     AgeGroup="Under 14";
