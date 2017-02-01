@@ -96,7 +96,7 @@ public class PlayersFragment extends Fragment {
 
 
                 AgeGroup=dataSnapshot.child("Age Group").getValue().toString();
-                Toast.makeText(getContext(),AgeGroup,Toast.LENGTH_SHORT).show();
+
 
                 if(AgeGroup.equals("Senior"))
 

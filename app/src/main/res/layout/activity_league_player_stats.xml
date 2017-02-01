@@ -81,7 +81,7 @@
         android:id="@+id/player_txt4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Goals"
+        android:text="Age Group"
         android:textSize="25sp"
         android:textColor="@color/grey"
         android:background="@color/White"
@@ -92,7 +92,7 @@
         android:text="21/4/1995"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/player_image"
-        android:id="@+id/player_dob"
+        android:id="@+id/dob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/player_txt1"
@@ -109,11 +109,11 @@
         android:layout_marginTop="1dp"
         android:paddingRight="3dp"
         android:layout_below="@+id/player_txt1"
-        android:id="@+id/player_goals"
+        android:id="@+id/age_group"
         android:layout_toRightOf="@+id/player_txt4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Goals"
+        android:text="Age Group"
         android:textSize="25sp"
         android:textColor="@color/Black"
         android:background="@color/White"
@@ -127,18 +127,12 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/player_txt4"
         android:background="@color/White"/>
-    <Button
-        android:id="@+id/update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"/>
+
     <Button
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
+        android:text="Remove Player"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"/>

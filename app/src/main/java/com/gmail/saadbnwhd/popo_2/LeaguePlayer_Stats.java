@@ -5,21 +5,31 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 public class LeaguePlayer_Stats extends AppCompatActivity {
-
+    String dob,age_group;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_league_player__stats);
+        setContentView(R.layout.activity_league_player_stats);
         Bundle bundle = getIntent().getExtras();
         String passingPlayerName = bundle.getString("passingPlayerName");
         String numb=bundle.getString("number");
         String club=bundle.getString("passingTeamName");
         String pos=bundle.getString("position");
+
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingPlayerName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -31,6 +41,37 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         position.setText(pos);
         number.setText(numb);
         team.setText(club);
+        final TextView dob=(TextView) findViewById(R.id.dob);
+        final TextView age_group=(TextView) findViewById(R.id.age_group);
+
+        Firebase.setAndroidContext(this);
+        Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+        final Firebase playerref=ref.child("League").child("Teams").child(club).child("Players").child(passingPlayerName);
+
+        playerref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dob.setText(dataSnapshot.child("DoB").getValue().toString());
+                age_group.setText(dataSnapshot.child("Age Group").getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        final Button delete=(Button) findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playerref.removeValue();
+                Toast.makeText(getApplication(),"Player Deleted",Toast.LENGTH_SHORT).show();
+                delete.setVisibility(view.INVISIBLE);
+            }
+        });
+
     }
     @Override
     public void finish() {

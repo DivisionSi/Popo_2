@@ -99,6 +99,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
 
+
         final CustomListView adapter = new CustomListView(this, teams,locations, imgid);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
@@ -109,7 +110,6 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
                 teams.add(dataSnapshot.getKey().toString());
                 locations.add(dataSnapshot.child("Location").getValue().toString());
-
 
                 adapter.notifyDataSetChanged();
             }

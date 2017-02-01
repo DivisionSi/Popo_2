@@ -1,6 +1,7 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
@@ -9,6 +10,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,7 @@ public class League_Table extends AppCompatActivity {
     ArrayList<String> points = new ArrayList<String>();
     ArrayList<String> position = new ArrayList<String>();
     Firebase ref;
+    Integer count,int_points,int_won,int_drawn,team_count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        /* team.add("Musab");
@@ -31,16 +34,34 @@ public class League_Table extends AppCompatActivity {
         ListView list=(ListView) findViewById(R.id.tablelist);
         final Table_adapter table_adapter = new Table_adapter(League_Table.this, position,team,goals, points);
                 list.setAdapter(table_adapter);
-        Firebase teamRef; //Reference to Teams node
-        teamRef=ref.child("League").child("Teams");  //Traversing to Teams
-        teamRef.addChildEventListener(new ChildEventListener() {
+
+         count=1;
+        team_count=0;
+
+
+        Firebase StatsRef; //Reference to Teams node
+        StatsRef=ref.child("League").child("Stats");  //Traversing to Teams
+
+
+
+
+        StatsRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+                position.add(Integer.toString(count));
                 team.add(dataSnapshot.getKey().toString());
-                position.add(dataSnapshot.getKey().toString());
-                goals.add(dataSnapshot.getKey().toString());
-                points.add(dataSnapshot.getKey().toString());
+                goals.add(dataSnapshot.child("Goals").getValue().toString());
+
+                int_won=Integer.parseInt(dataSnapshot.child("Won").getValue().toString());
+                int_drawn=Integer.parseInt(dataSnapshot.child("Drawn").getValue().toString());
+
+                int_points=(int_won*3)+(int_drawn*2);
+                points.add(Integer.toString(int_points));
+
                 table_adapter.notifyDataSetChanged();
+                count++;
             }
 
             @Override
