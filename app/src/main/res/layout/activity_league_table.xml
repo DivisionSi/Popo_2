@@ -19,7 +19,7 @@
         android:background="@color/White"/>
 
 <TableLayout
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:id="@+id/header"
     android:divider="@color/Black"
@@ -36,32 +36,60 @@
             android:layout_width="33dp"
             android:layout_height="30dp"
             android:text="Pos"
-            android:gravity="center"
+
             />
         <TextView
+            android:layout_marginLeft="5dp"
             android:textStyle="bold"
             android:textColor="@color/Black"
-            android:gravity="center"
             android:id="@+id/clubs"
-            android:layout_width="100dp"
+            android:layout_width="90dp"
             android:layout_height="30dp"
             android:text="Team"
             />
+
         <TextView
+            android:layout_marginLeft="5dp"
             android:textStyle="bold"
             android:textColor="@color/Black"
-            android:gravity="center"
-            android:id="@+id/gols"
-            android:layout_width="100dp"
+            android:id="@+id/wins"
+            android:layout_width="33dp"
             android:layout_height="30dp"
-            android:text="Goals"
+            android:text="W"
             />
         <TextView
+            android:layout_marginLeft="5dp"
             android:textStyle="bold"
             android:textColor="@color/Black"
-            android:gravity="center"
+            android:id="@+id/lose"
+            android:layout_width="33dp"
+            android:layout_height="30dp"
+            android:text="L"
+            />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:id="@+id/draw"
+            android:layout_width="33dp"
+            android:layout_height="30dp"
+            android:text="D"
+            />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:id="@+id/gols"
+            android:layout_width="33dp"
+            android:layout_height="30dp"
+            android:text="G"
+            />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
             android:id="@+id/pts"
-            android:layout_width="100dp"
+            android:layout_width="33dp"
             android:layout_height="30dp"
             android:text="PTS"
             />

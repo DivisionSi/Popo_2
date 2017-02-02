@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="lightgrey">#eaeaea</color>
+    <color name="lightgrey">#cadcdcdc</color>
     <color name="darkGreen">#24be24</color>
     <color name="newclr">#14864e</color>
     <color name="newclr1">#0f643a</color>
@@ -13,7 +13,7 @@
     <color name="White">#ffffff</color>
     <color name="icon">#f5f5f5</color>
     <color name="icon1">#920a311e</color>
-    <color name="lightBlue">#c8e8ff</color>
+    <color name="lightBlue">#f5f052</color>
     <color name="grey">#6b6b6b</color>
     <color name="OpacityBG">#7dbf7d</color>
 </resources>

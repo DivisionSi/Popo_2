@@ -22,5 +22,8 @@
     <style name="AppTheme.StatusBar" parent="Theme.AppCompat.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/newclr</item>
     </style>
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
 
+    </style>
 </resources>

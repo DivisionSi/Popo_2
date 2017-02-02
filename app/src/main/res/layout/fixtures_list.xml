@@ -11,7 +11,7 @@
     android:paddingLeft="10dp"
 
     app:cardElevation="4dp"
-    app:cardCornerRadius="7dp"
+
     app:cardBackgroundColor="@color/White">
 
 

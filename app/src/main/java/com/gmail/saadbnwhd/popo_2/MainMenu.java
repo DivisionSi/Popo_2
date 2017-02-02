@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +54,8 @@ public class MainMenu extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         tabLayout.setupWithViewPager(viewPager);
-        /*setupTabIcons();*/
-       /* int tabIconColor = getResources().getColor((R.color.icon));
+        setupTabIcons();
+        int tabIconColor = getResources().getColor((R.color.White));
         tabLayout.getTabAt(0).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
 
         tabLayout.setOnTabSelectedListener(
@@ -80,7 +81,7 @@ public class MainMenu extends AppCompatActivity {
                     }
                 }
         );
-*/
+
 
     }
 
