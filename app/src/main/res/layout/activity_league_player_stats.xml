@@ -56,11 +56,11 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/player_image"
+        android:layout_below="@+id/player_position"
         android:background="@color/lightgrey"/>
     <EditText
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/player_image"
+        android:layout_below="@+id/player_position"
         android:id="@+id/player_txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
     <EditText
         android:text="21/4/1995"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/player_image"
+        android:layout_below="@+id/player_position"
         android:id="@+id/dob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
