@@ -165,15 +165,5 @@ FloatingActionButton pladd;
         return true;
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
-        if (keyCode == KeyEvent.KEYCODE_BACK ) {
-            Intent i=new Intent(getApplicationContext(),Teams.class);
-            startActivity(i);
 
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
 }

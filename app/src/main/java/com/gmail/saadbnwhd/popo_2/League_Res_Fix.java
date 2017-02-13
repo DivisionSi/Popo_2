@@ -29,7 +29,9 @@ public class League_Res_Fix extends AppCompatActivity {
     EditText goals1,goals2;
 
     Integer int_goals1,int_apps1,int_won1,int_lost1,int_drawn1,
-            int_goals2,int_apps2,int_won2,int_lost2,int_drawn2;
+            int_goals2,int_apps2,int_won2,int_lost2,int_drawn2,
+            fixtureGoals1,fixtureGoals2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,10 @@ public class League_Res_Fix extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                fixtureGoals1=Integer.parseInt(goals1.getText().toString());
+                fixtureGoals2=Integer.parseInt(goals2.getText().toString());
+
                 //Appearances Increment
                 int_apps1++;
                 team1_stats.child("Apps").setValue(Integer.toString(int_apps1));
@@ -104,7 +110,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 int_goals2=int_goals2+Integer.parseInt(goals2.getText().toString());
                 team2_stats.child("Goals").setValue(Integer.toString(int_goals2));
 
-                if(int_goals1>int_goals2)
+                if(fixtureGoals1>fixtureGoals2)
                 {
                     int_won1++;
                     team1_stats.child("Won").setValue(Integer.toString(int_won1));
@@ -112,7 +118,7 @@ public class League_Res_Fix extends AppCompatActivity {
                     int_lost2++;
                     team2_stats.child("Lost").setValue(Integer.toString(int_lost2));
                 }
-                else if (int_goals1<int_goals2)
+                else if (fixtureGoals1<fixtureGoals2)
                 {
                     int_won2++;
                     team2_stats.child("Won").setValue(Integer.toString(int_won2));
