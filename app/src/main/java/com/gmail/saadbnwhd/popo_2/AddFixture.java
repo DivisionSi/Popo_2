@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -113,10 +112,11 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         // TODO Auto-generated method stub
     }
     public void txt_teamshow1() {
-        onStart();
+       // onStart();
         final Dialog p = new Dialog(this);
         p.setTitle("txt_Team");
         p.setContentView(R.layout.leaguefixture);
+        fixtureteamlist = (ListView) p.findViewById(R.id.fixturelist);
         fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
@@ -138,7 +138,7 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         p.show();
     }
     public void txt_teamshow2() {
-        onStart();
+     //   onStart();
         final Dialog p = new Dialog(this);
         p.setTitle("txt_Team");
         p.setContentView(R.layout.leaguefixture);

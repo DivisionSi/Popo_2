@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/White"
     android:orientation="vertical"
-    android:padding="20dp">
+    >
     <ListView
         android:id="@+id/fixturelist"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
 
-        android:background="@color/White"
+        android:background="@color/grey"
         android:cacheColorHint="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp"
 
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
