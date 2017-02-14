@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -176,6 +177,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
+
 
 
 }

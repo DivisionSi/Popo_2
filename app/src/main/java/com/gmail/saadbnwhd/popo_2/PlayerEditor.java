@@ -27,6 +27,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
@@ -141,13 +143,25 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                     position = txt_position.getText().toString();
                     dob = txt_dob.getText().toString();
 
+                    Map<String,String> testmap=new HashMap<String,String>();
+                    testmap.put("Name",name);
+                    testmap.put("Position",position);
+                    testmap.put("Jersey Number",jersey);
+                    testmap.put("DoB",dob);
+                    testmap.put("Age Group",AgeGroup);
+
+
 
                     ref = ref.child(txt_name.getText().toString());
-                    ref.child("Name").setValue(name);
+                    ref.setValue(testmap);
+
+                    /* ref.child("Name").setValue(name);
                     ref.child("Position").setValue(position);
                     ref.child("Jersey Number").setValue(jersey);
                     ref.child("DoB").setValue(dob);
-                    ref.child("Age Group").setValue(AgeGroup);
+                    ref.child("Age Group").setValue(AgeGroup);*/
+
+
                     Toast.makeText(getApplicationContext(), "Player Added", Toast.LENGTH_LONG).show();
 
 
