@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="@color/newclr1"
     tools:context="com.gmail.saadbnwhd.popo_2.NewsFragment">
 
     <WebView android:id="@+id/webview"
-        android:padding="1.5dp"
+
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />

@@ -11,7 +11,7 @@
         android:textSize="25sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textColor="@color/Black"/>
+        android:textColor="@color/White"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -19,13 +19,13 @@
         android:inputType="number"
         android:ems="5"
         android:id="@+id/sc_goal"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         android:layout_alignBaseline="@+id/sc_name"
         android:layout_alignBottom="@+id/sc_name"
         android:layout_alignParentEnd="true"
         android:hint="goals"
         android:editable="false"
-        android:textColorHint="@color/Black"
+        android:textColorHint="@color/White"
         android:textAlignment="center"
         android:singleLine="true"
         android:backgroundTint="@android:color/transparent"

@@ -1,21 +1,11 @@
 package com.gmail.saadbnwhd.popo_2;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.firebase.storage.OnPausedListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -25,7 +15,9 @@ import java.util.ArrayList;
 
 public class scorers_list_adapter extends ArrayAdapter<String> {
     String m;
+    StringBuilder temp = new StringBuilder(3);
     TextView txtgoals;
+    int Total = 0;
     private final Context context;
     ArrayList<String> player_name=new ArrayList<>();
     ArrayList<String> goals = new ArrayList<String>(); //String array for Team Names
@@ -49,28 +41,6 @@ public class scorers_list_adapter extends ArrayAdapter<String> {
         holder.txtScorer = (TextView) rowView.findViewById(R.id.scorer_name);
         txtgoals=(TextView) rowView.findViewById(R.id.scorer_goals);
         holder.txtScorer.setText(player_name.get(position));
-        txtgoals.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                for (int i = 0; i < 20; i++) {
-                    m = m + txtgoals.getText().toString();
-                    goals.add(i, m);
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-
-
 
         return rowView;
 
@@ -82,4 +52,7 @@ public class scorers_list_adapter extends ArrayAdapter<String> {
 
     }
 
+    public  int Total_Goals(){
+        return 0;
+    }
 }

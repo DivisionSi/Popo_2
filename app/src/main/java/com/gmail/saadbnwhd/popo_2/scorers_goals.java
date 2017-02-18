@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,7 +28,7 @@ public class scorers_goals extends AppCompatActivity {
         list = (ListView) findViewById(R.id.tlist);
         Proceed = (Button) findViewById(R.id.prcd);
 
-        final team_List_Adap adapter = new team_List_Adap(scorers_goals.this, T);
+        final team_List_Adap adapter = new team_List_Adap(scorers_goals.this, T,null);
         list.setAdapter(adapter);
 
         Proceed.setOnClickListener(new View.OnClickListener() {

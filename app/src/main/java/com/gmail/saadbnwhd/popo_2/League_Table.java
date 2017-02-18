@@ -18,14 +18,20 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class League_Table extends AppCompatActivity {
     ArrayList<String> team = new ArrayList<String>();
     ArrayList<String> goals = new ArrayList<String>();
     ArrayList<String> points = new ArrayList<String>();
     ArrayList<String> position = new ArrayList<String>();
+    ArrayList<String> draw= new ArrayList<String>();
+    ArrayList<String> lose = new ArrayList<String>();
+    ArrayList<String> win = new ArrayList<String>();
+
     Firebase ref;
-    Integer count,int_points,int_won,int_drawn,team_count;
+    Integer count,int_points,int_won,int_drawn,team_count,tablePosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +51,7 @@ public class League_Table extends AppCompatActivity {
         Firebase.setAndroidContext(this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         ListView list=(ListView) findViewById(R.id.tablelist);
-        final Table_adapter table_adapter = new Table_adapter(League_Table.this, position,team,goals, points);
+        final Table_adapter table_adapter = new Table_adapter(League_Table.this, position,team,goals, points,draw,lose,win);
                 list.setAdapter(table_adapter);
 
          count=1;
@@ -55,22 +61,37 @@ public class League_Table extends AppCompatActivity {
         Firebase StatsRef; //Reference to Teams node
         StatsRef=ref.child("League").child("Stats");  //Traversing to Teams
 
-
+        final Map<Integer,Map<String,Integer>> tableMap= new HashMap<>();
+        final Map<String,Integer> teamMap=new HashMap<>();
+        tablePosition=0;
 
 
         StatsRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //Map
+                teamMap.put("Goals",Integer.parseInt(dataSnapshot.child("Goals").getValue().toString()));
+                teamMap.put("Drawn",Integer.parseInt(dataSnapshot.child("Drawn").getValue().toString()));
+                teamMap.put("Lost",Integer.parseInt(dataSnapshot.child("Lost").getValue().toString()));
+                teamMap.put("Won",Integer.parseInt(dataSnapshot.child("Won").getValue().toString()));
 
+                tableMap.put(tablePosition,teamMap);
+                tablePosition++;
+
+
+                //----------
 
                 position.add(Integer.toString(count));
                 team.add(dataSnapshot.getKey().toString());
                 goals.add(dataSnapshot.child("Goals").getValue().toString());
+                draw.add(dataSnapshot.child("Drawn").getValue().toString());
+                lose.add(dataSnapshot.child("Lost").getValue().toString());
+                win.add(dataSnapshot.child("Won").getValue().toString());
 
                 int_won=Integer.parseInt(dataSnapshot.child("Won").getValue().toString());
                 int_drawn=Integer.parseInt(dataSnapshot.child("Drawn").getValue().toString());
 
-                int_points=(int_won*3)+(int_drawn*2);
+                int_points=(int_won*3)+(int_drawn);
                 points.add(Integer.toString(int_points));
 
                 table_adapter.notifyDataSetChanged();
