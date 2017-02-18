@@ -6,16 +6,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -24,15 +19,12 @@ import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 
-import static android.view.View.INVISIBLE;
-
 
 public class Teams extends AppCompatActivity{
     ListView list;
     Firebase ref; //Reference to our DB
 FloatingActionButton fab;
 
-    ProgressBar pb;
 
     ArrayList<String> teams = new ArrayList<String>(); //String array for Team Names
     ArrayList<String> locations = new ArrayList<String>(); //String array for Team Locations
@@ -61,8 +53,7 @@ FloatingActionButton fab;
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("TEAMS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        pb = (ProgressBar)this.findViewById(R.id.wait);
-        pb.setVisibility(INVISIBLE);
+
 
 
 fab=(FloatingActionButton) findViewById(R.id.fab);
@@ -178,6 +169,9 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 
-
-
+   /* @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }*/
 }

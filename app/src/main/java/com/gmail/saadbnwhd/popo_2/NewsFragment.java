@@ -2,18 +2,16 @@ package com.gmail.saadbnwhd.popo_2;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
+import android.widget.Toast;
 
 
 /**
@@ -40,7 +38,14 @@ public class NewsFragment extends Fragment {
 
         View view= inflater.inflate(R.layout.fragment_news, container, false);
         mWebView = (WebView) view.findViewById(R.id.webview);
+        mWebView.getSettings().setAppCacheEnabled(true);
+        mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setSupportMultipleWindows(true);
+        mWebView.setWebViewClient(new WC());
+      //  mWebView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
         mWebView.loadUrl("https://www.facebook.com/popofootballclub");
+
 
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
@@ -54,7 +59,35 @@ public class NewsFragment extends Fragment {
 
         return view;
     }
+    private class WC extends WebViewClient{
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            if(!url.equals("https://www.facebook.com/popofootballclub" )){
 
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+
+                return;
+            }
+
+        }
+
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view,url);
+
+            if(!url.equals("https://www.facebook.com/popofootballclub" )){
+
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+
+                return;
+            }
+
+
+
+        }
+    }
 
 }
 

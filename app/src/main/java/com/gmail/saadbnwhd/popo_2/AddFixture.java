@@ -1,13 +1,18 @@
 package com.gmail.saadbnwhd.popo_2;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
@@ -16,11 +21,15 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AddFixture extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextView txt_t1,txt_t2;
+    private int mYear, mMonth, mDay, mHour, mMinute;
+    TextView txt_t1,txt_t2,date,time;
+    Button Done;
     Firebase ref; //Reference to our DB
     ListView fixtureteamlist;
+    League_Add_Fixture_Adapter fixtureadapter;
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team1 Names
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team2 Names
     ArrayList<String> DateTime=new ArrayList<String>();
@@ -50,6 +59,24 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         txt_t1=(TextView) findViewById(R.id.T1);
         txt_t2=(TextView) findViewById(R.id.T2);
+        date = (TextView) findViewById(R.id.fix_date);
+        time = (TextView) findViewById(R.id.fix_time);
+        Done = (Button) findViewById(R.id.btn_done);
+        fixtureteamlist = (ListView) findViewById(R.id.fixturelist);
+
+
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Time();
+            }
+        });
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date();
+            }
+        });
         txt_t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,12 +89,16 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                 txt_teamshow2();
             }
         });
-        fixtureteamlist = (ListView) findViewById(R.id.fixturelist);
+        Done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Finalise();
+            }
+        });
+
 
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
-
-        final FixtureListView fixtureadapter = new FixtureListView(this, team1,team2, DateTime,imgid1,imgid2);
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -113,25 +144,20 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
     }
     public void txt_teamshow1() {
        // onStart();
+        fixtureadapter = new League_Add_Fixture_Adapter(this, team1, imgid1,imgid2);
         final Dialog p = new Dialog(this);
-        p.setTitle("txt_Team");
-        p.setContentView(R.layout.leaguefixture);
-        fixtureteamlist = (ListView) p.findViewById(R.id.fixturelist);
+      //  p.setTitle("txt_Team");
+        p.setContentView(R.layout.activity_team);
+        fixtureteamlist = (ListView) p.findViewById(R.id.list);
+        fixtureteamlist.setAdapter(fixtureadapter);
         fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
-                if (position == 0) {
-                    txt_t1.setText(position);
-                    p.dismiss();
-                } else if (position == 1) {
-                    txt_t1.setText(position);
-                    p.dismiss();
-                } else if (position == 2) {
-                    txt_t1.setText(position);
-                    p.dismiss();
-                }
+
+                txt_t1.setText(team1.get(position));
+                p.dismiss();
 
             }
         });
@@ -139,29 +165,89 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
     }
     public void txt_teamshow2() {
      //   onStart();
+        fixtureadapter = new League_Add_Fixture_Adapter(this, team2, imgid1,imgid2);
         final Dialog p = new Dialog(this);
-        p.setTitle("txt_Team");
-        p.setContentView(R.layout.leaguefixture);
+        //  p.setTitle("txt_Team");
+        p.setContentView(R.layout.activity_team);
+        fixtureteamlist = (ListView) p.findViewById(R.id.list);
+        fixtureteamlist.setAdapter(fixtureadapter);
         fixtureteamlist.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
-                if (position == 0) {
-                    txt_t2.setText(position);
-                    p.dismiss();
-                } else if (position == 1) {
-                    txt_t2.setText(position);
-                    p.dismiss();
-                } else if (position == 2) {
-                    txt_t2.setText(position);
-                    p.dismiss();
-                }
+
+                txt_t2.setText(team2.get(position));
+                p.dismiss();
 
             }
         });
-
         p.show();
+    }
+    public void Date(){
+        final Calendar c = Calendar.getInstance();
+        mYear  = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay   = c.get(Calendar.DAY_OF_MONTH);
+        //launch datepicker modal
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                      //  Log.d(APIContanst.LOG_APP, dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                      date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
+    }
+    public void Time(){
+        final Calendar c = Calendar.getInstance();
+        mHour            = c.get(Calendar.HOUR_OF_DAY);
+        mMinute          = c.get(Calendar.MINUTE);
+        //launch timepicker modal
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                       // Log.d(APIContanst.LOG_APP, "TIME SELECTED "+hourOfDay + "-" + minute + "-");
+                        if(hourOfDay>12){
+                            hourOfDay = hourOfDay-12;
+                            time.setText(hourOfDay + ":" + minute +" pm");
+                        }
+                        else if(hourOfDay==0){
+                            // hourOfDay = hourOfDay-12;
+                            time.setText("12" + ":" + minute +" am");
+                        }
+                        else if(hourOfDay <12){
+                            // hourOfDay = hourOfDay-12;
+                            time.setText(hourOfDay + ":" + minute +" am");
+                        }
+
+                    }
+                }, mHour, mMinute, false);
+        timePickerDialog.show();
+    }
+    public void Finalise(){
+        if(!txt_t1.getText().equals("Team 1") && !txt_t2.getText().equals("Team 2")) {
+            if (!txt_t1.getText().equals(txt_t2.getText())) {
+                if (!date.getText().equals("Date")) {
+                    if (!time.getText().equals("Time")) {
+
+                        Toast.makeText(this, "FINE!!!", Toast.LENGTH_SHORT).show();
+                        // SEND DATA TO DB
+
+                    } else {
+                        Toast.makeText(this, "Set Time for Fixture", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Set Date for Fixture", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Select Separate Teams", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(this, "Select Teams Please", Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected void onStart() {
