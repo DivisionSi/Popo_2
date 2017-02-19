@@ -51,7 +51,7 @@ public class League_Res_Fix extends AppCompatActivity {
         final String Team2 = bundle.getString("t2");
 
         final TextView T1 = (TextView) findViewById(R.id.team2);
-        TextView  T2 = (TextView) findViewById(R.id.team1);
+        final TextView  T2 = (TextView) findViewById(R.id.team1);
         T1.setText(Team1);
         T2.setText(Team2);
         Total_Goals =0;

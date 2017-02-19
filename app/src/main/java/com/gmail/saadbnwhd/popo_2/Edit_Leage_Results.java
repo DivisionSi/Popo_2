@@ -3,9 +3,9 @@ package com.gmail.saadbnwhd.popo_2;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import static android.view.View.INVISIBLE;
 
-public class Results_Teams extends AppCompatActivity {
+public class Edit_Leage_Results extends AppCompatActivity {
     ListView list;
     FloatingActionButton fb;
     Firebase ref;
@@ -63,24 +63,24 @@ public class Results_Teams extends AppCompatActivity {
         ProgressBar wait = (ProgressBar) findViewById(R.id.wait);
         wait.setVisibility(INVISIBLE);
 
-        Firebase.setAndroidContext(Results_Teams.this);  //Setting up Firebase
+        Firebase.setAndroidContext(Edit_Leage_Results.this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
         list = (ListView) findViewById(R.id.list);
         fb = (FloatingActionButton) findViewById(R.id.fab);
         StartUp();
         // list.setAdapter(adapter);
-     /*   list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-               *//* String Slecteditem = team1.get(+position);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*//*
+               /* String Slecteditem = team1.get(+position);
+                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
 
 
-                Intent i=new Intent(getApplicationContext(),League_Res_Fix.class);
+                Intent i=new Intent(Edit_Leage_Results.this,League_Res_Fix.class);
                 i.putExtra("t1",team1.get(position));
                 i.putExtra("t2",team2.get(position));
 
@@ -91,15 +91,9 @@ public class Results_Teams extends AppCompatActivity {
                 startActivity(i);
 
             }
-        });*/
-
-        fb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Results_Teams.this, Edit_Leage_Results.class);
-                startActivity(i);
-            }
         });
+
+      fb.setVisibility(INVISIBLE);
     }
     @Override
     public void finish() {
