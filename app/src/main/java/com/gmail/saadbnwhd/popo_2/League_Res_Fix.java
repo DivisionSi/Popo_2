@@ -200,6 +200,7 @@ public class League_Res_Fix extends AppCompatActivity {
             public void onClick(View v) {
 
                 fixtureGoals1=Integer.parseInt(goals1.getText().toString());
+
                 fixtureGoals2=Integer.parseInt(goals2.getText().toString());
 
                 //Appearances Increment
