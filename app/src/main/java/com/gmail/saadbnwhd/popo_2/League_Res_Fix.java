@@ -14,7 +14,9 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -26,6 +28,8 @@ public class League_Res_Fix extends AppCompatActivity {
     team_List_Adap adap1,adap2;
     Integer Total_Goals;
 
+     String Team1;
+     String Team2;
     Button done;
     Firebase ref;
     EditText goals1,goals2;
@@ -47,8 +51,8 @@ public class League_Res_Fix extends AppCompatActivity {
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
         Bundle bundle=getIntent().getExtras();
-        final String Team1 = bundle.getString("t1");
-        final String Team2 = bundle.getString("t2");
+        Team1 = bundle.getString("t1");
+        Team2 = bundle.getString("t2");
 
         final TextView T1 = (TextView) findViewById(R.id.team2);
         TextView  T2 = (TextView) findViewById(R.id.team1);
@@ -56,6 +60,7 @@ public class League_Res_Fix extends AppCompatActivity {
         T2.setText(Team2);
         Total_Goals =0;
 
+        TEAM1 = (ListView) findViewById(R.id.Fst_Team);
         TEAM1 = (ListView) findViewById(R.id.Fst_Team);
         TEAM2 = (ListView) findViewById(R.id.Snd_Team);
         startTEAM1 = new String[]{"","No Players Added"};
@@ -199,6 +204,8 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(League_Res_Fix.this,T_Pl_1.get(0),Toast.LENGTH_SHORT).show();
+
                 fixtureGoals1=Integer.parseInt(goals1.getText().toString());
                 fixtureGoals2=Integer.parseInt(goals2.getText().toString());
 
@@ -256,13 +263,74 @@ public class League_Res_Fix extends AppCompatActivity {
         T_Pl_2 = new ArrayList<String>();
         G1 = new ArrayList<Integer>();
         G2 = new ArrayList<Integer>();
-        for(int i = 0; i <15; i++)
-        {
-            T_Pl_1.add("T1Player "+String.valueOf(i));
-            G1.add(0);
-            T_Pl_2.add("T2Player "+String.valueOf(i));
-            G2.add(0);
-        }
+
+        Firebase playersRef1=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League").child("Teams").child(Team1).child("Players");
+        Firebase playersRef2=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League").child("Teams").child(Team2).child("Players");
+
+        playersRef1.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                T_Pl_1.add(dataSnapshot.child("Name").getValue().toString());
+                G1.add(0);
+                //T_Pl_1.notify();
+                adap1.notifyDataSetChanged();
+                Toast.makeText(getApplicationContext(),dataSnapshot.child("Name").getValue().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        playersRef2.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                T_Pl_2.add(dataSnapshot.child("Name").getValue().toString());
+                G2.add(0);
+                adap1.notifyDataSetChanged();
+                //T_Pl_2.notify();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
+
     }
 
     public void Assign_goals1(final int position){
