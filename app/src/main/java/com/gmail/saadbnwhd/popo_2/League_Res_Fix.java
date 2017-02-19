@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,8 +23,6 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class League_Res_Fix extends AppCompatActivity {
     team_List_Adap adap1,adap2;
@@ -45,7 +42,6 @@ public class League_Res_Fix extends AppCompatActivity {
     Integer int_goals1,int_apps1,int_won1,int_lost1,int_drawn1,
             int_goals2,int_apps2,int_won2,int_lost2,int_drawn2,
             fixtureGoals1,fixtureGoals2;
-    Map<String,Integer> playerGoals1,playerApps1,playerGoals2,playerApps2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +134,7 @@ public class League_Res_Fix extends AppCompatActivity {
                         G2_TEMP = new ArrayList<Integer>();
                         T_Pl_2_temp.add("Total Goals");
                         G2_TEMP.add(Total_Goals);
-                        for(int i = 0; i <G2.size(); i++) {
+                        for(int i = 0; i <G1.size(); i++) {
                             if(G2.get(i) >0){
                                 T_Pl_2_temp .add(T_Pl_2.get(i));
                                 G2_TEMP.add(G2.get(i));
@@ -203,75 +199,6 @@ public class League_Res_Fix extends AppCompatActivity {
             }
         });
 
-        final Firebase playersRef=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League").child("Teams");
-
-
-        playerApps1=new HashMap<>();
-        playerGoals1=new HashMap<>();
-
-        playersRef.child(Team1).child("Players").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                playerApps1.put(dataSnapshot.getKey(),Integer.parseInt(dataSnapshot.child("Apps").getValue().toString()));
-                playerGoals1.put(dataSnapshot.getKey(),(Integer.parseInt(dataSnapshot.child("Goals").getValue().toString())));
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-        playerApps2=new HashMap<>();
-        playerGoals2=new HashMap<>();
-        playersRef.child(Team2).child("Players").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-
-                playerApps2.put(dataSnapshot.getKey().toString(),Integer.parseInt(dataSnapshot.child("Apps").getValue().toString()));
-                playerGoals2.put(dataSnapshot.getKey().toString(),Integer.parseInt(dataSnapshot.child("Goals").getValue().toString()));
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
         done=(Button) findViewById(R.id.result_done);
         done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,8 +206,8 @@ public class League_Res_Fix extends AppCompatActivity {
 
                 Toast.makeText(League_Res_Fix.this,T_Pl_1.get(0),Toast.LENGTH_SHORT).show();
 
-                fixtureGoals1=Integer.parseInt(G1_TEMP.get(0).toString());
-                fixtureGoals2=Integer.parseInt(G2_TEMP.get(0).toString());
+                fixtureGoals1=Integer.parseInt(goals1.getText().toString());
+                fixtureGoals2=Integer.parseInt(goals2.getText().toString());
 
                 //Appearances Increment
                 int_apps1++;
@@ -290,10 +217,10 @@ public class League_Res_Fix extends AppCompatActivity {
                 team2_stats.child("Apps").setValue(Integer.toString(int_apps2));
 
                 //Goals Update
-                int_goals1=int_goals1+Integer.parseInt(G1_TEMP.get(0).toString());
+                int_goals1=int_goals1+Integer.parseInt(goals1.getText().toString());
                 team1_stats.child("Goals").setValue(Integer.toString(int_goals1));
 
-                int_goals2=int_goals2+Integer.parseInt(G2_TEMP.get(0).toString());
+                int_goals2=int_goals2+Integer.parseInt(goals2.getText().toString());
                 team2_stats.child("Goals").setValue(Integer.toString(int_goals2));
 
                 if(fixtureGoals1>fixtureGoals2)
@@ -322,68 +249,6 @@ public class League_Res_Fix extends AppCompatActivity {
                     int_drawn2++;
                     team2_stats.child("Drawn").setValue(Integer.toString(int_drawn2));
 
-
-                }
-
-                Firebase resultsRef=new Firebase ("https://poponfa-8a11a.firebaseio.com/").child("League").child("Results");
-                String key=resultsRef.push().getKey();
-
-                // Updating Results Node in Database
-                // For team 1
-                for (int i=0;i<T_Pl_1_temp.size();i++)
-                {
-                    resultsRef.child(key).child(Team1).child(T_Pl_1_temp.get(i)).setValue(G1_TEMP.get(i));
-                }
-
-                // For team2
-                for (int i=0;i<T_Pl_2_temp.size();i++)
-                {
-                    resultsRef.child(key).child(Team2).child(T_Pl_2_temp.get(i)).setValue(G2_TEMP.get(i));
-                }
-
-
-
-
-                //Updating Player Stats in Database
-                //For team1's players
-
-                for (int i=1;i<T_Pl_1_temp.size();i++)
-                {
-                    Integer temp_apps,temp_goals;
-
-                    temp_apps=playerApps1.get(T_Pl_1_temp.get(i));
-                    temp_apps++;
-
-                    temp_goals= playerGoals1.get(T_Pl_1_temp.get(i));
-                    temp_goals=temp_goals+
-                            G1_TEMP.get(i);
-
-
-                    playersRef.child(Team1).child("Players")
-                            .child(T_Pl_1_temp.get(i))
-                            .child("Goals").setValue(temp_goals);
-
-                    playersRef.child(Team1).child("Players")
-                            .child(T_Pl_1_temp.get(i)).child("Apps").setValue(temp_apps);
-
-                }
-
-                //For team2's players
-
-                for (int i=1;i<T_Pl_2_temp.size();i++)
-                {
-                    Integer temp_apps2,temp_goals2;
-
-                    temp_apps2=playerApps2.get(T_Pl_2_temp.get(i));
-                    temp_apps2++;
-
-                    temp_goals2= playerGoals2.get(T_Pl_2_temp.get(i));
-                    temp_goals2=temp_goals2+
-                            G1_TEMP.get(i);
-
-
-                    playersRef.child(Team2).child("Players").child(T_Pl_2_temp.get(i)).child("Goals").setValue(temp_goals2);
-                    playersRef.child(Team2).child("Players").child(T_Pl_2_temp.get(i)).child("Apps").setValue(temp_apps2);
 
                 }
 
