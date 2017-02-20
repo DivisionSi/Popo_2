@@ -59,7 +59,7 @@ public class League_Table extends AppCompatActivity {
         team_count=0;
 
 
-        Firebase StatsRef; //Reference to Teams node
+        final Firebase StatsRef; //Reference to Teams node
         StatsRef=ref.child("League").child("Stats");  //Traversing to Teams
 
         final Map<Integer,Map<String,Integer>> tableMap= new HashMap<>();
@@ -98,6 +98,7 @@ public class League_Table extends AppCompatActivity {
                 int_points=(int_won*3)+(int_drawn);
                 points.add(Integer.toString(int_points));
 
+                ref.child("League").child("Stats").child(dataSnapshot.getKey()).child("Pts").setValue(-int_points);
 
                 table_adapter.notifyDataSetChanged();
                 count++;
@@ -123,35 +124,6 @@ public class League_Table extends AppCompatActivity {
 
             }
 
-        });
-
-        Firebase testRef=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League").child("Stats");
-
-        testRef.orderByChild("Pts").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
         });
 
 

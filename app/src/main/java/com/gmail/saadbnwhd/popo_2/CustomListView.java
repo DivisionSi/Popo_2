@@ -34,7 +34,7 @@ public class CustomListView extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.listview, null, true);
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.team1);
+        TextView txtTitle = (TextView) rowView.findViewById(R.id.res_team1);
         TextView txtlocation = (TextView) rowView.findViewById(R.id.location);
 
         txtTitle.setText(teams.get(position));

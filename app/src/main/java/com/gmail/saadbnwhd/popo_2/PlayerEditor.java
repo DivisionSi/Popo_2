@@ -149,8 +149,8 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                     testmap.put("Jersey Number",jersey);
                     testmap.put("DoB",dob);
                     testmap.put("Age Group",AgeGroup);
-
-
+                    testmap.put("Goals",String.valueOf(0));
+                    testmap.put("Apps",String.valueOf(0));
 
                     ref = ref.child(txt_name.getText().toString());
                     ref.setValue(testmap);
