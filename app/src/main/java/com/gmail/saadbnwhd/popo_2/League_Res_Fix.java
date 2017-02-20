@@ -31,8 +31,7 @@ public class League_Res_Fix extends AppCompatActivity {
     team_List_Adap adap1,adap2;
     Integer Total_Goals;
 
-    String Team1;
-    String Team2;
+    String Team1,Team2,Datetime;
     Button done;
     Firebase ref;
     EditText goals1,goals2;
@@ -57,6 +56,7 @@ public class League_Res_Fix extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         Team1 = bundle.getString("t1");
         Team2 = bundle.getString("t2");
+        Datetime=bundle.getString("DateTime");
 
         final TextView T1 = (TextView) findViewById(R.id.team2);
         final TextView  T2 = (TextView) findViewById(R.id.team1);
@@ -283,10 +283,6 @@ public class League_Res_Fix extends AppCompatActivity {
                         fixtureGoals1=Integer.parseInt(G1_TEMP.get(0).toString());
                 fixtureGoals2=Integer.parseInt(G2_TEMP.get(0).toString());
 
-                fixtureGoals1=Integer.parseInt(goals1.getText().toString());
-
-                fixtureGoals2=Integer.parseInt(goals2.getText().toString());
-
 
                 //Appearances Increment
                 int_apps1++;
@@ -334,17 +330,24 @@ public class League_Res_Fix extends AppCompatActivity {
                 Firebase resultsRef=new Firebase ("https://poponfa-8a11a.firebaseio.com/").child("League").child("Results");
                 String key=resultsRef.push().getKey();
 
+                resultsRef.child(key).child("DateTime").setValue(Datetime);
+
+                resultsRef.child(key).child("Team1").child("Name").setValue(Team1);
+                resultsRef.child(key).child("Team2").child("Name").setValue(Team2);
+
+                resultsRef.child(key).child("Team1").child("Total Goals").setValue(G1_TEMP.get(0));
+                resultsRef.child(key).child("Team2").child("Total Goals").setValue(G2_TEMP.get(0));
                 // Updating Results Node in Database
                 // For team 1
-                for (int i=0;i<T_Pl_1_temp.size();i++)
+                for (int i=1;i<T_Pl_1_temp.size();i++)
                 {
-                    resultsRef.child(key).child(Team1).child(T_Pl_1_temp.get(i)).setValue(G1_TEMP.get(i));
+                    resultsRef.child(key).child("Team1").child("Scorers").child(T_Pl_1_temp.get(i)).setValue(G1_TEMP.get(i));
                 }
 
                 // For team2
-                for (int i=0;i<T_Pl_2_temp.size();i++)
+                for (int i=1;i<T_Pl_2_temp.size();i++)
                 {
-                    resultsRef.child(key).child(Team2).child(T_Pl_2_temp.get(i)).setValue(G2_TEMP.get(i));
+                    resultsRef.child(key).child("Team2").child("Scorers").child(T_Pl_2_temp.get(i)).setValue(G2_TEMP.get(i));
                 }
 
 

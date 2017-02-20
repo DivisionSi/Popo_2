@@ -20,11 +20,13 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 
 import static android.view.View.INVISIBLE;
+import static java.lang.Thread.sleep;
 
 public class Results_Teams extends AppCompatActivity {
     ListView list;
     FloatingActionButton fb;
     Firebase ref;
+    String totalGoals1,totalGoals2;
 
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
@@ -140,7 +142,7 @@ public class Results_Teams extends AppCompatActivity {
 
     public void StartUp(){
         Firebase FixturesRef; //Reference to Teams node
-        FixturesRef=ref.child("League").child("Fixtures");  //Traversing to Fixtures
+        FixturesRef=ref.child("League").child("Results");  //Traversing to Fixtures
 
         final League_Result_Adapter adapter = new League_Result_Adapter(this, team1,team2,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
@@ -149,11 +151,15 @@ public class Results_Teams extends AppCompatActivity {
         FixturesRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                // Map<String,String> map=dataSnapshot.getValue(Map.class);
-                //      Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
-                team1.add(dataSnapshot.child("Team1").getValue().toString());
-                team2.add(dataSnapshot.child("Team2").getValue().toString());
-                DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
+
+
+                team1.add(dataSnapshot.child("Team1").child("Name").getValue().toString() + "  " +
+                        dataSnapshot.child("Team1").child("Total Goals").getValue().toString());
+
+                team2.add(" " + dataSnapshot.child("Team2").child("Total Goals").getValue().toString() + "  " +
+                        dataSnapshot.child("Team2").child("Name").getValue().toString());
+
+                DateTime.add(dataSnapshot.child("DateTime").getValue().toString());
 
                 adapter.notifyDataSetChanged();
             }

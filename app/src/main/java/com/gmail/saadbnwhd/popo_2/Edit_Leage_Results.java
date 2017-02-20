@@ -83,6 +83,8 @@ public class Edit_Leage_Results extends AppCompatActivity {
                 Intent i=new Intent(Edit_Leage_Results.this,League_Res_Fix.class);
                 i.putExtra("t1",team1.get(position));
                 i.putExtra("t2",team2.get(position));
+                i.putExtra("DateTime",DateTime.get(position));
+
 
                 team1.clear();
                 team2.clear();
