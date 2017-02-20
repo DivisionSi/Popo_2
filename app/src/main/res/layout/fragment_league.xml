@@ -55,6 +55,7 @@ android:background="@drawable/pl_league"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:textSize="20sp"
+
         />
 
 </RelativeLayout>

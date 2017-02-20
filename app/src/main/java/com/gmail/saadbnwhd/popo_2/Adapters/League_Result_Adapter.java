@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.Adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
 
@@ -42,7 +44,7 @@ public class League_Result_Adapter extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.league_result, null, true);
 
-        TextView txtTeam1 = (TextView) rowView.findViewById(R.id.res_team1);
+        TextView txtTeam1 = (TextView) rowView.findViewById(R.id.team1);
         ImageView icon = (ImageView) rowView.findViewById(R.id.icon);
 
         TextView txtTeam2 = (TextView) rowView.findViewById(R.id.res_team2);

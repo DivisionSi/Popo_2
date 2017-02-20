@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -12,22 +12,19 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.League_Result_Adapter;
+import com.gmail.saadbnwhd.popo_2.League_Res_Fix;
+import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
 
 import static android.view.View.INVISIBLE;
-import static java.lang.Thread.sleep;
 
-public class Results_Teams extends AppCompatActivity {
+public class POPO_Results_Edit extends AppCompatActivity {
     ListView list;
     FloatingActionButton fb;
     Firebase ref;
-    String totalGoals1,totalGoals2;
 
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
@@ -54,6 +51,12 @@ public class Results_Teams extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results__teams);
+
+        Bundle bundle=getIntent().getExtras();
+        team1 = bundle.getStringArrayList("TEAM1");
+        team2 = bundle.getStringArrayList("TEAM2");
+        DateTime=bundle.getStringArrayList("DateTime");
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("RESULTS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -66,26 +69,28 @@ public class Results_Teams extends AppCompatActivity {
         ProgressBar wait = (ProgressBar) findViewById(R.id.wait);
         wait.setVisibility(INVISIBLE);
 
-        Firebase.setAndroidContext(Results_Teams.this);  //Setting up Firebase
-        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+      /*  Firebase.setAndroidContext(POPO_Results_Edit.this);  //Setting up Firebase
+        ref = new Firebase("https://poponfa-8a11a.firebaseio.com/");*/
 
         list = (ListView) findViewById(R.id.list);
         fb = (FloatingActionButton) findViewById(R.id.fab);
-        StartUp();
+            StartUp();
         // list.setAdapter(adapter);
-     /*   list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-               *//* String Slecteditem = team1.get(+position);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*//*
+               /* String Slecteditem = team1.get(+position);
+                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
 
 
-                Intent i=new Intent(getApplicationContext(),League_Res_Fix.class);
-                i.putExtra("t1",team1.get(position));
-                i.putExtra("t2",team2.get(position));
+                Intent i = new Intent(POPO_Results_Edit.this, League_Res_Fix.class);
+                i.putExtra("t1", team1.get(position));
+                i.putExtra("t2", team2.get(position));
+           //     i.putExtra("DateTime", DateTime.get(position));
+
 
                 team1.clear();
                 team2.clear();
@@ -94,16 +99,11 @@ public class Results_Teams extends AppCompatActivity {
                 startActivity(i);
 
             }
-        });*/
-
-        fb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Results_Teams.this, Edit_Leage_Results.class);
-                startActivity(i);
-            }
         });
+
+        fb.setVisibility(INVISIBLE);
     }
+
     @Override
     public void finish() {
         super.finish();
@@ -129,63 +129,26 @@ public class Results_Teams extends AppCompatActivity {
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
+
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
+
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
 
     }
 
-    public void StartUp(){
+    public void StartUp() {
         Firebase FixturesRef; //Reference to Teams node
-        FixturesRef=ref.child("League").child("Results");  //Traversing to Fixtures
+     //   FixturesRef = ref.child("League").child("Fixtures");  //Traversing to Fixtures
 
-        final League_Result_Adapter adapter = new League_Result_Adapter(this, team1,team2,DateTime,imgid1,imgid2);
+        final League_Result_Adapter adapter = new League_Result_Adapter(this, team1, team2, DateTime, imgid1, imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
-        FixturesRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-
-                team1.add(dataSnapshot.child("Team1").child("Name").getValue().toString() + "  " +
-                        dataSnapshot.child("Team1").child("Total Goals").getValue().toString());
-
-                team2.add(" " + dataSnapshot.child("Team2").child("Total Goals").getValue().toString() + "  " +
-                        dataSnapshot.child("Team2").child("Name").getValue().toString());
-
-                DateTime.add(dataSnapshot.child("DateTime").getValue().toString());
-
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
     }
-
 }

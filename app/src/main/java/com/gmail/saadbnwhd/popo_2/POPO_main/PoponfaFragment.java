@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ViewFlipper;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;

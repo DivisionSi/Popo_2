@@ -1,7 +1,6 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,13 +8,19 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
+
+import com.gmail.saadbnwhd.popo_2.POPO_main.FixturesFragment;
+import com.gmail.saadbnwhd.popo_2.POPO_main.HomeFragment;
+import com.gmail.saadbnwhd.popo_2.POPO_main.LeagueFragment;
+import com.gmail.saadbnwhd.popo_2.POPO_main.MoreFragment;
+import com.gmail.saadbnwhd.popo_2.POPO_main.NewsFragment;
+import com.gmail.saadbnwhd.popo_2.POPO_main.PoponfaFragment;
+import com.gmail.saadbnwhd.popo_2.POPO_main.ResultsFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.POPO_main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.gmail.saadbnwhd.popo_2.League_Table;
+import com.gmail.saadbnwhd.popo_2.R;
+import com.gmail.saadbnwhd.popo_2.Results_Teams;
 
 
 /**

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/newclr1"
-    tools:context="com.gmail.saadbnwhd.popo_2.FixturesFragment"
+    tools:context="com.gmail.saadbnwhd.popo_2.POPO_main.FixturesFragment"
     android:paddingTop="2dp">
 
     <android.support.design.widget.FloatingActionButton

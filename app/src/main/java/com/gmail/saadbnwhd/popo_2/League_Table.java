@@ -1,7 +1,5 @@
 package com.gmail.saadbnwhd.popo_2;
 
-import android.app.Activity;
-import android.app.IntentService;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -10,13 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import com.gmail.saadbnwhd.popo_2.Adapters.Table_adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

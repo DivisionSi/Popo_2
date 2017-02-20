@@ -29,7 +29,7 @@
             android:padding="13dp"
             android:background="@color/White" />
         <TextView
-            android:id="@+id/res_team1"
+            android:id="@+id/team1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team 1"
@@ -56,7 +56,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/res_team1" />
+            android:layout_toEndOf="@+id/team1" />
 
         <ImageView
             android:id="@+id/icon2"
