@@ -6,7 +6,146 @@
     android:background="@color/newclr"
     android:paddingTop="20dp"
     tools:context="com.gmail.saadbnwhd.popo_2.LeaguePlayer_Stats">
-<ImageView
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/player_position"
+        android:background="#ffffff">
+
+        <EditText
+            android:paddingRight="3dp"
+            android:id="@+id/txt_apps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apps"
+            android:textSize="19sp"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:ems="7"
+            android:textAlignment="textEnd"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/age_group"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:paddingLeft="3dp"
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appearances"
+            android:textSize="19sp"
+            android:textColor="@color/grey"
+            android:background="@color/White"
+            android:ems="7"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/player_txt4"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_marginTop="1dp"
+            android:paddingRight="3dp"
+            android:layout_below="@+id/player_txt1"
+            android:id="@+id/age_group"
+            android:layout_toRightOf="@+id/player_txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age Group"
+            android:textSize="19sp"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:ems="7"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="textEnd"
+            android:textIsSelectable="false" />
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/player_position"
+            android:id="@+id/player_txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth"
+            android:textSize="19sp"
+            android:textColor="@color/grey"
+            android:background="@color/White"
+            android:ems="7"
+            android:paddingLeft="3dp"
+            android:textIsSelectable="false"
+            android:enabled="false" />
+
+        <EditText
+            android:layout_marginTop="1dp"
+            android:paddingLeft="3dp"
+            android:layout_below="@+id/player_txt1"
+            android:id="@+id/player_txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age Group"
+            android:textSize="19sp"
+            android:textColor="@color/grey"
+            android:background="@color/White"
+            android:ems="7"
+            android:textIsSelectable="false"/>
+
+        <EditText
+            android:text="21/4/1995"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/player_position"
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/player_txt1"
+            android:textSize="19sp"
+            android:textAlignment="textEnd"
+            android:paddingRight="3dp"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:ems="7"
+            android:layout_alignParentEnd="true"
+            android:textIsSelectable="false"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove Player"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"/>
+
+        <EditText
+            android:paddingLeft="3dp"
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goals"
+            android:textSize="19sp"
+            android:textColor="@color/grey"
+            android:background="@color/White"
+            android:ems="7"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/editText3"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:paddingRight="3dp"
+            android:id="@+id/txt_goals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="txt_goals"
+            android:textSize="19sp"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:ems="7"
+            android:textAlignment="textEnd"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/txt_apps"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <ImageView
     android:id="@+id/player_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -59,91 +198,6 @@
         android:layout_width="200dp"
         android:textAlignment="center"
         android:layout_height="wrap_content" />
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/player_position"
-        android:background="@color/lightgrey"/>
-    <EditText
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/player_position"
-        android:id="@+id/player_txt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date of Birth"
-        android:textSize="19sp"
-        android:textColor="@color/grey"
-        android:background="@color/White"
-        android:ems="7"
-        android:paddingLeft="3dp"
-        android:textIsSelectable="false"
-        android:enabled="false" />
 
-
-    <EditText
-        android:layout_marginTop="1dp"
-        android:paddingLeft="3dp"
-        android:layout_below="@+id/player_txt1"
-        android:id="@+id/player_txt4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age Group"
-        android:textSize="19sp"
-        android:textColor="@color/grey"
-        android:background="@color/White"
-        android:ems="7"
-        android:textIsSelectable="false"/>
-
-    <EditText
-        android:text="21/4/1995"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/player_position"
-        android:id="@+id/dob"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/player_txt1"
-        android:textSize="19sp"
-        android:textAlignment="textEnd"
-        android:paddingRight="3dp"
-        android:textColor="@color/Black"
-        android:background="@color/White"
-        android:ems="7"
-        android:layout_alignParentEnd="true"
-        android:textIsSelectable="false"
-        android:enabled="false" />
-
-    <EditText
-        android:layout_marginTop="1dp"
-        android:paddingRight="3dp"
-        android:layout_below="@+id/player_txt1"
-        android:id="@+id/age_group"
-        android:layout_toRightOf="@+id/player_txt4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age Group"
-        android:textSize="19sp"
-        android:textColor="@color/Black"
-        android:background="@color/White"
-        android:ems="7"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="textEnd"
-        android:textIsSelectable="false"/>
-
-    <ImageView
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/player_txt4"
-        android:background="@color/White"/>
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove Player"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="20dp"/>
 
 </RelativeLayout>

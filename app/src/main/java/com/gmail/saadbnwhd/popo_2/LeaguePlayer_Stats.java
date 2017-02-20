@@ -43,6 +43,8 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         team.setText(club);
         final TextView dob=(TextView) findViewById(R.id.dob);
         final TextView age_group=(TextView) findViewById(R.id.age_group);
+        final TextView txt_apps=(TextView) findViewById(R.id.txt_apps);
+        final TextView txt_goals=(TextView) findViewById(R.id.txt_goals);
 
         Firebase.setAndroidContext(this);
         Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
@@ -53,6 +55,8 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dob.setText(dataSnapshot.child("DoB").getValue().toString());
                 age_group.setText(dataSnapshot.child("Age Group").getValue().toString());
+                txt_apps.setText(dataSnapshot.child("Apps").getValue().toString());
+                txt_goals.setText(dataSnapshot.child("Goals").getValue().toString());
 
             }
 
