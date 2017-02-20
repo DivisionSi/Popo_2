@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -66,7 +67,8 @@ public class League_Table extends AppCompatActivity {
         tablePosition=0;
 
 
-        StatsRef.addChildEventListener(new ChildEventListener() {
+
+        StatsRef.orderByChild("Pts").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 //Map
@@ -78,7 +80,7 @@ public class League_Table extends AppCompatActivity {
                 tableMap.put(tablePosition,teamMap);
                 tablePosition++;
 
-
+//                Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_SHORT).show();
                 //----------
 
                 position.add(Integer.toString(count));
@@ -88,11 +90,14 @@ public class League_Table extends AppCompatActivity {
                 lose.add(dataSnapshot.child("Lost").getValue().toString());
                 win.add(dataSnapshot.child("Won").getValue().toString());
 
+
+
                 int_won=Integer.parseInt(dataSnapshot.child("Won").getValue().toString());
                 int_drawn=Integer.parseInt(dataSnapshot.child("Drawn").getValue().toString());
 
                 int_points=(int_won*3)+(int_drawn);
                 points.add(Integer.toString(int_points));
+
 
                 table_adapter.notifyDataSetChanged();
                 count++;
@@ -119,6 +124,36 @@ public class League_Table extends AppCompatActivity {
             }
 
         });
+
+        Firebase testRef=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League").child("Stats");
+
+        testRef.orderByChild("Pts").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Toast.makeText(getApplicationContext(),dataSnapshot.getKey().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
 
     }
     @Override

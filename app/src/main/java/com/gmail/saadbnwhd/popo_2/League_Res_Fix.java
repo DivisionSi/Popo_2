@@ -41,6 +41,7 @@ public class League_Res_Fix extends AppCompatActivity {
     ArrayList<String> T_Pl_2,T_Pl_2_temp;
     String[] startTEAM1;
     String[] startTEAM2;
+    Long int_pts1,int_pts2;
     Integer int_goals1,int_apps1,int_won1,int_lost1,int_drawn1,
             int_goals2,int_apps2,int_won2,int_lost2,int_drawn2,
             fixtureGoals1,fixtureGoals2;
@@ -177,6 +178,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 int_won1=Integer.parseInt(dataSnapshot.child("Won").getValue().toString());
                 int_drawn1=Integer.parseInt(dataSnapshot.child("Drawn").getValue().toString());
                 int_lost1=Integer.parseInt(dataSnapshot.child("Lost").getValue().toString());
+                int_pts1=(Long) dataSnapshot.child("Pts").getValue();
             }
 
             @Override
@@ -195,6 +197,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 int_won2=Integer.parseInt(dataSnapshot.child("Won").getValue().toString());
                 int_drawn2=Integer.parseInt(dataSnapshot.child("Drawn").getValue().toString());
                 int_lost2=Integer.parseInt(dataSnapshot.child("Lost").getValue().toString());
+                int_pts2=(Long) dataSnapshot.child("Pts").getValue();
             }
 
             @Override
@@ -300,6 +303,9 @@ public class League_Res_Fix extends AppCompatActivity {
 
                 if(fixtureGoals1>fixtureGoals2)
                 {
+                    int_pts1=int_pts1+3;
+                    team1_stats.child("Pts").setValue(int_pts1);
+
                     int_won1++;
                     team1_stats.child("Won").setValue(Integer.toString(int_won1));
 
@@ -308,6 +314,10 @@ public class League_Res_Fix extends AppCompatActivity {
                 }
                 else if (fixtureGoals1<fixtureGoals2)
                 {
+                    int_pts2=int_pts2+3;
+                    team2_stats.child("Pts").setValue(int_pts2);
+
+
                     int_won2++;
                     team2_stats.child("Won").setValue(Integer.toString(int_won2));
 
@@ -317,6 +327,11 @@ public class League_Res_Fix extends AppCompatActivity {
                 }
                 else
                 {
+                    int_pts1=int_pts1+1;
+                    team1_stats.child("Pts").setValue(int_pts1);
+                    int_pts2=int_pts2+1;
+                    team2_stats.child("Pts").setValue(int_pts2);
+
 
                     int_drawn1++;
                     team1_stats.child("Drawn").setValue(Integer.toString(int_drawn1));
