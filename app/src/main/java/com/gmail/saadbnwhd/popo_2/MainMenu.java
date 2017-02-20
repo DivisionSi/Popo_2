@@ -30,6 +30,7 @@ public class MainMenu extends AppCompatActivity {
             R.drawable.homeicon,
             R.drawable.playericon,
             R.drawable.newsicon,
+            R.drawable.newsicon,
             R.drawable.football1,
             R.drawable.leagueicon,
             R.drawable.playericon2,
@@ -89,11 +90,13 @@ public class MainMenu extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "Home");
         adapter.addFragment(new FixturesFragment(), "Fixtures");
+        adapter.addFragment(new ResultsFragment(), "Results");
        adapter.addFragment(new NewsFragment(), "News");
         adapter.addFragment(new PoponfaFragment(), "PopoNFA");
         adapter.addFragment(new LeagueFragment(), "League");
         adapter.addFragment(new PlayersFragment(), "Players Profile");
         adapter.addFragment(new MoreFragment(), "More");
+
         viewPager.setAdapter(adapter);
 
     }
@@ -107,6 +110,7 @@ public class MainMenu extends AppCompatActivity {
         tabLayout.getTabAt(4).setIcon(tabIcons[4]);
         tabLayout.getTabAt(5).setIcon(tabIcons[5]);
         tabLayout.getTabAt(6).setIcon(tabIcons[6]);
+        tabLayout.getTabAt(7).setIcon(tabIcons[7]);
         int tabIconColor = getResources().getColor((R.color.lightgrey));
         tabLayout.getTabAt(0).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(1).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
@@ -115,6 +119,7 @@ public class MainMenu extends AppCompatActivity {
         tabLayout.getTabAt(4).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(5).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(6).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(7).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
