@@ -26,7 +26,8 @@
             android:textAlignment="textEnd"
             android:textIsSelectable="false"
             android:layout_below="@+id/age_group"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:editable="false" />
 
         <EditText
             android:paddingLeft="3dp"
@@ -57,7 +58,8 @@
             android:ems="7"
             android:layout_alignParentEnd="true"
             android:textAlignment="textEnd"
-            android:textIsSelectable="false" />
+            android:textIsSelectable="false"
+            android:editable="false" />
 
         <EditText
             android:layout_marginTop="10dp"
@@ -104,7 +106,8 @@
             android:ems="7"
             android:layout_alignParentEnd="true"
             android:textIsSelectable="false"
-            android:enabled="false" />
+            android:enabled="false"
+            android:editable="false" />
 
         <Button
             android:id="@+id/delete"
@@ -142,7 +145,8 @@
             android:textAlignment="textEnd"
             android:textIsSelectable="false"
             android:layout_below="@+id/txt_apps"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:editable="false" />
     </RelativeLayout>
 
     <ImageView
