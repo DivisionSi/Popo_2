@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -70,6 +71,17 @@ public class Results_Teams extends AppCompatActivity {
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
         list = (ListView) findViewById(R.id.list);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i=new Intent(Results_Teams.this,GoalScorerPlayers.class);
+                i.putExtra("t1",team1.get(position));
+                i.putExtra("t2",team2.get(position));
+                i.putExtra("g1",totalGoals1);
+                i.putExtra("g2",totalGoals2);
+                startActivity(i);
+            }
+        });
         fb = (FloatingActionButton) findViewById(R.id.fab);
         StartUp();
         // list.setAdapter(adapter);

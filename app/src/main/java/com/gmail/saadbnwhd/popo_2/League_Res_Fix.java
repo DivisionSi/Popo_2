@@ -66,7 +66,6 @@ public class League_Res_Fix extends AppCompatActivity {
         Total_Goals =0;
 
         TEAM1 = (ListView) findViewById(R.id.Fst_Team);
-        TEAM1 = (ListView) findViewById(R.id.Fst_Team);
         TEAM2 = (ListView) findViewById(R.id.Snd_Team);
         startTEAM1 = new String[]{"","No Players Added"};
         startTEAM2 = new String[]{"","No Players Added"};
