@@ -100,7 +100,7 @@ public class Fixtures extends AppCompatActivity {
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
-        FixturesRef.addChildEventListener(new ChildEventListener() {
+        FixturesRef.orderByChild("TimeStamp").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
