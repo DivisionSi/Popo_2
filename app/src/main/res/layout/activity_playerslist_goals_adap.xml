@@ -27,7 +27,6 @@
         android:alpha="1"
         android:layout_centerInParent="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@id/scorer_name"
         android:textAlignment="textEnd"
         android:layout_marginRight="4dp"
         android:textColor="@color/Black"
