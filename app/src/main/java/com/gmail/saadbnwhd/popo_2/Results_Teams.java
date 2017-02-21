@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -33,6 +34,7 @@ public class Results_Teams extends AppCompatActivity {
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
     ArrayList<String> DateTime = new ArrayList<String>(); //String array for DateTime of Fixture
+    ArrayList<String> Keys=new ArrayList<>();
 
     Integer[] imgid1 = {
             R.drawable.logo2,
@@ -79,6 +81,8 @@ public class Results_Teams extends AppCompatActivity {
                 i.putExtra("t2",team2.get(position));
                 i.putExtra("g1",totalGoals1);
                 i.putExtra("g2",totalGoals2);
+                i.putExtra("Key",Keys.get(position));
+
                 startActivity(i);
             }
         });
@@ -165,6 +169,7 @@ public class Results_Teams extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+                Keys.add(dataSnapshot.getKey());
 
                 team1.add(dataSnapshot.child("Team1").child("Name").getValue().toString() + "  " +
                         dataSnapshot.child("Team1").child("Total Goals").getValue().toString());

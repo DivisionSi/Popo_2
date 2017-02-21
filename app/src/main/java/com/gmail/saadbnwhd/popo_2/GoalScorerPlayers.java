@@ -10,19 +10,24 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.team_List_Adap;
 
 import java.util.ArrayList;
 
 public class GoalScorerPlayers extends AppCompatActivity {
-    String Team1,Team2,Goals1,Goals2;
+    String Team1,Team2,Goals1,Goals2,Key;
     ArrayList<String> P1,P2;
     ArrayList<Integer> G1,G2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Firebase.setAndroidContext(this);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("RESULTS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -34,6 +39,12 @@ public class GoalScorerPlayers extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_goal_scorer_players);
+
+        P1=new ArrayList<>();
+        P2=new ArrayList<>();
+        G1=new ArrayList<>();
+        G2=new ArrayList<>();
+
         Bundle bundle=getIntent().getExtras();
         Team1 = bundle.getString("t1");
         Team2 = bundle.getString("t2");
@@ -41,13 +52,88 @@ public class GoalScorerPlayers extends AppCompatActivity {
         Goals1 = bundle.getString("g1");
         Goals2 = bundle.getString("g2");
 
+        Key = bundle.getString("Key");
+
         ListView  TEAM1 = (ListView) findViewById(R.id.players_t1);
         ListView  TEAM2 = (ListView) findViewById(R.id.players_t2);
-        team_List_Adap players1=new team_List_Adap(GoalScorerPlayers.this,P1,G1);
-        team_List_Adap players2=new team_List_Adap(GoalScorerPlayers.this, P2, G2);
+        final team_List_Adap players1=new team_List_Adap(GoalScorerPlayers.this,P1,G1);
+        final team_List_Adap players2=new team_List_Adap(GoalScorerPlayers.this, P2, G2);
 
-       /* TEAM1.setAdapter(players1);
-        TEAM2.setAdapter(players2);*/
+        TEAM1.setAdapter(players1);
+        TEAM2.setAdapter(players2);
+
+        Firebase ref1=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League")
+                .child("Results").child(Key).child("Team1").child("Scorers");
+
+        ref1.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+                P1.add(dataSnapshot.getKey());
+                G1.add(Integer.parseInt(dataSnapshot.getValue().toString()));
+
+                players1.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        Firebase ref2=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League")
+                .child("Results").child(Key).child("Team2").child("Scorers");
+
+        ref1.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+                P2.add(dataSnapshot.getKey());
+                G2.add(Integer.parseInt(dataSnapshot.getValue().toString()));
+                players2.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
+
 
       /*  P1.add(0, "Musab");
         P2.add(0, "Saad");
