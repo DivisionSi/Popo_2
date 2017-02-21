@@ -27,6 +27,12 @@ import com.firebase.client.FirebaseException;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
 
+//import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
@@ -186,6 +192,19 @@ public class FixturesFragment extends Fragment {
                     popo_fixtures_ref.child(key).child("Time").setValue(time.getText().toString());
                     Toast.makeText(getContext(),"Fixture Added", LENGTH_SHORT).show();
 
+
+                    DateFormat dateFormatTS = new SimpleDateFormat("dd/MM/yyyy");
+                    Date dateTS = null;
+                    try {
+                        dateTS = dateFormatTS.parse(date.getText().toString());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    long TS = dateTS.getTime();
+
+                    //java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(date.getText().toString());
+                    popo_fixtures_ref.child(key).child("TimeStamp").setValue(TS);
+
                 }
                 catch (FirebaseException i)
                 {
@@ -228,7 +247,7 @@ public class FixturesFragment extends Fragment {
         list.setAdapter(adapter);
 
         try {
-            FixturesRef.addChildEventListener(new ChildEventListener() {
+            FixturesRef.orderByChild("TimeStamp").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Map<String, String> map = dataSnapshot.getValue(Map.class);

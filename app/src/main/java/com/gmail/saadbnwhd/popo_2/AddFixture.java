@@ -234,7 +234,7 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                 if (!date.getText().equals("Date")) {
                     if (!time.getText().equals("Time")) {
 
-                        Toast.makeText(this, "FINE!!!", Toast.LENGTH_SHORT).show();
+
                         // SEND DATA TO DB
 
                     } else {
