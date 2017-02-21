@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -224,41 +225,46 @@ public class FixturesFragment extends Fragment {
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
-        FixturesRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                 Map<String,String> map=dataSnapshot.getValue(Map.class);
-                //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
-                team1.add("Popo FC");
-                team2.add(dataSnapshot.child("Rival").getValue().toString());
-                DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
-                        dataSnapshot.child("Time").getValue().toString());
+        try {
+            FixturesRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Map<String, String> map = dataSnapshot.getValue(Map.class);
+                    //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
+                    team1.add("Popo FC");
+                    team2.add(dataSnapshot.child("Rival").getValue().toString());
+                    DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
+                            dataSnapshot.child("Time").getValue().toString());
 
-                adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
 
 
-            }
+                }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
+                }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            }
+                }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-            }
+                }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
 
-            }
-        });
-
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            Log.e("Exception",e.toString());
+        }
     }
 }
