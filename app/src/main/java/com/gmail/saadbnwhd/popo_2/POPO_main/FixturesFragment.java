@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -24,6 +24,8 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.FirebaseException;
+import com.gmail.saadbnwhd.popo_2.FixtureListView;
+import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;

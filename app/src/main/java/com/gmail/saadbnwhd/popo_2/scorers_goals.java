@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.gmail.saadbnwhd.popo_2.Adapters.league_scorers_adap;
+import com.gmail.saadbnwhd.popo_2.Adapters.team_List_Adap;
+
 import java.util.ArrayList;
 
 public class scorers_goals extends AppCompatActivity {

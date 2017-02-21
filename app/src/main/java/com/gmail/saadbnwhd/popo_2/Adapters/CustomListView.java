@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.Adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
 
@@ -34,7 +36,7 @@ public class CustomListView extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.listview, null, true);
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.res_team1);
+        TextView txtTitle = (TextView) rowView.findViewById(R.id.team1);
         TextView txtlocation = (TextView) rowView.findViewById(R.id.location);
 
         txtTitle.setText(teams.get(position));

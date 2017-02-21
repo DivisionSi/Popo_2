@@ -7,8 +7,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -22,7 +20,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".POPO_main.SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -100,7 +98,9 @@
         <activity android:name=".Results_Teams" />
         <activity android:name=".Show_Results" />
         <activity android:name=".League_Table" />
-        <activity android:name=".Edit_Leage_Results"></activity>
+        <activity android:name=".Edit_Leage_Results" />
+        <activity android:name=".POPO_main.POPO_Results_Edit" />
+        <activity android:name=".GoalScorerPlayers"></activity>
     </application>
 
 </manifest>

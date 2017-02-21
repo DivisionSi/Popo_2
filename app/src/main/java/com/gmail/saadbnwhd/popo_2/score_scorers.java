@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.gmail.saadbnwhd.popo_2.Adapters.scorers_list_adapter;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 public class SplashScreen extends AppCompatActivity {
 ImageView img,img1;

@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
 

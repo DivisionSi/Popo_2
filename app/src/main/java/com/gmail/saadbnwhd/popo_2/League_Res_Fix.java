@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +21,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.gmail.saadbnwhd.popo_2.Adapters.team_List_Adap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class League_Res_Fix extends AppCompatActivity {
     String Team1,Team2,Datetime;
     Button done;
     Firebase ref;
-    EditText goals1,goals2;
+   EditText goals1,goals2;
     ListView TEAM1,TEAM2,TEAM1d,TEAM2d;
     ArrayList<String> T_Pl_1,T_Pl_1_temp;
     ArrayList<Integer> G1,G1_TEMP,G2,G2_TEMP;
@@ -65,7 +65,6 @@ public class League_Res_Fix extends AppCompatActivity {
         T2.setText(Team2);
         Total_Goals =0;
 
-        TEAM1 = (ListView) findViewById(R.id.Fst_Team);
         TEAM1 = (ListView) findViewById(R.id.Fst_Team);
         TEAM2 = (ListView) findViewById(R.id.Snd_Team);
         startTEAM1 = new String[]{"","No Players Added"};

@@ -1,4 +1,4 @@
-package com.gmail.saadbnwhd.popo_2;
+package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -12,6 +12,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.gmail.saadbnwhd.popo_2.R;
 
 
 /**
