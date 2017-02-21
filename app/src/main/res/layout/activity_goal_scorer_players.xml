@@ -24,7 +24,8 @@
             android:id="@+id/team1"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Black"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
             android:layout_weight="0.1"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Black"
+            android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -43,6 +45,7 @@
             android:layout_weight="0.2"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Black"
+            android:textStyle="bold"
             android:textSize="17sp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -53,8 +56,10 @@
             android:layout_weight="0.1"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Black"
+            android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team 2"
@@ -70,20 +75,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ListView
+            android:layout_marginTop="10dp"
             android:textColor="@color/Black"
             android:textSize="17sp"
             android:layout_width="fill_parent"
-            android:layout_weight="0.9"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:id="@+id/players_t1"
+            android:layout_marginRight="30dp"
             />
         <ListView
+            android:layout_marginTop="10dp"
             android:textColor="@color/Black"
             android:textSize="17sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.9"
+            android:layout_weight="0.5"
             android:id="@+id/players_t2"
+            android:layout_marginLeft="30dp"
 
             />
     </LinearLayout>
