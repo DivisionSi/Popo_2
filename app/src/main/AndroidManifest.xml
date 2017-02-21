@@ -100,7 +100,7 @@
         <activity android:name=".League_Table" />
         <activity android:name=".Edit_Leage_Results" />
         <activity android:name=".POPO_main.POPO_Results_Edit" />
-        <activity android:name=".GoalScorerPlayers"></activity>
+        <activity android:name=".GoalScorerPlayers" />
     </application>
 
 </manifest>

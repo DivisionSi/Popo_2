@@ -16,6 +16,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.gmail.saadbnwhd.popo_2.Adapters.playerslist_goals_adap;
 import com.gmail.saadbnwhd.popo_2.Adapters.team_List_Adap;
 
 import java.util.ArrayList;
@@ -56,8 +57,8 @@ public class GoalScorerPlayers extends AppCompatActivity {
 
         ListView  TEAM1 = (ListView) findViewById(R.id.players_t1);
         ListView  TEAM2 = (ListView) findViewById(R.id.players_t2);
-        final team_List_Adap players1=new team_List_Adap(GoalScorerPlayers.this,P1,G1);
-        final team_List_Adap players2=new team_List_Adap(GoalScorerPlayers.this, P2, G2);
+        final playerslist_goals_adap players1=new playerslist_goals_adap(GoalScorerPlayers.this,P1,G1);
+        final playerslist_goals_adap players2=new playerslist_goals_adap(GoalScorerPlayers.this, P2, G2);
 
         TEAM1.setAdapter(players1);
         TEAM2.setAdapter(players2);
@@ -101,7 +102,7 @@ public class GoalScorerPlayers extends AppCompatActivity {
         Firebase ref2=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League")
                 .child("Results").child(Key).child("Team2").child("Scorers");
 
-        ref1.addChildEventListener(new ChildEventListener() {
+        ref2.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
@@ -135,16 +136,7 @@ public class GoalScorerPlayers extends AppCompatActivity {
 
 
 
-      /*  P1.add(0, "Musab");
-        P2.add(0, "Saad");
-        G1.add(0,2);
-        G2.add(0,1);
-        P1.add(1, "Musab");
-        P2.add(1, "Saad");
-        G1.add(1,2);
-        G2.add(1,1);*/
-       /* players1.notifyDataSetChanged();
-        players2.notifyDataSetChanged();*/
+
 
         TextView T1=(TextView) findViewById(R.id.team1);
         TextView T2=(TextView) findViewById(R.id.team2);
