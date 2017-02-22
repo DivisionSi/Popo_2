@@ -21,8 +21,12 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.League_Add_Fixture_Adapter;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddFixture extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -196,7 +200,7 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                       //  Log.d(APIContanst.LOG_APP, dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-                      date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                      date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
@@ -236,6 +240,28 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
 
 
                         // SEND DATA TO DB
+                        ref=ref.child("League").child("Fixtures");
+                        String key=ref.push().getKey();
+
+                        ref.child(key).child("Date").setValue(date.getText().toString());
+                        ref.child(key).child("Team1").setValue(txt_t1.getText().toString());
+                        ref.child(key).child("Team2").setValue(txt_t2.getText().toString());
+                        ref.child(key).child("Time").setValue(time.getText().toString());
+
+                        DateFormat dateFormatTS = new SimpleDateFormat("dd/MM/yyyy");
+                        Date dateTS = null;
+                        try {
+                            dateTS = dateFormatTS.parse(date.getText().toString());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        long TS = dateTS.getTime();
+
+                        //java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(date.getText().toString());
+                        ref.child(key).child("TimeStamp").setValue(TS);
+
+
+
 
                     } else {
                         Toast.makeText(this, "Set Time for Fixture", Toast.LENGTH_SHORT).show();
