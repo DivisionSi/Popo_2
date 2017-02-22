@@ -33,12 +33,12 @@ public class MainMenu extends AppCompatActivity {
     private ViewPager viewPager;
     private int[] tabIcons = {
             R.drawable.homeicon,
-            R.drawable.playericon,
             R.drawable.newsicon,
-            R.drawable.newsicon,
-            R.drawable.football1,
             R.drawable.leagueicon,
+            R.drawable.playericon,
+            R.drawable.results,
             R.drawable.playericon2,
+            R.drawable.football1,
             R.drawable.more,
     };
 
@@ -94,12 +94,12 @@ public class MainMenu extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "Home");
+        adapter.addFragment(new NewsFragment(), "News");
+        adapter.addFragment(new LeagueFragment(), "League");
         adapter.addFragment(new FixturesFragment(), "Fixtures");
         adapter.addFragment(new ResultsFragment(), "Results");
-       adapter.addFragment(new NewsFragment(), "News");
-        adapter.addFragment(new PoponfaFragment(), "PopoNFA");
-        adapter.addFragment(new LeagueFragment(), "League");
         adapter.addFragment(new PlayersFragment(), "Players Profile");
+        adapter.addFragment(new PoponfaFragment(), "PopoNFA");
         adapter.addFragment(new MoreFragment(), "More");
 
         viewPager.setAdapter(adapter);

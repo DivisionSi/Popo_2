@@ -4,6 +4,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="30dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.Adapters.playerslist_goals_adap">
     <TextView
