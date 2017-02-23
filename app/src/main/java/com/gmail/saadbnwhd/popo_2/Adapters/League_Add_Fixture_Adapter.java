@@ -46,7 +46,6 @@ public class League_Add_Fixture_Adapter extends ArrayAdapter<String> {
         TextView txtlocation = (TextView) rowView.findViewById(R.id.location);
         ImageView icon = (ImageView) rowView.findViewById(R.id.icon);
 
-
        txtlocation.setText("  ");
 
         txtTeam1.setText(team1.get(position));
