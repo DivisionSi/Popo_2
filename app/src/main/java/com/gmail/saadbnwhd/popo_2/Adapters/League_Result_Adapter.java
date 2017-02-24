@@ -45,7 +45,7 @@ public class League_Result_Adapter extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.league_result, null, true);
 
         TextView txtTeam1 = (TextView) rowView.findViewById(R.id.team1);
-        ImageView icon = (ImageView) rowView.findViewById(R.id.icon);
+        ImageView icon = (ImageView) rowView.findViewById(R.id.logo);
 
         TextView txtTeam2 = (TextView) rowView.findViewById(R.id.res_team2);
         ImageView icon2 = (ImageView) rowView.findViewById(R.id.icon2);

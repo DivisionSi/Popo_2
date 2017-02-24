@@ -28,6 +28,8 @@ import java.util.List;
 
 public class MainMenu extends AppCompatActivity {
 
+   public Logos logos;
+
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -46,6 +48,10 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        logos=new Logos();
+
+
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (Build.VERSION.SDK_INT >= 21) {
@@ -158,5 +164,6 @@ public class MainMenu extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 
 }

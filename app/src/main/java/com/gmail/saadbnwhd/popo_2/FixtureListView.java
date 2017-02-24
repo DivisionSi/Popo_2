@@ -42,7 +42,7 @@ public class FixtureListView extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.fixtures_list, null, true);
 
         TextView txtTeam1 = (TextView) rowView.findViewById(R.id.team1);
-        ImageView icon = (ImageView) rowView.findViewById(R.id.icon);
+        ImageView icon = (ImageView) rowView.findViewById(R.id.logo);
 
         TextView txtTeam2 = (TextView) rowView.findViewById(R.id.team2);
         ImageView icon2 = (ImageView) rowView.findViewById(R.id.icon2);

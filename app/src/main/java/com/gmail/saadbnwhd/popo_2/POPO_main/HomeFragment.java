@@ -1,7 +1,11 @@
 package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +17,13 @@ import android.widget.Toast;
 
 import com.gmail.saadbnwhd.popo_2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 /**
@@ -36,6 +44,7 @@ public class HomeFragment extends Fragment {
     EditText txt_username,txt_password;
     Button Signin;
     String username,password;
+    ImageView test;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     @Override
@@ -44,6 +53,9 @@ public class HomeFragment extends Fragment {
 
         firebaseAuth=firebaseAuth.getInstance();
         progressDialog=new ProgressDialog(getContext());
+
+
+
 
     }
 
