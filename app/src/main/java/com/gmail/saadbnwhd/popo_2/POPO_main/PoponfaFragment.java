@@ -66,8 +66,9 @@ public class PoponfaFragment extends Fragment {
         });
        ViewFlipper viewFlipper=(ViewFlipper) view.findViewById(R.id.viewFlipper);
         viewFlipper.setAutoStart(true);
-        viewFlipper.setFlipInterval(3000);
-        viewFlipper.startFlipping();
+        viewFlipper.setInAnimation(getActivity(), R.anim.abc_fade_in);
+        viewFlipper.setOutAnimation(getActivity(), R.anim.abc_fade_out);
+
     return view;
     }
 
