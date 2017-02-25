@@ -60,33 +60,24 @@ public class CustomListView extends ArrayAdapter<String> {
         logo=(ImageView)  rowView.findViewById(R.id.logo);
 
       //  if(imgid.length >0)
-/*
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
         // Create a storage reference from our app
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://poponfa-8a11a.appspot.com/");
-        StorageReference imagesRef = storageRef.child("Team_Logos/" + "Mahsair United");
 
 
-        final long ONE_MEGABYTE = 1024 * 1024;
-        imagesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                logo.setImageBitmap(bitmap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-            }
-        });
-*/
+try {
 
-        byte[] logobyte= Logos.getlogo(teams.get(position));
+    byte[] logobyte = Logos.logos.get(teams.get(position));
 
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(logobyte, 0, logobyte.length);
-        //logo.setImageBitmap(bitmap);
+    Bitmap bitmap = BitmapFactory.decodeByteArray(logobyte, 0, logobyte.length);
+    logo.setImageBitmap(bitmap);
+}
 
+catch (Exception e)
+{
+
+
+}
         return rowView;
 
     };
