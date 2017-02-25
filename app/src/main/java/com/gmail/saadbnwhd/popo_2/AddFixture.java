@@ -326,8 +326,10 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
-
-
-
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 
 }

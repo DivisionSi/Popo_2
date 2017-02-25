@@ -110,6 +110,7 @@
             android:editable="false" />
 
         <Button
+            android:background="@drawable/button"
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

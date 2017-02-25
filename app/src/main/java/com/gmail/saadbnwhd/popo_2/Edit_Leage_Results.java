@@ -99,6 +99,14 @@ public class Edit_Leage_Results extends AppCompatActivity {
       fb.setVisibility(INVISIBLE);
     }
     @Override
+    protected void onStart()
+    {
+
+        super.onStart();
+
+
+    }
+    @Override
     public void finish() {
         super.finish();
         onLeaveThisActivity();
@@ -128,12 +136,7 @@ public class Edit_Leage_Results extends AppCompatActivity {
         finish();
         return true;
     }
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
 
-    }
 
     public void StartUp(){
         Firebase FixturesRef; //Reference to Teams node

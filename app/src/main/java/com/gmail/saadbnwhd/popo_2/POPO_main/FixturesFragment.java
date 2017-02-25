@@ -262,7 +262,7 @@ public class FixturesFragment extends Fragment {
                     Map<String, String> map = dataSnapshot.getValue(Map.class);
                     //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                     team1.add("Popo FC");
-                  //  team2.add(dataSnapshot.child("Rival").getValue().toString());
+                    team2.add(dataSnapshot.child("Rival").getValue().toString());
                     DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
                             dataSnapshot.child("Time").getValue().toString());
 

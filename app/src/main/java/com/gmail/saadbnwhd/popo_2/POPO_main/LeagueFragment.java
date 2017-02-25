@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.gmail.saadbnwhd.popo_2.League_Table;
 import com.gmail.saadbnwhd.popo_2.R;
 import com.gmail.saadbnwhd.popo_2.Results_Teams;
+import com.gmail.saadbnwhd.popo_2.Teams;
 
 
 /**
@@ -35,7 +36,7 @@ Button Table;
             @Override
             public void onClick(View v)
             {
-                Intent Team=new Intent("android.intent.action.Teams");
+                Intent Team=new Intent(getActivity(), Teams.class);
                 Team.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
              startActivity(Team);
 
