@@ -36,6 +36,8 @@ public class Result_Score_assign extends Activity {
 
         Fetch_Players();
 
+
+
         T1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
