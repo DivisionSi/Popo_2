@@ -78,6 +78,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 View dialog_layout = inflater.inflate(R.layout.leaguefixture,null);
                 AlertDialog.Builder db = new AlertDialog.Builder(League_Res_Fix.this);
 
+
                 TEAM1d = (ListView) dialog_layout.findViewById(R.id.fixturelist);
                 db.setView(dialog_layout);
                 db.setTitle(Team1);
