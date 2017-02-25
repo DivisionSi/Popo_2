@@ -3,9 +3,12 @@ package com.gmail.saadbnwhd.popo_2;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,12 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         String pos=bundle.getString("position");
 
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(getResources().getColor(R.color.newclr1));
+        }
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingPlayerName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -106,5 +115,11 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         finish();
         return true;
+    }
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
     }
 }
