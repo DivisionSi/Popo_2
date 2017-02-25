@@ -3,6 +3,7 @@ package com.gmail.saadbnwhd.popo_2;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -291,13 +292,40 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
         }
     }
 
-    protected void onStart() {
+
+    @Override
+    protected void onStart()
+    {
 
         super.onStart();
 
 
     }
+    @Override
+    public void finish() {
+        super.finish();
+        onLeaveThisActivity();
+    }
 
+    protected void onLeaveThisActivity() {
+        overridePendingTransition(R.anim.slide_in_back, R.anim.slide_out_back);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        onStartNewActivity();
+    }
+
+    @Override
+    public void startActivity(Intent intent, Bundle options) {
+        super.startActivity(intent, options);
+        onStartNewActivity();
+    }
+
+    protected void onStartNewActivity() {
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
 
 
 
