@@ -28,17 +28,17 @@ import com.firebase.client.FirebaseException;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
 
-//import java.sql.Date;
-import java.util.Date;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import static android.widget.Toast.LENGTH_SHORT;
+
+//import java.sql.Date;
 
 
 /**

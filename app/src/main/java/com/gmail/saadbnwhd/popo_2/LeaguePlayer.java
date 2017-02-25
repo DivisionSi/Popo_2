@@ -48,7 +48,7 @@ FloatingActionButton pladd;
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(getResources().getColor(R.color.newclr1));
         }
-        Firebase.setAndroidContext(this);
+        Firebase.setAndroidContext(LeaguePlayer.this);
         players=new ArrayList<String>();
 
         pladd=(FloatingActionButton) findViewById(R.id.playerfab);
@@ -127,14 +127,6 @@ FloatingActionButton pladd;
 
     }
     @Override
-    protected void onStart()
-    {
-
-        super.onStart();
-
-
-    }
-    @Override
     public void finish() {
         super.finish();
         onLeaveThisActivity();
@@ -164,6 +156,11 @@ FloatingActionButton pladd;
         finish();
         return true;
     }
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
 
+    }
 
 }

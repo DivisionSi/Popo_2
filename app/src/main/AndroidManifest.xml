@@ -39,11 +39,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Teams">
-            <intent-filter>
-                <action android:name="android.intent.action.Teams" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".TeamsEditor">
             <intent-filter>
@@ -60,11 +55,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".LeaguePlayer">
-            <intent-filter>
-                <action android:name="android.intent.action.LeaguePlayer" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".LeaguePlayer_Stats">
             <intent-filter>

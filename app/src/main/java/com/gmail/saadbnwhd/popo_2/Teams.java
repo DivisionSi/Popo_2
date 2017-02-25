@@ -47,7 +47,7 @@ FloatingActionButton fab;
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_team);
-        Firebase.setAndroidContext(this);  //Setting up Firebase
+        Firebase.setAndroidContext(Teams.this);  //Setting up Firebase
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
@@ -85,9 +85,9 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
                                     int position, long id) {
 
                 String passingTeamName=parent.getItemAtPosition(position).toString();
-                Intent intent = new Intent("android.intent.action.LeaguePlayer");
-                intent.putExtra("passingTeamName", passingTeamName);
-                 startActivity(intent);
+                Intent intentstart = new Intent(Teams.this,LeaguePlayer.class);
+                intentstart.putExtra("passingTeamName", passingTeamName);
+                 startActivity(intentstart);
 
 
             }
@@ -135,20 +135,6 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
 
 
     @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
-    }
-
-    @Override
-    protected void onStart()
-    {
-
-        super.onStart();
-
-
-    }
-    @Override
     public void finish() {
         super.finish();
         onLeaveThisActivity();
@@ -173,10 +159,15 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
     protected void onStartNewActivity() {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
-
-   /* @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    @Override
+    public boolean onSupportNavigateUp(){
         finish();
-    }*/
+        return true;
+    }
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+    }
 }
