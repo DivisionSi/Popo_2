@@ -1,8 +1,15 @@
 package com.gmail.saadbnwhd.popo_2.POPO_main;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,26 +39,47 @@ ImageView img,img1;
         anim.setRepeatCount(Animation.INFINITE);
         anim.setDuration(2000);//timer
         img1.startAnimation(anim);
-       Thread timer =new Thread(){
-            @Override
-            public void run() {
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
 
-                } finally {
-                  //  FirebaseCrash.report(new Exception("My first Android non-fatal error"));
-                    Intent main=new Intent("android.intent.action.mainmenu");
-                    startActivity(main);
-                }
-            }
-        };
-        timer.start();
-    };
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Connection();
+                    }
+                }, 2000);
+    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
+
+    public void Connection(){
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            Intent main=new Intent("android.intent.action.mainmenu");
+            startActivity(main);
+        }
+        else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(SplashScreen.this);
+            builder.setMessage("Please Check Internet Connectivity")
+                    .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            finish();
+                            startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
+
+                           // startActivity(in);
+                        }
+                    })
+                    .create()
+                    .show();
+        }
     }
 }

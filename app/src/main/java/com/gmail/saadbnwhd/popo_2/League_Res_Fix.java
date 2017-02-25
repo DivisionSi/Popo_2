@@ -6,13 +6,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,15 +24,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class League_Res_Fix extends AppCompatActivity {
-    team_List_Adap adap1,adap2;
+    team_List_Adap adap1,adap2,Tadap1,Tadap2;
     Integer Total_Goals;
 
     String Team1,Team2,Datetime;
     Button done;
     Firebase ref;
-   EditText goals1,goals2;
     ListView TEAM1,TEAM2,TEAM1d,TEAM2d;
-    ArrayList<String> T_Pl_1,T_Pl_1_temp;
+    ArrayList<String> T_Pl_1,T_Pl_1_temp,T_Pl_1adap;
     ArrayList<Integer> G1,G1_TEMP,G2,G2_TEMP;
     ArrayList<String> T_Pl_2,T_Pl_2_temp;
     String[] startTEAM1;
@@ -76,7 +71,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Fetch_Players();
-                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1);
+                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1,true);
                 LayoutInflater inflater = LayoutInflater.from(League_Res_Fix.this);
                 View dialog_layout = inflater.inflate(R.layout.leaguefixture,null);
                 AlertDialog.Builder db = new AlertDialog.Builder(League_Res_Fix.this);
@@ -87,32 +82,32 @@ public class League_Res_Fix extends AppCompatActivity {
                 db.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Total_Goals = 0;
+                        G1 = adap1.Goals_Alotted();
                         for(int i = 0; i <G1.size(); i++) {
                             Total_Goals = Total_Goals + G1.get(i);
                         }
+                        T_Pl_1adap = adap1.Scorers();
                         T_Pl_1_temp = new ArrayList<String>();
                         G1_TEMP = new ArrayList<Integer>();
                         T_Pl_1_temp.add("Total Goals");
                         G1_TEMP.add(Total_Goals);
                         for(int i = 0; i <G1.size(); i++) {
                             if(G1.get(i) >0){
-                                T_Pl_1_temp .add(T_Pl_1.get(i));
+                                T_Pl_1_temp .add(T_Pl_1adap.get(i));
                                 G1_TEMP.add(G1.get(i));
                             }
                         }
-                        adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP);
-                        TEAM1.setAdapter(adap1);
+                        Tadap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP,false);
+                        TEAM1.setAdapter(Tadap1);
+                        T_Pl_1adap = adap1.Players_Appeared();
+                      //  Toast.makeText(League_Res_Fix.this, T_Pl_1adap.size(), Toast.LENGTH_SHORT).show();
                     }
                 });
                 db.show();
-                //     TEAM1d.setAdapter(adap1);
+
                 TEAM1d.setAdapter(adap1);
-                TEAM1d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Assign_goals1(i);
-                    }
-                });
+
+
             }
         });
 
@@ -120,7 +115,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Fetch_Players();
-                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2);
+                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2,true);
                 LayoutInflater inflater = LayoutInflater.from(League_Res_Fix.this);
                 View dialog_layout = inflater.inflate(R.layout.leaguefixture,null);
                 AlertDialog.Builder db = new AlertDialog.Builder(League_Res_Fix.this);
@@ -144,19 +139,14 @@ public class League_Res_Fix extends AppCompatActivity {
                                 G2_TEMP.add(G2.get(i));
                             }
                         }
-                        adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP);
+                        adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP,false);
                         TEAM2.setAdapter(adap2);
                     }
                 });
                 db.show();
                 //     TEAM1d.setAdapter(adap1);
                 TEAM2d.setAdapter(adap2);
-                TEAM2d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Assign_goals2(i);
-                    }
-                });
+
             }
         });
 
@@ -491,87 +481,29 @@ public class League_Res_Fix extends AppCompatActivity {
 
     }
 
-    public void Assign_goals1(final int position){
-        RelativeLayout linearLayout = new RelativeLayout(League_Res_Fix.this);
-        final NumberPicker aNumberPicker = new NumberPicker(League_Res_Fix.this);
-        aNumberPicker.setMaxValue(50);
-        aNumberPicker.setMinValue(0);
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(50, 50);
-        RelativeLayout.LayoutParams numPicerParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        numPicerParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-
-        linearLayout.setLayoutParams(params);
-        linearLayout.addView(aNumberPicker,numPicerParams);
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(League_Res_Fix.this);
-        alertDialogBuilder.setTitle("Select the number");
-        alertDialogBuilder.setView(linearLayout);
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("Ok",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int id) {
-                                // Log.e("","New Quantity Value : "+ aNumberPicker.getValue());
-                                //     Toast.makeText(League_Res_Fix.this, String.valueOf(aNumberPicker.getValue()), Toast.LENGTH_SHORT).show();
-                                G1.set(position,Integer.valueOf(aNumberPicker.getValue()));
-                                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1);
-                                TEAM1d.setAdapter(adap1);
-                            }
-                        })
-                .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int id) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
-    public void Assign_goals2(final int position){
-        RelativeLayout linearLayout = new RelativeLayout(League_Res_Fix.this);
-        final NumberPicker aNumberPicker = new NumberPicker(League_Res_Fix.this);
-        aNumberPicker.setMaxValue(50);
-        aNumberPicker.setMinValue(0);
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(50, 50);
-        RelativeLayout.LayoutParams numPicerParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        numPicerParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-
-        linearLayout.setLayoutParams(params);
-        linearLayout.addView(aNumberPicker,numPicerParams);
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(League_Res_Fix.this);
-        alertDialogBuilder.setTitle("Select the number");
-        alertDialogBuilder.setView(linearLayout);
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("Ok",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                G2.set(position,Integer.valueOf(aNumberPicker.getValue()));
-                                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2);
-                                TEAM2d.setAdapter(adap2);
-                            }
-                        })
-                .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int id) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
     @Override
     protected void onStart() {
 
         super.onStart();
 
     }
+
 }
 
+/*
+Total_Goals = 0;
+        for(int i = 0; i <G1.size(); i++) {
+        Total_Goals = Total_Goals + G1.get(i);
+        }
+        T_Pl_1_temp = new ArrayList<String>();
+        G1_TEMP = new ArrayList<Integer>();
+        T_Pl_1_temp.add("Total Goals");
+        G1_TEMP.add(Total_Goals);
+        for(int i = 0; i <G1.size(); i++) {
+        if(G1.get(i) >0){
+        T_Pl_1_temp .add(T_Pl_1.get(i));
+        G1_TEMP.add(G1.get(i));
+        }
+        }
+        adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP);
+        TEAM1.setAdapter(adap1);*/
