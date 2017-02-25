@@ -65,7 +65,8 @@ public class TeamsEditor extends Activity {
                 imgView.buildDrawingCache();
                 Bitmap bitmap =  imgView.getDrawingCache();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 0, baos);
 
                 byte[] byte_data = baos.toByteArray();
 

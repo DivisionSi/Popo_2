@@ -67,6 +67,7 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         txt_dob=(TextView) findViewById(R.id.txt_dob);
         rad_AgeGroup=(RadioGroup) findViewById(R.id.AgeGroup);
 
+
         AgeGroup="";
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("Add Player");
@@ -123,9 +124,9 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                 int id=rad_AgeGroup.getCheckedRadioButtonId();
                 Toast.makeText(getApplicationContext(), Integer.toString(id), Toast.LENGTH_LONG).show();
 
-                if(id==2131493019)
+                if(id==2131493026)
                     AgeGroup="Senior";
-                else if(id==2131493021)
+                else if(id==2131493028)
                     AgeGroup="Under 16";
                 else
                     AgeGroup="Under 14";
@@ -152,8 +153,10 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                     testmap.put("Goals",String.valueOf(0));
                     testmap.put("Apps",String.valueOf(0));
 
-                    ref = ref.child(txt_name.getText().toString());
-                    ref.setValue(testmap);
+                    String Key=ref.push().getKey();
+
+                    ref.child(Key).setValue(testmap);
+
 
                     /* ref.child("Name").setValue(name);
                     ref.child("Position").setValue(position);
@@ -176,7 +179,7 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         });
 
 
-
+        done.setEnabled(false);
     }
 
 

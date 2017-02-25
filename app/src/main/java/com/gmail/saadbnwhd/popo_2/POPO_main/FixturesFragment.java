@@ -3,6 +3,7 @@ package com.gmail.saadbnwhd.popo_2.POPO_main;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -54,7 +55,7 @@ public class FixturesFragment extends Fragment {
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
     ArrayList<String> DateTime = new ArrayList<String>(); //String array for DateTime of Fixture
-
+    ArrayList<Image> img1 = new ArrayList<Image>();
     Integer[] imgid1 = {
             R.drawable.logo2,
             R.drawable.logo2,
@@ -62,6 +63,8 @@ public class FixturesFragment extends Fragment {
             R.drawable.logo2,
             R.drawable.logo3,
             R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3
     };
     Integer[] imgid2 = {
             R.drawable.logo2,
@@ -70,6 +73,9 @@ public class FixturesFragment extends Fragment {
             R.drawable.logo2,
             R.drawable.logo3,
             R.drawable.logo2,
+            R.drawable.logo2,
+            R.drawable.logo3,
+            R.drawable.logo2
     };
 
     FloatingActionButton add;
@@ -218,6 +224,8 @@ public class FixturesFragment extends Fragment {
     }
 
     public void Start(){
+
+
         team1.clear();
         team2.clear();
         DateTime.clear();
@@ -242,9 +250,10 @@ public class FixturesFragment extends Fragment {
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("Popo").child("Fixtures");  //Traversing to Fixtures
 
-        final FixtureListView adapter = new FixtureListView(getActivity(), team1,team2,DateTime,imgid1,imgid2);
+        final FixtureListView adapter = new FixtureListView(getActivity(), team1,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
+
 
         try {
             FixturesRef.orderByChild("TimeStamp").addChildEventListener(new ChildEventListener() {
@@ -253,9 +262,10 @@ public class FixturesFragment extends Fragment {
                     Map<String, String> map = dataSnapshot.getValue(Map.class);
                     //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                     team1.add("Popo FC");
-                    team2.add(dataSnapshot.child("Rival").getValue().toString());
+                  //  team2.add(dataSnapshot.child("Rival").getValue().toString());
                     DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
                             dataSnapshot.child("Time").getValue().toString());
+
 
                     adapter.notifyDataSetChanged();
 
@@ -282,6 +292,7 @@ public class FixturesFragment extends Fragment {
 
                 }
             });
+
         }
         catch (Exception e)
         {

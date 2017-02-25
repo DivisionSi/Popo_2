@@ -17,6 +17,7 @@
         android:layout_height="50dp"
         android:background="@drawable/button"
         android:text="DONE"
+        android:textColor="@color/White"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"

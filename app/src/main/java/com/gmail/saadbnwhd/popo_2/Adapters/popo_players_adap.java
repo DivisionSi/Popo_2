@@ -1,6 +1,9 @@
 package com.gmail.saadbnwhd.popo_2.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gmail.saadbnwhd.popo_2.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -43,13 +50,35 @@ public class popo_players_adap extends ArrayAdapter<String> {
         holder.Name = (TextView) rowView.findViewById(R.id.scorer_name);
         holder.Number = (TextView) rowView.findViewById(R.id.popoplayer_number);
         holder.Position = (TextView) rowView.findViewById(R.id.popoplayer_position);
+
         holder.img = (ImageView) rowView.findViewById(R.id.popoplayer_img);
 
         holder.Name.setText(popo_players.get(position));
         holder.Number.setText(popo_players_number.get(position));
         holder.Position.setText(popo_players_position.get(position));
        // txtlocation.setText(locations.get(position));
-        holder.img.setImageResource(R.drawable.football_player);
+
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        // Create a storage reference from our app
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://poponfa-8a11a.appspot.com/");
+        StorageReference imagesRef = storageRef.child("Team_Logos/" + "Alliance Jr");
+
+        final long ONE_MEGABYTE = 240 * 240;
+        imagesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                holder.img.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+       // holder.img.setImageResource(R.drawable.football_player);
 
       //  Toast.makeText(context, teams.get(position), Toast.LENGTH_SHORT).show();
         return rowView;

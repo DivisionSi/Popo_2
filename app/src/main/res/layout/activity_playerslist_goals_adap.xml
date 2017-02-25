@@ -4,6 +4,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="30dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     android:background="@color/White"
     tools:context="com.gmail.saadbnwhd.popo_2.Adapters.playerslist_goals_adap">
     <TextView
@@ -12,7 +14,6 @@
         android:layout_height="wrap_content"
         android:text="Player Name"
         android:alpha="1"
-        android:layout_marginLeft="4dp"
         android:layout_centerInParent="true"
         android:layout_alignParentStart="true"
         android:textAlignment="center"
@@ -25,10 +26,10 @@
         android:layout_height="wrap_content"
         android:text="2"
         android:alpha="1"
+        android:layout_marginLeft="2dp"
         android:layout_centerInParent="true"
         android:layout_alignParentEnd="true"
         android:textAlignment="textEnd"
-        android:layout_marginRight="4dp"
         android:textColor="@color/Black"
         android:textSize="17dp"
         android:background="@android:color/transparent" />

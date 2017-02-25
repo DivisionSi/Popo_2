@@ -90,13 +90,13 @@ FloatingActionButton pladd;
         ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
        Firebase playersRef;
         playersRef=ref.child("League").child("Teams").child(passingTeamName).child("Players");
-        Toast.makeText(getApplicationContext(), playersRef.getKey().toString(), Toast.LENGTH_LONG).show();
+
 
         playersRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
-                players.add(dataSnapshot.getKey().toString());
+
+                players.add(dataSnapshot.child("Name").getValue().toString());
                 positions.add(dataSnapshot.child("Position").getValue().toString());
                 number.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 adapter.notifyDataSetChanged();

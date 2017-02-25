@@ -1,12 +1,16 @@
 package com.gmail.saadbnwhd.popo_2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.firebase.client.ChildEventListener;
@@ -14,6 +18,10 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.Table_adapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,13 +35,14 @@ public class League_Table extends AppCompatActivity {
     ArrayList<String> draw= new ArrayList<String>();
     ArrayList<String> lose = new ArrayList<String>();
     ArrayList<String> win = new ArrayList<String>();
-
+    ImageView test;
     Firebase ref;
     Integer count,int_points,int_won,int_drawn,team_count,tablePosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_table);
+
 
 
         if (Build.VERSION.SDK_INT >= 21) {
