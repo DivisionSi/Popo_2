@@ -57,6 +57,7 @@ ImageView img,img1;
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
 
             Intent main=new Intent("android.intent.action.mainmenu");
+            finish();
             startActivity(main);
         }
         else{
