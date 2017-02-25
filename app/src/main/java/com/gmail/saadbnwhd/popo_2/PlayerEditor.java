@@ -179,7 +179,7 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
         });
 
 
-
+        done.setEnabled(false);
     }
 
 

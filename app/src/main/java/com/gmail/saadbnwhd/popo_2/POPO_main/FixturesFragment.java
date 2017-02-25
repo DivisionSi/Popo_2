@@ -224,6 +224,8 @@ public class FixturesFragment extends Fragment {
     }
 
     public void Start(){
+
+
         team1.clear();
         team2.clear();
         DateTime.clear();
@@ -251,6 +253,7 @@ public class FixturesFragment extends Fragment {
         final FixtureListView adapter = new FixtureListView(getActivity(), team1,team2,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
+
 
         try {
             FixturesRef.orderByChild("TimeStamp").addChildEventListener(new ChildEventListener() {
@@ -289,6 +292,7 @@ public class FixturesFragment extends Fragment {
 
                 }
             });
+            ref.removeEventListener();
         }
         catch (Exception e)
         {
