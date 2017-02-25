@@ -70,6 +70,7 @@ public class team_List_Adap extends ArrayAdapter<String>{
                 public void onClick(View view) {
                     if (appearence.isChecked()) {
                         players_appeared.add(team.get(position));
+
                     } else if (!appearence.isChecked()) {
                         for (int i = 0; i < players_appeared.size(); i++) {
                             if (players_appeared.get(i).equals(Team.getText())) {
