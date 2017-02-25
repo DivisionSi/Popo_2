@@ -292,7 +292,7 @@ public class FixturesFragment extends Fragment {
 
                 }
             });
-            ref.removeEventListener();
+
         }
         catch (Exception e)
         {
