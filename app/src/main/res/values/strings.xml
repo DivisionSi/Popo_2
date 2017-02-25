@@ -2,4 +2,5 @@
     <string name="app_name">Popo_2</string>
     <string name="title_activity_fixtures">Fixtures</string>
     <string name="facebook_app_id">757719757718898</string>
+    <string name="title_activity_result__score_assign">Result_Score_assign</string>
 </resources>
