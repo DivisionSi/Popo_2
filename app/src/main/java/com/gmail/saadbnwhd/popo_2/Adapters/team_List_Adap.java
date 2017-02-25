@@ -23,8 +23,6 @@ import java.util.ArrayList;
 public class team_List_Adap extends ArrayAdapter<String>{
     private final Activity context;
 
-    TextView Team,Goals;
-    CheckBox appearence;
     ArrayList<String> team = new ArrayList<String>();
     ArrayList<Integer> goals = new ArrayList<Integer>();
     ArrayList<Integer> goals_alotted = new ArrayList<Integer>();
@@ -39,7 +37,7 @@ public class team_List_Adap extends ArrayAdapter<String>{
         this.context=context;
         this.team = team;
         this.goals = goals;
-        this.goals_alotted = goals;
+        this.goals_alotted = new ArrayList<Integer>();
         Value = value;
         players_appeared = new ArrayList<String>();
     }
@@ -50,54 +48,65 @@ public class team_List_Adap extends ArrayAdapter<String>{
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.name_itemm, null, true);
 
-        Team = (TextView) rowView.findViewById(R.id.p_name);
-        Goals = (TextView) rowView.findViewById(R.id.goals_scored);
-        appearence = (CheckBox) rowView.findViewById(R.id.player_appearence);
-        Team.setText(team.get(position));
-        Goals.setText(String.valueOf(goals.get(position)));
+        final ViewHolder holder = new ViewHolder();
+
+        holder.Team = (TextView) rowView.findViewById(R.id.p_name);
+        holder.Goals = (TextView) rowView.findViewById(R.id.goals_scored);
+        holder.appearence = (CheckBox) rowView.findViewById(R.id.player_appearence);
+        holder.Team.setText(team.get(position));
+        holder.Goals.setText(String.valueOf(goals.get(position)));
 
 
-        Goals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Assign_goals(Goals,position);
-            }
-        });
-
-
-        appearence.setOnClickListener(new View.OnClickListener() {
+        if(Value) {
+            holder.Goals.setVisibility(View.INVISIBLE);
+            holder.Goals.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (appearence.isChecked()) {
-                        players_appeared.add(team.get(position));
+                    Assign_goals(holder,holder.Goals, position);
+                }
+            });
 
-                    } else if (!appearence.isChecked()) {
+
+            holder.appearence.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (holder.appearence.isChecked()) {
+                        players_appeared.add(team.get(position));
+                        holder.Goals.setVisibility(View.VISIBLE);
+
+                    } else if (!holder.appearence.isChecked()) {
+                        holder.Goals.setText("0");
+                        holder.Goals.setVisibility(View.INVISIBLE);
                         for (int i = 0; i < players_appeared.size(); i++) {
-                            if (players_appeared.get(i).equals(Team.getText())) {
+                            if (players_appeared.get(i).equals(holder.Team.getText())) {
                                 players_appeared.remove(i);
+                            }
+                        }
+                        for (int i = 0; i < scorers.size(); i++) {
+                            if (scorers.get(i).equals(holder.Team.getText())) {
+                                scorers.remove(i);
+                                goals_alotted.remove(i);
                             }
                         }
                     }
                 }
-        });
+            });
+        }
 
         if(!Value) {
-            appearence.setVisibility(View.INVISIBLE);
+            holder.appearence.setVisibility(View.INVISIBLE);
         }
 
         return rowView;
 
     };
 
-    public void setGoals(String value){
-        Goals.setText(value);
-    }
     public ArrayList<String> Scorers ()
     {
         return scorers;
     }
 
-    public void Assign_goals(final TextView GOALS, final int position){
+    public void Assign_goals(final ViewHolder h, final TextView GOALS, final int position){
         RelativeLayout linearLayout = new RelativeLayout(context);
         final NumberPicker aNumberPicker = new NumberPicker(context);
         aNumberPicker.setMaxValue(50);
@@ -111,7 +120,7 @@ public class team_List_Adap extends ArrayAdapter<String>{
         linearLayout.addView(aNumberPicker,numPicerParams);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-        alertDialogBuilder.setTitle("Select the number");
+        alertDialogBuilder.setTitle("Select Number");
         alertDialogBuilder.setView(linearLayout);
         alertDialogBuilder
                 .setCancelable(false)
@@ -120,9 +129,10 @@ public class team_List_Adap extends ArrayAdapter<String>{
                             public void onClick(DialogInterface dialog,
                                                 int id) {
 
-                                goals_alotted.set(position,Integer.valueOf(aNumberPicker.getValue()));
-                                scorers.add(team.get(position));
-                                GOALS.setText(String.valueOf(goals_alotted.get(position)));
+                                goals.set(position,Integer.valueOf(aNumberPicker.getValue()));
+                                goals_alotted.add(Integer.valueOf(aNumberPicker.getValue()));
+                                scorers.add(String.valueOf(h.Team.getText()));
+                                GOALS.setText(String.valueOf(goals.get(position)));
                                /* adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1);
                                 TEAM1d.setAdapter(adap1);*/
                             }
@@ -142,5 +152,10 @@ public class team_List_Adap extends ArrayAdapter<String>{
     }
     public ArrayList<Integer> Goals_Alotted(){
         return goals_alotted;
+    }
+
+    static class ViewHolder {
+       private TextView Team,Goals;
+        private CheckBox appearence;
     }
 }

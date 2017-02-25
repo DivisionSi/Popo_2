@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/White">
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:id="@+id/p_name"
-        android:textSize="18sp"
-        android:textColor="@color/Black"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
+    android:background="@android:color/transparent">
 
     <TextView
         android:text="      0"
@@ -29,7 +18,6 @@
 
     <TextView
         android:text="     "
-        android:textColor="@color/Black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -37,13 +25,26 @@
         android:id="@+id/textView"
         android:textAlignment="center" />
 
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:id="@+id/p_name"
+        android:textSize="18sp"
+        android:textColor="@color/Black"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/player_appearence" />
+
     <CheckBox
-        android:buttonTint="@color/Black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/player_appearence"
-        android:layout_alignBaseline="@+id/goals_scored"
-        android:layout_alignBottom="@+id/goals_scored"
-        android:layout_toStartOf="@+id/textView" />
+        android:layout_marginStart="11dp"
+        android:layout_alignBaseline="@+id/p_name"
+        android:layout_alignBottom="@+id/p_name"
+        android:layout_alignParentStart="true"
+        tools:background="@color/Black" />
 
 </RelativeLayout>
