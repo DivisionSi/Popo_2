@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_result_score_assign"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:background="@color/White"
+    tools:context="com.gmail.saadbnwhd.popo_2.POPO_main.Result_Score_assign">
+
+    <TextView
+
+        android:text="POPO FC"
+        android:id="@+id/POPO"
+        android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/Black"
+        android:textSize="30sp"
+        android:layout_height="35sp"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/popoteam"
+
+        android:textColor="@color/Black"
+        android:dividerHeight="0.5dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/POPO" />
+
+</RelativeLayout>

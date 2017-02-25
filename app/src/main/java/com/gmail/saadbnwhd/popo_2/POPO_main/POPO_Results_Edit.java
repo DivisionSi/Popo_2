@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 
 import com.firebase.client.Firebase;
 import com.gmail.saadbnwhd.popo_2.Adapters.League_Result_Adapter;
-import com.gmail.saadbnwhd.popo_2.League_Res_Fix;
 import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
@@ -86,9 +85,9 @@ public class POPO_Results_Edit extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
 
 
-                Intent i = new Intent(POPO_Results_Edit.this, League_Res_Fix.class);
-                i.putExtra("t1", team1.get(position));
-                i.putExtra("t2", team2.get(position));
+                Intent i = new Intent(POPO_Results_Edit.this, Result_Score_assign.class);
+           //     i.putExtra("t1", team1.get(position));
+            //    i.putExtra("t2", team2.get(position));
            //     i.putExtra("DateTime", DateTime.get(position));
 
 

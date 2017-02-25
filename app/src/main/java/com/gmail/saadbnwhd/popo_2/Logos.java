@@ -6,11 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.gmail.saadbnwhd.popo_2.Adapters.CustomListView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,33 +27,46 @@ import java.util.Map;
  */
 
 public class Logos extends Application {
-    private static Map<String, byte[]> logos ;
-
-
+    public static Map<String, byte[]> logos ;
+    public static boolean downloaded;
+    int count;
     @Override
     public void onCreate() {
 
+
+        downloaded=false;
         super.onCreate();
         //  instance = this;
 
         logos = new HashMap<>();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         // Create a storage reference from our app
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://poponfa-8a11a.appspot.com/");
-        final StorageReference imagesRef = storageRef.child("Team_Logos/" + "Mahsair United");
+
+
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://poponfa-8a11a.appspot.com/");
+
 
 
 
         Firebase.setAndroidContext(getApplicationContext());  //Setting up Firebase
         Firebase ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
 
+
+
+
         Firebase teamRef; //Reference to Teams node
         teamRef=ref.child("League").child("Teams");  //Traversing to Teams
+
+
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(final DataSnapshot dataSnapshot, String s) {
                 // Map<String,String> map=dataSnapshot.getValue(Map.class);
+
+
+                count++;
+                StorageReference imagesRef = storageRef.child("Team_Logos/" + dataSnapshot.getKey().toString());
 
                 final long ONE_MEGABYTE = 1024 * 1024;
                 imagesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -59,7 +74,7 @@ public class Logos extends Application {
                     public void onSuccess(byte[] bytes) {
                         logos.put(dataSnapshot.getKey(),bytes);
 
-                        Log.i("Team:",dataSnapshot.getKey() );
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -67,6 +82,8 @@ public class Logos extends Application {
                         // Handle any errors
                     }
                 });
+
+
             }
 
             @Override
@@ -89,9 +106,11 @@ public class Logos extends Application {
 
             }
         });
+
+
     }
 
-    public static byte[] getlogo(String Name) {
+    public byte[] getlogo(String Name) {
 
         return logos.get(Name);
     }
