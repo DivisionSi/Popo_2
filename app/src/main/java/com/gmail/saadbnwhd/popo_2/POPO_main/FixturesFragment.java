@@ -28,17 +28,17 @@ import com.firebase.client.FirebaseException;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
 
-//import java.sql.Date;
-import java.util.Date;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import static android.widget.Toast.LENGTH_SHORT;
+
+//import java.sql.Date;
 
 
 /**
@@ -250,7 +250,7 @@ public class FixturesFragment extends Fragment {
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("Popo").child("Fixtures");  //Traversing to Fixtures
 
-        final FixtureListView adapter = new FixtureListView(getActivity(), team1,DateTime,imgid1,imgid2);
+        final FixtureListView adapter = new FixtureListView(getActivity(), team1,team2,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
