@@ -71,7 +71,7 @@ public class FixtureListView extends ArrayAdapter<String> {
             Bitmap bitmap2 = BitmapFactory.decodeByteArray(logobyte2, 0, logobyte2.length);
             icon2.setImageBitmap(bitmap2);
         }
-        catch (Exception e)
+        catch (Exception  e)
         {
 
 
