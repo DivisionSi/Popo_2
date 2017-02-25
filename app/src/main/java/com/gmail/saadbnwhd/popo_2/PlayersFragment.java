@@ -100,7 +100,7 @@ public class PlayersFragment extends Fragment {
 
                 if(AgeGroup.equals("Senior"))
 
-                { Popo_players.add(dataSnapshot.getKey().toString());
+                { Popo_players.add(dataSnapshot.child("Name").getValue().toString());
                 Popo_players_numbers.add(dataSnapshot.child("Jersey Number").getValue().toString());
                 Popo_players_postion.add(dataSnapshot.child("Position").getValue().toString());
                 adapter_sr.notifyDataSetChanged();}

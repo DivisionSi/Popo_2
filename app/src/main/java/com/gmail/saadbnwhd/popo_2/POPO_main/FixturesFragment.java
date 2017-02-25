@@ -250,7 +250,7 @@ public class FixturesFragment extends Fragment {
         Firebase FixturesRef; //Reference to Teams node
         FixturesRef=ref.child("Popo").child("Fixtures");  //Traversing to Fixtures
 
-        final FixtureListView adapter = new FixtureListView(getActivity(), team1,DateTime,imgid1,imgid2);
+        final FixtureListView adapter = new FixtureListView(getActivity(), team1,team2,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
@@ -262,7 +262,7 @@ public class FixturesFragment extends Fragment {
                     Map<String, String> map = dataSnapshot.getValue(Map.class);
                     //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                     team1.add("Popo FC");
-                  //  team2.add(dataSnapshot.child("Rival").getValue().toString());
+                    team2.add(dataSnapshot.child("Rival").getValue().toString());
                     DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
                             dataSnapshot.child("Time").getValue().toString());
 

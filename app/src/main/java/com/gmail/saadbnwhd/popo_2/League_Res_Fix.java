@@ -76,7 +76,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Fetch_Players();
-                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1);
+                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1,true);
                 LayoutInflater inflater = LayoutInflater.from(League_Res_Fix.this);
                 View dialog_layout = inflater.inflate(R.layout.leaguefixture,null);
                 AlertDialog.Builder db = new AlertDialog.Builder(League_Res_Fix.this);
@@ -100,7 +100,7 @@ public class League_Res_Fix extends AppCompatActivity {
                                 G1_TEMP.add(G1.get(i));
                             }
                         }
-                        adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP);
+                        adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP,true);
                         TEAM1.setAdapter(adap1);
                     }
                 });
@@ -120,7 +120,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Fetch_Players();
-                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2);
+                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2,true);
                 LayoutInflater inflater = LayoutInflater.from(League_Res_Fix.this);
                 View dialog_layout = inflater.inflate(R.layout.leaguefixture,null);
                 AlertDialog.Builder db = new AlertDialog.Builder(League_Res_Fix.this);
@@ -144,7 +144,7 @@ public class League_Res_Fix extends AppCompatActivity {
                                 G2_TEMP.add(G2.get(i));
                             }
                         }
-                        adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP);
+                        adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP,true);
                         TEAM2.setAdapter(adap2);
                     }
                 });
@@ -516,7 +516,7 @@ public class League_Res_Fix extends AppCompatActivity {
                                 // Log.e("","New Quantity Value : "+ aNumberPicker.getValue());
                                 //     Toast.makeText(League_Res_Fix.this, String.valueOf(aNumberPicker.getValue()), Toast.LENGTH_SHORT).show();
                                 G1.set(position,Integer.valueOf(aNumberPicker.getValue()));
-                                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1);
+                                adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1,G1,true);
                                 TEAM1d.setAdapter(adap1);
                             }
                         })
@@ -553,7 +553,7 @@ public class League_Res_Fix extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
 
                                 G2.set(position,Integer.valueOf(aNumberPicker.getValue()));
-                                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2);
+                                adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2,G2,true);
                                 TEAM2d.setAdapter(adap2);
                             }
                         })
