@@ -15,7 +15,7 @@
         android:layout_marginTop="17dp" />
 
     <TextView
-        android:text="       "
+        android:text="      0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
@@ -23,6 +23,25 @@
         android:textColor="@color/White"
         android:layout_alignTop="@+id/p_name"
         android:layout_alignParentEnd="true"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="     "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/goals_scored"
+        android:id="@+id/textView"
+        android:textAlignment="center" />
+
+    <CheckBox
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_appearence"
+        android:layout_alignBaseline="@+id/goals_scored"
+        android:layout_alignBottom="@+id/goals_scored"
+        android:layout_toStartOf="@+id/textView" />
 
 </RelativeLayout>

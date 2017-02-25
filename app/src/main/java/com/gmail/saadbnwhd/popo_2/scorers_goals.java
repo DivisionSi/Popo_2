@@ -31,7 +31,7 @@ public class scorers_goals extends AppCompatActivity {
         list = (ListView) findViewById(R.id.tlist);
         Proceed = (Button) findViewById(R.id.prcd);
 
-        final team_List_Adap adapter = new team_List_Adap(scorers_goals.this, T,null);
+        final team_List_Adap adapter = new team_List_Adap(scorers_goals.this, T,null,false);
         list.setAdapter(adapter);
 
         Proceed.setOnClickListener(new View.OnClickListener() {
