@@ -149,6 +149,15 @@ public class Result_Score_assign extends Activity {
         Done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Firebase resultsRef=new Firebase ("https://poponfa-8a11a.firebaseio.com/").child("Popo").child("Results");
+                String key=resultsRef.push().getKey();
+
+
+                Map<String,Object> testmapRes= new HashMap<>();
+                Map<String,Integer> testmapscorer1= new HashMap<>();
+
+
+
 
                 fixtureGoals1=Integer.parseInt(G1_TEMP.get(0).toString());
                 fixtureGoals2=rival_goals;
@@ -171,6 +180,8 @@ public class Result_Score_assign extends Activity {
                             .child(T_Pl_1_temp.get(i))
                             .child("Goals").setValue(temp_goals);
 
+                    testmapscorer1.put(T_Pl_1_temp.get(i),G1_TEMP.get(i));
+
 
                 }
 
@@ -188,6 +199,9 @@ public class Result_Score_assign extends Activity {
                             .child(POPO_PlayersApp.get(i)).child("Apps").setValue(temp_apps);
                 }
 
+                testmapRes.put("DateTime","Test Date");
+                testmapRes.put("Scorers",testmapscorer1);
+                resultsRef.child(key).setValue(testmapRes);
 
             }
         });
