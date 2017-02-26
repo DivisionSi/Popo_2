@@ -144,7 +144,7 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
     @Override
     public void finish() {
         super.finish();
-        onLeaveThisActivity();
+       // onLeaveThisActivity();
     }
 
     protected void onLeaveThisActivity() {

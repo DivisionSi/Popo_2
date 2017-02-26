@@ -37,7 +37,7 @@ Button Table;
             public void onClick(View v)
             {
                 Intent Team=new Intent(getActivity(), Teams.class);
-                Team.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
              startActivity(Team);
 
             }
