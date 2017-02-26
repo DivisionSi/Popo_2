@@ -70,9 +70,40 @@ public class PlayersFragment extends Fragment {
         });
 
         list_sr = (ListView) view.findViewById(R.id.scorers_list);
-        list_u16 = (ListView) view.findViewById(R.id.scorers_list1);
-        list_u14 = (ListView) view.findViewById(R.id.players_list2);
 
+        list_sr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent stats=new Intent(getActivity(),LeaguePlayer_Stats.class);
+                stats.putExtra("passingPlayerName", Popo_players);
+                stats.putExtra("number", Popo_players_numbers);
+                stats.putExtra("position", Popo_players_postion);
+                startActivity(stats);
+            }
+        });
+        list_u16 = (ListView) view.findViewById(R.id.scorers_list1);
+        list_u16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent stats=new Intent(getActivity(),LeaguePlayer_Stats.class);
+                stats.putExtra("passingPlayerName", Popo_players_u16);
+                stats.putExtra("number", Popo_players_u16_numbers);
+                stats.putExtra("position", Popo_players_u16_postion);
+                startActivity(stats);
+            }
+        });
+
+        list_u14 = (ListView) view.findViewById(R.id.players_list2);
+list_u14.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent stats=new Intent(getActivity(),LeaguePlayer_Stats.class);
+        stats.putExtra("passingPlayerName", Popo_players_u14);
+        stats.putExtra("number", Popo_players_u14_numbers);
+        stats.putExtra("position", Popo_players_u14_postion);
+        startActivity(stats);
+    }
+});
         final popo_players_adap adapter_sr = new popo_players_adap(getActivity().getBaseContext(), Popo_players,Popo_players_numbers,Popo_players_postion);
         final popo_players_adap adapter_u16 = new popo_players_adap(getActivity().getBaseContext(), Popo_players_u16,Popo_players_u16_numbers,Popo_players_u16_postion);
         final popo_players_adap adapter_u14= new popo_players_adap(getActivity().getBaseContext(), Popo_players_u14,Popo_players_u14_numbers,Popo_players_u14_postion);

@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    app:theme="@style/AppTheme"
+    >
+    <CheckBox
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_appearence"
+        android:layout_marginStart="11dp"
+        android:buttonTint="@color/newclr"
+
+        android:layout_alignBaseline="@+id/p_name"
+        android:layout_alignBottom="@+id/p_name"
+        android:layout_alignParentStart="true"
+       />
 
     <TextView
         android:text="      0"
@@ -36,15 +52,5 @@
         android:layout_below="@+id/textView"
         android:layout_toEndOf="@+id/player_appearence" />
 
-    <CheckBox
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/player_appearence"
-        android:layout_marginStart="11dp"
-        android:layout_alignBaseline="@+id/p_name"
-        android:layout_alignBottom="@+id/p_name"
-        android:layout_alignParentStart="true"
-        tools:background="@color/Black" />
 
 </RelativeLayout>

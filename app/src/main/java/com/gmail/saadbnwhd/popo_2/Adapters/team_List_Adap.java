@@ -2,6 +2,7 @@ package com.gmail.saadbnwhd.popo_2.Adapters;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -111,19 +112,24 @@ public class team_List_Adap extends ArrayAdapter<String>{
         final NumberPicker aNumberPicker = new NumberPicker(context);
         aNumberPicker.setMaxValue(50);
         aNumberPicker.setMinValue(0);
+        /*int color,textcolor,solidcolor;
+        color = Color.parseColor("#ffffff");
+        solidcolor = Color.parseColor("#000000");
+        textcolor = Color.parseColor("#000000");
+        aNumberPicker.setBackgroundColor(textcolor);*/
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(50, 50);
         RelativeLayout.LayoutParams numPicerParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         numPicerParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
 
         linearLayout.setLayoutParams(params);
-        linearLayout.addView(aNumberPicker,numPicerParams);
+        linearLayout.addView(aNumberPicker, numPicerParams);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle("Select Number");
+        /*linearLayout.setBackgroundColor(color);*/
         alertDialogBuilder.setView(linearLayout);
-        alertDialogBuilder
-                .setCancelable(false)
+        alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("Ok",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
