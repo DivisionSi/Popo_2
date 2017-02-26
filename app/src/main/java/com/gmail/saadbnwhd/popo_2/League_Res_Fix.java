@@ -467,8 +467,7 @@ public class League_Res_Fix extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 T_Pl_1.add(dataSnapshot.child("Name").getValue().toString());
                 G1.add(0);
-                //T_Pl_1.notify();
-//                adap1.notifyDataSetChanged();
+
                 Toast.makeText(getApplicationContext(),dataSnapshot.child("Name").getValue().toString(),Toast.LENGTH_SHORT).show();
             }
 
@@ -498,8 +497,6 @@ public class League_Res_Fix extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 T_Pl_2.add(dataSnapshot.child("Name").getValue().toString());
                 G2.add(0);
-       //         adap1.notifyDataSetChanged();
-                //T_Pl_2.notify();
 
             }
 
