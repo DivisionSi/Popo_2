@@ -57,8 +57,8 @@ public class PopoGoalScorerPlayers extends AppCompatActivity {
         final playerslist_goals_adap players1=new playerslist_goals_adap(PopoGoalScorerPlayers.this,P1,G1);
         TEAM1.setAdapter(players1);
 
-        Firebase ref1=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League")
-                .child("Results").child(Key).child("Team1").child("Scorers");
+        Firebase ref1=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("Popo")
+                .child("Results").child(Key).child("Scorers");
 
         ref1.addChildEventListener(new ChildEventListener() {
             @Override

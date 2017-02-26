@@ -49,6 +49,8 @@ public class Result_Score_assign extends Activity {
 
         final TextView T1 = (TextView) findViewById(R.id.POPO);
         final TextView T2 = (TextView) findViewById(R.id.rival_Goals);
+        final TextView txtRival = (TextView) findViewById(R.id.txtrival);
+
 
 
         TEAM1 = (ListView) findViewById(R.id.popoteam);
@@ -59,6 +61,7 @@ public class Result_Score_assign extends Activity {
         Key=bundle.getString("Key");
         Datetime=bundle.getString("DateTime");
         team2=bundle.getString("t2");
+        txtRival.setText(team2);
 
         Fetch_Players();
 

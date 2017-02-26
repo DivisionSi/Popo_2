@@ -33,6 +33,7 @@ public class ResultsFragment extends Fragment {
     ArrayList<String> DateTime = new ArrayList<String>(); //String array for DateTime of Fixture
     ArrayList<String> goals1 = new ArrayList<String>();
     ArrayList<String> goals2 = new ArrayList<String>();
+    ArrayList<String> Keys = new ArrayList<String>();
 
     Integer[] imgid1 = {
             R.drawable.logo2,
@@ -116,8 +117,9 @@ public class ResultsFragment extends Fragment {
               Intent scorers=new Intent(getActivity(), PopoGoalScorerPlayers.class);
                 scorers.putExtra("TEAM1",team1);
                 scorers.putExtra("TEAM2",team2);
-                scorers.putExtra("GOAL1",goals1);
-                scorers.putExtra("GOAL2",goals2);
+                scorers.putExtra("GOAL1",goals1.get(position));
+                scorers.putExtra("GOAL2",goals2.get(position));
+                scorers.putExtra("Key",Keys.get(position));
                 startActivity(scorers);
 
             }
@@ -143,6 +145,7 @@ public class ResultsFragment extends Fragment {
 
                 goals1.add(dataSnapshot.child("Popo Score").getValue().toString());
                 goals2.add(dataSnapshot.child("Rival Score").getValue().toString());
+                Keys.add(dataSnapshot.getKey());
 
 
                 adapter.notifyDataSetChanged();
