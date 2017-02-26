@@ -363,11 +363,13 @@ public class League_Res_Fix extends AppCompatActivity {
                 Firebase resultsRef=new Firebase ("https://poponfa-8a11a.firebaseio.com/").child("League").child("Results");
                 String key=resultsRef.push().getKey();
 
-                Map<String,HashMap> testmapRes=new HashMap<String,HashMap>();
+                Map<String,Object> testmapRes=new HashMap<String,Object>();
 
-                Map<String,String> testmapTeam1=new HashMap<String,String>();
-                Map<String,String> testmapTeam2=new HashMap<String,String>();
+                Map<String,Object> testmapTeam1= new HashMap<>();
+                Map<String,Object> testmapTeam2= new HashMap<>();
 
+                Map<String,Integer> testmapscorer1= new HashMap<>();
+                Map<String,Integer> testmapscorer2= new HashMap<>();
 
 
 
@@ -378,10 +380,9 @@ public class League_Res_Fix extends AppCompatActivity {
                 testmapTeam2.put("Name",Team2);
                 testmapTeam2.put("Total Goals",G2_TEMP.get(0).toString());
 
-                resultsRef.child(key).child("Team1").setValue(testmapTeam1);
-                resultsRef.child(key).child("Team2").setValue(testmapTeam2);
 
-                resultsRef.child(key).child("DateTime").setValue(Datetime);
+
+
                 //resultsRef.child(key).child("Team2").child("Name").setValue(Team2);
 
                // resultsRef.child(key).child("Team1").child("Total Goals").setValue(G1_TEMP.get(0));
@@ -393,17 +394,26 @@ public class League_Res_Fix extends AppCompatActivity {
                 // For team 1
                 for (int i=1;i<T_Pl_1_temp.size();i++)
                 {
-                    resultsRef.child(key).child("Team1").child("Scorers").child(T_Pl_1_temp.get(i)).setValue(G1_TEMP.get(i));
+                    testmapscorer1.put(T_Pl_1_temp.get(i),G1_TEMP.get(i));
+                    //resultsRef.child(key).child("Team1").child("Scorers").child(T_Pl_1_temp.get(i)).setValue(G1_TEMP.get(i));
                 }
 
                 // For team2
                 for (int i=1;i<T_Pl_2_temp.size();i++)
                 {
-                    resultsRef.child(key).child("Team2").child("Scorers").child(T_Pl_2_temp.get(i)).setValue(G2_TEMP.get(i));
+                    testmapscorer2.put(T_Pl_2_temp.get(i),G2_TEMP.get(i));
+                    //resultsRef.child(key).child("Team2").child("Scorers").child(T_Pl_2_temp.get(i)).setValue(G2_TEMP.get(i));
                 }
 
+                testmapTeam1.put("Scorers",testmapscorer1);
+                testmapTeam2.put("Scorers",testmapscorer2);
+
+                testmapRes.put("DateTime",Datetime);
+                testmapRes.put("Team1",testmapTeam1);
+                testmapRes.put("Team2",testmapTeam2);
 
 
+                resultsRef.child(key).setValue(testmapRes);
 
                 //Updating Player Stats in Database
                 //For team1's players
@@ -427,7 +437,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 }
 
                 //Team1 player Apps
-                for (int i=1;i<Team1_PlayersApp.size();i++) {
+                for (int i=0;i<Team1_PlayersApp.size();i++) {
                     Integer temp_apps;
 
                     Log.i("Player Apps1",playerApps1.toString());
@@ -458,7 +468,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 }
 
                 //Team 2 player Apps
-                for (int i=1;i<Team2_PlayersApp.size();i++) {
+                for (int i=0;i<Team2_PlayersApp.size();i++) {
                     Integer temp_apps2;
 
                     temp_apps2 = playerApps2.get(Team2_PlayersApp.get(i));
