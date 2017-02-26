@@ -38,7 +38,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Teams"></activity>
+        <activity android:name=".Teams" />
         <activity android:name=".TeamsEditor">
             <intent-filter>
                 <action android:name="android.intent.action.TeamsEditor" />
@@ -53,7 +53,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LeaguePlayer"></activity>
+        <activity android:name=".LeaguePlayer" />
         <activity android:name=".LeaguePlayer_Stats">
             <intent-filter>
                 <action android:name="android.intent.action.LeaguePlayer_Stats" />
@@ -92,7 +92,8 @@
         <activity android:name=".GoalScorerPlayers" />
         <activity
             android:name=".POPO_main.Result_Score_assign"
-            android:label="@string/title_activity_result__score_assign"></activity>
+            android:label="@string/title_activity_result__score_assign" />
+        <activity android:name=".PopoPlayers_stats"></activity>
     </application>
 
 </manifest>
