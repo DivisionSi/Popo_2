@@ -1,11 +1,17 @@
 package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -32,8 +38,18 @@ public class NewsFragment extends Fragment {
 
 
         super.onCreate(savedInstanceState);
-    }
 
+    }
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case 1:{
+                    webViewGoBack();
+                }break;
+            }
+        }
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -56,8 +72,23 @@ public class NewsFragment extends Fragment {
 
 
         // Force links and redirects to open in the WebView instead of in a browser
-        mWebView.setWebViewClient(new WebViewClient()
-        );
+        mWebView.setWebViewClient(new WebViewClient());
+
+        mWebView.setOnKeyListener(new View.OnKeyListener() {
+
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK
+                        && event.getAction() == MotionEvent.ACTION_UP
+                        && mWebView.canGoBack()) {
+                    handler.sendEmptyMessage(1);
+                    return true;
+                }
+
+                return false;
+            }
+
+        });
+
 
         return view;
     }
@@ -91,6 +122,28 @@ public class NewsFragment extends Fragment {
         }
     }
 
+    private void webViewGoBack(){
+        mWebView.goBack();
+    }
+
+
+
+/*
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+
+            mWebView.goBack();
+
+            return true;
+        }
+        else
+        {
+            getActivity().finish();
+
+        }
+        return super.onKeyDown(keyCode,event);
+    }*/
 }
 
 
