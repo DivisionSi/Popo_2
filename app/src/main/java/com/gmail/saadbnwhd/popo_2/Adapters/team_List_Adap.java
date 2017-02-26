@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class team_List_Adap extends ArrayAdapter<String>{
     private final Activity context;
 
+    int rival_goals;
     ArrayList<String> team = new ArrayList<String>();
     ArrayList<Integer> goals = new ArrayList<Integer>();
     ArrayList<Integer> goals_alotted = new ArrayList<Integer>();

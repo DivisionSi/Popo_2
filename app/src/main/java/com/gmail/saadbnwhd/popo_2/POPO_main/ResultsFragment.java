@@ -16,6 +16,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -82,6 +83,12 @@ public class ResultsFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            add.setVisibility(View.VISIBLE);
+
 
         Start();
         return view;

@@ -23,10 +23,15 @@ public class MoreFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    }
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            Toast.makeText(getContext(),"Logged in",Toast.LENGTH_SHORT).show();
+
+        }
 
     EditText txt_username,txt_password;
-    Button Signin;
+    Button Signin,Signout;
     String username,password;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -40,13 +45,22 @@ public class MoreFragment extends Fragment {
         txt_username=(EditText) view.findViewById(R.id.txt_username);
         txt_password=(EditText) view.findViewById(R.id.txt_password);
         Signin=(Button) view.findViewById(R.id.btn_signin);
+        Signout=(Button) view.findViewById(R.id.btn_signout);
 
+        firebaseAuth=firebaseAuth.getInstance();
         Signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userLogin();
             }
         });
+        Signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+            }
+        });
+
         return view;
     }
 

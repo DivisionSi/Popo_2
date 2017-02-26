@@ -20,7 +20,7 @@
         app:backgroundTint="@color/darkGreen"
         android:tint="@android:color/white"
         app:fabSize="normal"
-        />
+        android:visibility="invisible" />
 
     <ListView
         android:layout_marginLeft="7dp"

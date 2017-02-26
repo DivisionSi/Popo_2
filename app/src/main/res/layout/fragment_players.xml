@@ -18,7 +18,7 @@
         app:backgroundTint="@color/darkGreen"
         android:tint="@android:color/white"
         app:fabSize="normal"
-        />
+        android:visibility="invisible" />
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="fill_parent"

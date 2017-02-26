@@ -21,6 +21,7 @@ import com.gmail.saadbnwhd.popo_2.POPO_main.MoreFragment;
 import com.gmail.saadbnwhd.popo_2.POPO_main.NewsFragment;
 import com.gmail.saadbnwhd.popo_2.POPO_main.PoponfaFragment;
 import com.gmail.saadbnwhd.popo_2.POPO_main.ResultsFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         logos=new Logos();
+
 
 
 

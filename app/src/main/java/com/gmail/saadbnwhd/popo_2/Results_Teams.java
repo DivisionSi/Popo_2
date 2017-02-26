@@ -19,6 +19,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.League_Result_Adapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -119,6 +120,12 @@ public class Results_Teams extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            fb.setVisibility(View.VISIBLE);
+
     }
     @Override
     public void finish() {

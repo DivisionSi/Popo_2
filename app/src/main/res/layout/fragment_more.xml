@@ -43,5 +43,12 @@
         android:layout_below="@+id/txt_password"
         android:layout_centerHorizontal="true" />
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign out"
+        android:id="@+id/btn_signout"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/btn_signin"
+        android:layout_alignStart="@+id/btn_signin" />
 </RelativeLayout>

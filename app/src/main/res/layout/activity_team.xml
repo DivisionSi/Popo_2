@@ -22,7 +22,7 @@
         android:tint="@android:color/white"
         app:fabSize="normal"
 
-        />
+        android:visibility="invisible" />
 
     <ListView
 
