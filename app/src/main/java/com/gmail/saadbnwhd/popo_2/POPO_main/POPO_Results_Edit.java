@@ -12,11 +12,15 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.gmail.saadbnwhd.popo_2.Adapters.League_Result_Adapter;
+import com.firebase.client.FirebaseError;
+import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import static android.view.View.INVISIBLE;
 
@@ -51,10 +55,13 @@ public class POPO_Results_Edit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results__teams);
 
-        Bundle bundle=getIntent().getExtras();
+
+        /*Bundle bundle=getIntent().getExtras();
         team1 = bundle.getStringArrayList("TEAM1");
         team2 = bundle.getStringArrayList("TEAM2");
-        DateTime=bundle.getStringArrayList("DateTime");
+        DateTime=bundle.getStringArrayList("DateTime");*/
+        team1 = new ArrayList<String>();
+        team2 = new ArrayList<String>();
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle("RESULTS");
@@ -73,30 +80,11 @@ public class POPO_Results_Edit extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.list);
         fb = (FloatingActionButton) findViewById(R.id.fab);
-            StartUp();
+
         // list.setAdapter(adapter);
-        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(android.widget.AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-               /* String Slecteditem = team1.get(+position);
-                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
 
 
-                Intent i = new Intent(POPO_Results_Edit.this, Result_Score_assign.class);
-           //     i.putExtra("t1", team1.get(position));
-            //
-                i.putExtra("DateTime", DateTime.get(position));
-                i.putExtra("t2", team2.get(position));
-
-
-                startActivity(i);
-
-            }
-        });
-
+        StartUp();
         fb.setVisibility(INVISIBLE);
     }
 
@@ -138,13 +126,94 @@ public class POPO_Results_Edit extends AppCompatActivity {
 
     }
 
-    public void StartUp() {
-        Firebase FixturesRef; //Reference to Teams node
-     //   FixturesRef = ref.child("League").child("Fixtures");  //Traversing to Fixtures
 
-        final League_Result_Adapter adapter = new League_Result_Adapter(this, team1, team2, DateTime, imgid1, imgid2);
+    public void StartUp(){
+
+
+        team1.clear();
+        team2.clear();
+        DateTime.clear();
+
+        Firebase.setAndroidContext(POPO_Results_Edit.this);  //Setting up Firebase
+        ref=new Firebase("https://poponfa-8a11a.firebaseio.com/");
+
+        list.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(android.widget.AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+               /* String Slecteditem = team1.get(+position);
+                Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();*/
+
+
+                Intent i = new Intent(POPO_Results_Edit.this, Result_Score_assign.class);
+                //     i.putExtra("t1", team1.get(position));
+                //
+                i.putExtra("DateTime", DateTime.get(position));
+                i.putExtra("t2", team2.get(position));
+
+
+                startActivity(i);
+
+            }
+        });
+
+        Firebase FixturesRef; //Reference to Teams node
+        FixturesRef=ref.child("Popo").child("Fixtures");  //Traversing to Fixtures
+
+        final FixtureListView adapter = new FixtureListView(POPO_Results_Edit.this, team1,team2,DateTime,imgid1,imgid2);
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
+
+
+
+        FixturesRef.orderByChild("TimeStamp").addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Map<String, String> map = dataSnapshot.getValue(Map.class);
+                //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
+                team1.add("Popo FC");
+                team2.add(dataSnapshot.child("Rival").getValue().toString());
+
+                try {
+                    DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
+                            dataSnapshot.child("Time").getValue().toString());
+                }
+                catch(Exception e)
+                {
+
+
+                }
+
+                adapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
 
     }
 }
