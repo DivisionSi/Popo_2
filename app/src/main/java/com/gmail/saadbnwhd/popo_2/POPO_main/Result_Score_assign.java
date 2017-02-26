@@ -49,6 +49,8 @@ public class Result_Score_assign extends Activity {
 
         final TextView T1 = (TextView) findViewById(R.id.POPO);
         final TextView T2 = (TextView) findViewById(R.id.rival_Goals);
+
+
         TEAM1 = (ListView) findViewById(R.id.popoteam);
         Done = (Button) findViewById(R.id.done_score_assign);
 
@@ -210,6 +212,9 @@ public class Result_Score_assign extends Activity {
                 testmapRes.put("Rival",team2);
                 testmapRes.put("DateTime",Datetime);
                 testmapRes.put("Scorers",testmapscorer1);
+                testmapRes.put("Rival Score",G1_TEMP.get(0));
+                testmapRes.put("Popo Score",rival_goals);
+
                 resultsRef.child(key).setValue(testmapRes);
 
             }
