@@ -41,6 +41,7 @@ public class League_Res_Fix extends AppCompatActivity {
     ArrayList<String> T_Pl_1,T_Pl_1_temp,T_Pl_1_adap;
     ArrayList<Integer> G1,G1_TEMP,G2,G2_TEMP;
     ArrayList<String> T_Pl_2,T_Pl_2_temp,T_Pl_2_adap;
+    ArrayList<String> Team1_PlayersApp,Team2_PlayersApp;
     String[] startTEAM1;
     String[] startTEAM2;
     Long int_pts1,int_pts2;
@@ -118,7 +119,8 @@ public class League_Res_Fix extends AppCompatActivity {
                                 G1_TEMP.add(G1.get(i));
                            // }
                         }
-                        Toast.makeText(League_Res_Fix.this, String.valueOf(adap1.Players_Appeared().size()), Toast.LENGTH_SHORT).show();
+                        Team1_PlayersApp = adap1.Players_Appeared();
+                     //   Toast.makeText(League_Res_Fix.this, String.valueOf(adap1.Players_Appeared().size()), Toast.LENGTH_SHORT).show();
                         adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP,false);
                         TEAM1.setAdapter(adap1);
                     }
@@ -163,8 +165,8 @@ public class League_Res_Fix extends AppCompatActivity {
                             G2_TEMP.add(G2.get(i));
                             // }
                         }
-
-                        adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP,false);
+                        Team2_PlayersApp = adap2.Players_Appeared();
+                   //     adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP,false);
                         TEAM2.setAdapter(adap2);
                     }
                 });

@@ -24,6 +24,7 @@ public class Result_Score_assign extends Activity {
     team_List_Adap adap1;
     ListView TEAM1,TEAM1d;
     ArrayList<String> T_Pl_1,T_Pl_1_temp,T_Pl_1_adap;
+    ArrayList<String> POPO_PlayersApp;
     ArrayList<Integer> G1,G1_TEMP;
     String[] startTEAM1;
     Long int_pts1,int_pts2;
@@ -78,7 +79,8 @@ public class Result_Score_assign extends Activity {
                             G1_TEMP.add(G1.get(i));
                             // }
                         }
-                        Toast.makeText(Result_Score_assign.this, String.valueOf(adap1.Players_Appeared().size()), Toast.LENGTH_SHORT).show();
+                        POPO_PlayersApp = adap1.Players_Appeared();
+                  //      Toast.makeText(Result_Score_assign.this, String.valueOf(adap1.Players_Appeared().size()), Toast.LENGTH_SHORT).show();
                         adap1 = new team_List_Adap(Result_Score_assign.this,T_Pl_1_temp,G1_TEMP,false);
                         TEAM1.setAdapter(adap1);
                     }
