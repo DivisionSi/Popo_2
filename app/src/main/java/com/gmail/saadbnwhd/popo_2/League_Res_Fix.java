@@ -166,7 +166,7 @@ public class League_Res_Fix extends AppCompatActivity {
                             // }
                         }
                         Team2_PlayersApp = adap2.Players_Appeared();
-                   //     adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP,false);
+                        adap2 = new team_List_Adap(League_Res_Fix.this,T_Pl_2_temp,G2_TEMP,false);
                         TEAM2.setAdapter(adap2);
                     }
                 });
@@ -468,7 +468,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 T_Pl_1.add(dataSnapshot.child("Name").getValue().toString());
                 G1.add(0);
                 //T_Pl_1.notify();
-                adap1.notifyDataSetChanged();
+//                adap1.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),dataSnapshot.child("Name").getValue().toString(),Toast.LENGTH_SHORT).show();
             }
 
@@ -498,7 +498,7 @@ public class League_Res_Fix extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 T_Pl_2.add(dataSnapshot.child("Name").getValue().toString());
                 G2.add(0);
-                adap1.notifyDataSetChanged();
+       //         adap1.notifyDataSetChanged();
                 //T_Pl_2.notify();
 
             }
