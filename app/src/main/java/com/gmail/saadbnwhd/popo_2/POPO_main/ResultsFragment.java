@@ -129,8 +129,8 @@ public class ResultsFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String,String> map=dataSnapshot.getValue(Map.class);
                 //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
-                team1.add("Popo FC");
-                team2.add(dataSnapshot.child("Rival").getValue().toString());
+                team1.add("Popo FC " + dataSnapshot.child("Popo Score").getValue());
+                team2.add(dataSnapshot.child("Rival Score").getValue() + " " + dataSnapshot.child("Rival").getValue().toString());
                 DateTime.add(dataSnapshot.child("DateTime").getValue().toString());
 
 
