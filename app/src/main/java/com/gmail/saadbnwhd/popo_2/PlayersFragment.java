@@ -82,7 +82,7 @@ public class PlayersFragment extends Fragment {
         list_sr.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent stats=new Intent(getActivity(),LeaguePlayer_Stats.class);
+                Intent stats=new Intent(getActivity(),PopoPlayers_stats.class);
                 stats.putExtra("passingPlayerName", Popo_players);
                 stats.putExtra("number", Popo_players_numbers);
                 stats.putExtra("position", Popo_players_postion);
@@ -94,7 +94,7 @@ public class PlayersFragment extends Fragment {
         list_u16.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent stats = new Intent(getActivity(), LeaguePlayer_Stats.class);
+                Intent stats = new Intent(getActivity(), PopoPlayers_stats.class);
                 stats.putExtra("passingPlayerName", Popo_players_u16);
                 stats.putExtra("number", Popo_players_u16_numbers);
                 stats.putExtra("position", Popo_players_u16_postion);
@@ -107,7 +107,7 @@ public class PlayersFragment extends Fragment {
 list_u14.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent stats = new Intent(getActivity(), LeaguePlayer_Stats.class);
+        Intent stats = new Intent(getActivity(),    PopoPlayers_stats.class);
         stats.putExtra("passingPlayerName", Popo_players_u14);
         stats.putExtra("number", Popo_players_u14_numbers);
         stats.putExtra("position", Popo_players_u14_postion);
