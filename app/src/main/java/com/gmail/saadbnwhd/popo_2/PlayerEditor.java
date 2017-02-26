@@ -153,9 +153,9 @@ public class PlayerEditor extends AppCompatActivity implements NumberPicker.OnVa
                     testmap.put("Goals",String.valueOf(0));
                     testmap.put("Apps",String.valueOf(0));
 
-                    String Key=ref.push().getKey();
 
-                    ref.child(Key).setValue(testmap);
+
+                    ref.child(name).setValue(testmap);
 
 
                     /* ref.child("Name").setValue(name);
