@@ -40,6 +40,8 @@ public class Result_Score_assign extends Activity {
 
             fixtureGoals1,fixtureGoals2;
     Button Done;
+    private String Datetime,team2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,12 @@ public class Result_Score_assign extends Activity {
         final TextView T2 = (TextView) findViewById(R.id.rival_Goals);
         TEAM1 = (ListView) findViewById(R.id.popoteam);
         Done = (Button) findViewById(R.id.done_score_assign);
+
+        Bundle bundle=getIntent().getExtras();
+
+
+        Datetime=bundle.getString("DateTime");
+        team2=bundle.getString("t2");
 
         Fetch_Players();
 
@@ -199,7 +207,8 @@ public class Result_Score_assign extends Activity {
                             .child(POPO_PlayersApp.get(i)).child("Apps").setValue(temp_apps);
                 }
 
-                testmapRes.put("DateTime","Test Date");
+                testmapRes.put("Rival",team2);
+                testmapRes.put("DateTime",Datetime);
                 testmapRes.put("Scorers",testmapscorer1);
                 resultsRef.child(key).setValue(testmapRes);
 

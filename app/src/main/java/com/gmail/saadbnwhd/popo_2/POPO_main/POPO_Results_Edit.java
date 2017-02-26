@@ -87,13 +87,10 @@ public class POPO_Results_Edit extends AppCompatActivity {
 
                 Intent i = new Intent(POPO_Results_Edit.this, Result_Score_assign.class);
            //     i.putExtra("t1", team1.get(position));
-            //    i.putExtra("t2", team2.get(position));
-           //     i.putExtra("DateTime", DateTime.get(position));
+            //
+                i.putExtra("DateTime", DateTime.get(position));
+                i.putExtra("t2", team2.get(position));
 
-
-                team1.clear();
-                team2.clear();
-                DateTime.clear();
 
                 startActivity(i);
 
