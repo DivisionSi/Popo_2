@@ -76,7 +76,7 @@ public class ResultsFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-    Intent i =  new Intent(getContext(),POPO_Results_Edit.class);
+                Intent i =  new Intent(getContext(),POPO_Results_Edit.class);
                 i.putExtra("TEAM1",team1);
                 i.putExtra("TEAM2",team2);
                 i.putExtra("DateTime",DateTime);
@@ -93,11 +93,6 @@ public class ResultsFragment extends Fragment {
         Start();
         return view;
     }
-
-
-
-
-
 
     public void Start(){
         team1.clear();
