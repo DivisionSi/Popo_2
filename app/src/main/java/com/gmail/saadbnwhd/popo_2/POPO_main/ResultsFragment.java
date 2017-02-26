@@ -30,6 +30,8 @@ public class ResultsFragment extends Fragment {
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
     ArrayList<String> DateTime = new ArrayList<String>(); //String array for DateTime of Fixture
+    ArrayList<String> goals1 = new ArrayList<String>();
+    ArrayList<String> goals2 = new ArrayList<String>();
 
     Integer[] imgid1 = {
             R.drawable.logo2,
@@ -132,6 +134,9 @@ public class ResultsFragment extends Fragment {
                 team1.add("Popo FC  " + dataSnapshot.child("Popo Score").getValue());
                 team2.add(dataSnapshot.child("Rival Score").getValue() + "  " + dataSnapshot.child("Rival").getValue().toString());
                 DateTime.add(dataSnapshot.child("DateTime").getValue().toString());
+
+                goals1.add(dataSnapshot.child("Popo Score").getValue().toString());
+                goals2.add(dataSnapshot.child("Rival Score").getValue().toString());
 
 
                 adapter.notifyDataSetChanged();
