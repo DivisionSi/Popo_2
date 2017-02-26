@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.CustomListView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,8 @@ FloatingActionButton fab;
     };
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
 
 
 
@@ -73,7 +77,10 @@ fab=(FloatingActionButton) findViewById(R.id.fab);
         });
 
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
+        if (auth.getCurrentUser() != null)
+            fab.setVisibility(View.VISIBLE);
 
 
         list = (ListView) findViewById(R.id.list);

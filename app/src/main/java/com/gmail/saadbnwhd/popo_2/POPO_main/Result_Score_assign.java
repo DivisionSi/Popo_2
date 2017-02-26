@@ -10,6 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.team_List_Adap;
 import com.gmail.saadbnwhd.popo_2.R;
 
@@ -88,10 +92,44 @@ public class Result_Score_assign extends Activity {
     public void Fetch_Players(){
         T_Pl_1 = new ArrayList<String>();
         G1 = new ArrayList<Integer>();
+        Firebase playersRef1=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("Popo").child("Players");
+
+
+        playersRef1.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                T_Pl_1.add(dataSnapshot.child("Name").getValue().toString());
+                G1.add(0);
+                //T_Pl_1.notify();
+                //adap1.notifyDataSetChanged();
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
         for(int i = 0; i<20; i++)
         {
-            T_Pl_1.add("Player "+String.valueOf(i));
-            G1.add(0);
+
         }
 
     }

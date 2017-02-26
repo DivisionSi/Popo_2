@@ -1,6 +1,9 @@
 package com.gmail.saadbnwhd.popo_2.Adapters;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gmail.saadbnwhd.popo_2.Logos;
 import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
@@ -55,8 +59,26 @@ public class League_Result_Adapter extends ArrayAdapter<String> {
         txtTeam1.setText(team1.get(position));
         txtTeam2.setText(team2.get(position));
         txtDateTime.setText(DateTime.get(position));
-        //    icon.setImageResource(imgid1[position]);
-        //  icon2.setImageResource(imgid2[position]);
+
+        byte[] logobyte1= Logos.logos.get(team1.get(position));
+        byte[] logobyte2= Logos.logos.get(team2.get(position));
+
+        Log.i("Team1",team1.get(position));
+        Log.i("Team2",team2.get(position));
+
+        try {
+            Bitmap bitmap1 = BitmapFactory.decodeByteArray(logobyte1, 0, logobyte1.length);
+            icon.setImageBitmap(bitmap1);
+
+
+            Bitmap bitmap2 = BitmapFactory.decodeByteArray(logobyte2, 0, logobyte2.length);
+            icon2.setImageBitmap(bitmap2);
+        }
+        catch (Exception  e)
+        {
+
+
+        }
 
 
         return rowView;

@@ -17,6 +17,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -76,6 +77,12 @@ public class Fixtures extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            fab.setVisibility(View.VISIBLE);
+
 
         list = (ListView) findViewById(R.id.list);
         // list.setAdapter(adapter);

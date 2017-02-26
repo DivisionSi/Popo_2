@@ -27,6 +27,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.FirebaseException;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -108,6 +109,11 @@ public class FixturesFragment extends Fragment {
                Create();
             }
         });
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            add.setVisibility(View.VISIBLE);
 
 
         Start();

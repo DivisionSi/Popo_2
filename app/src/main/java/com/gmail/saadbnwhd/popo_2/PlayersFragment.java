@@ -16,6 +16,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.popo_players_adap;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,12 @@ public class PlayersFragment extends Fragment {
                 startActivity(teamseditor);
             }
         });
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            fab.setVisibility(View.VISIBLE);
+
 
         list_sr = (ListView) view.findViewById(R.id.scorers_list);
         list_u16 = (ListView) view.findViewById(R.id.scorers_list1);
