@@ -30,6 +30,7 @@ public class Edit_Leage_Results extends AppCompatActivity {
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
     ArrayList<String> DateTime = new ArrayList<String>(); //String array for DateTime of Fixture
+    ArrayList<String> Keys = new ArrayList<String>();
 
     Integer[] imgid1 = {
             R.drawable.logo2,
@@ -85,6 +86,7 @@ public class Edit_Leage_Results extends AppCompatActivity {
                 i.putExtra("t1",team1.get(position));
                 i.putExtra("t2",team2.get(position));
                 i.putExtra("DateTime",DateTime.get(position));
+                i.putExtra("Key",Keys.get(position));
 
 
                 team1.clear();
@@ -154,6 +156,8 @@ public class Edit_Leage_Results extends AppCompatActivity {
                 team1.add(dataSnapshot.child("Team1").getValue().toString());
                 team2.add(dataSnapshot.child("Team2").getValue().toString());
                 DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " + dataSnapshot.child("Time").getValue().toString());
+                Keys.add(dataSnapshot.getKey());
+
 
                 adapter.notifyDataSetChanged();
             }

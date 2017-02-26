@@ -40,7 +40,7 @@ public class Result_Score_assign extends Activity {
 
             fixtureGoals1,fixtureGoals2;
     Button Done;
-    private String Datetime,team2;
+    private String Datetime,team2,Key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class Result_Score_assign extends Activity {
 
         Bundle bundle=getIntent().getExtras();
 
-
+        Key=bundle.getString("Key");
         Datetime=bundle.getString("DateTime");
         team2=bundle.getString("t2");
 
@@ -216,6 +216,10 @@ public class Result_Score_assign extends Activity {
                 testmapRes.put("Popo Score",rival_goals);
 
                 resultsRef.child(key).setValue(testmapRes);
+
+                Firebase fixtureRef=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("Popo").child("Fixtures").child(Key);
+                fixtureRef.removeValue();
+
 
             }
         });

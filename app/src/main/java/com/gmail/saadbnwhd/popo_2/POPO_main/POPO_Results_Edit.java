@@ -32,6 +32,7 @@ public class POPO_Results_Edit extends AppCompatActivity {
     ArrayList<String> team1 = new ArrayList<String>(); //String array for Team A
     ArrayList<String> team2 = new ArrayList<String>(); //String array for Team B
     ArrayList<String> DateTime = new ArrayList<String>(); //String array for DateTime of Fixture
+    ArrayList<String> Keys = new ArrayList<String>();
 
     Integer[] imgid1 = {
             R.drawable.logo2,
@@ -150,6 +151,7 @@ public class POPO_Results_Edit extends AppCompatActivity {
                 Intent i = new Intent(POPO_Results_Edit.this, Result_Score_assign.class);
                 //     i.putExtra("t1", team1.get(position));
                 //
+                i.putExtra("Key",Keys.get(position));
                 i.putExtra("DateTime", DateTime.get(position));
                 i.putExtra("t2", team2.get(position));
 
@@ -176,7 +178,7 @@ public class POPO_Results_Edit extends AppCompatActivity {
                 //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                 team1.add("Popo FC");
                 team2.add(dataSnapshot.child("Rival").getValue().toString());
-
+                Keys.add(dataSnapshot.getKey());
                 try {
                     DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
                             dataSnapshot.child("Time").getValue().toString());

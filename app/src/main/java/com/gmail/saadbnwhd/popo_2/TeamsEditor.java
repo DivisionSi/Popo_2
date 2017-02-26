@@ -102,7 +102,7 @@ public class TeamsEditor extends Activity {
                         statMap.put("Won",0);
 
 
-                        Firebase StatsRef = ref.child("Stats").child(team_name.getText().toString());
+                        Firebase StatsRef = ref.child("League").child("Stats").child(team_name.getText().toString());
 
                         StatsRef.setValue(statMap);
 

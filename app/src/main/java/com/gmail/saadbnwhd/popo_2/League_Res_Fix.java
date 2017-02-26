@@ -34,7 +34,7 @@ public class League_Res_Fix extends AppCompatActivity {
     team_List_Adap adap1,adap2;
     Integer Total_Goals;
 
-    String Team1,Team2,Datetime;
+    String Team1,Team2,Datetime,Key;
     Button done;
     Firebase ref;
    EditText goals1,goals2;
@@ -72,6 +72,7 @@ public class League_Res_Fix extends AppCompatActivity {
         Team1 = bundle.getString("t1");
         Team2 = bundle.getString("t2");
         Datetime=bundle.getString("DateTime");
+        Key=bundle.getString("Key");
 
         final TextView T1 = (TextView) findViewById(R.id.team2);
         final TextView  T2 = (TextView) findViewById(R.id.team1);
@@ -298,7 +299,7 @@ public class League_Res_Fix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(League_Res_Fix.this,T_Pl_1.get(0),Toast.LENGTH_SHORT).show();
+
 
 
                         fixtureGoals1=Integer.parseInt(G1_TEMP.get(0).toString());
@@ -388,7 +389,7 @@ public class League_Res_Fix extends AppCompatActivity {
                // resultsRef.child(key).child("Team1").child("Total Goals").setValue(G1_TEMP.get(0));
                // resultsRef.child(key).child("Team2").child("Total Goals").setValue(G2_TEMP.get(0));
 
-                Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
+
 
                 // Updating Results Node in Database
                 // For team 1
@@ -414,6 +415,9 @@ public class League_Res_Fix extends AppCompatActivity {
 
 
                 resultsRef.child(key).setValue(testmapRes);
+                Firebase fixtureRef=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("League").child("Fixtures").child(Key);
+                fixtureRef.removeValue();
+
 
                 //Updating Player Stats in Database
                 //For team1's players
@@ -499,7 +503,7 @@ public class League_Res_Fix extends AppCompatActivity {
                 T_Pl_1.add(dataSnapshot.child("Name").getValue().toString());
                 G1.add(0);
 
-                Toast.makeText(getApplicationContext(),dataSnapshot.child("Name").getValue().toString(),Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
