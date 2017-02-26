@@ -32,6 +32,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddFixture extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -258,10 +260,13 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                         ref=ref.child("League").child("Fixtures");
                         String key=ref.push().getKey();
 
+
+/*
                         ref.child(key).child("Date").setValue(date.getText().toString());
                         ref.child(key).child("Team1").setValue(txt_t1.getText().toString());
                         ref.child(key).child("Team2").setValue(txt_t2.getText().toString());
                         ref.child(key).child("Time").setValue(time.getText().toString());
+*/
 
                         DateFormat dateFormatTS = new SimpleDateFormat("dd/MM/yyyy");
                         Date dateTS = null;
@@ -273,10 +278,16 @@ public class AddFixture extends AppCompatActivity implements AdapterView.OnItemS
                         long TS = dateTS.getTime();
 
                         //java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(date.getText().toString());
+
+
+                        Map<String,String> testmap=new HashMap<String,String>();
+                        testmap.put("Team1",txt_t1.getText().toString());
+                        testmap.put("Team2",txt_t2.getText().toString());
+                        testmap.put("Date",date.getText().toString());
+                        testmap.put("Time",time.getText().toString());
+
+                        ref.child(key).setValue(testmap);
                         ref.child(key).child("TimeStamp").setValue(TS);
-
-
-
 
                     } else {
                         Toast.makeText(this, "Set Time for Fixture", Toast.LENGTH_SHORT).show();

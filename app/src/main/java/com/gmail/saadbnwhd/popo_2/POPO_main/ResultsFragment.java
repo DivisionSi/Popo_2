@@ -128,6 +128,7 @@ public class ResultsFragment extends Fragment {
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
+        /*
         FixturesRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -163,6 +164,6 @@ public class ResultsFragment extends Fragment {
 
             }
         });
-
+*/
     }
 }

@@ -25,6 +25,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.FirebaseException;
+import com.firebase.client.ValueEventListener;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
 import com.gmail.saadbnwhd.popo_2.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +36,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -195,13 +198,22 @@ public class FixturesFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                try {
+
                     Firebase popo_fixtures_ref = ref.child("Popo").child("Fixtures");
                     String key=popo_fixtures_ref.push().getKey();
 
-                    popo_fixtures_ref.child(key).child("Rival").setValue(rivals.getText().toString());
+                Map<String,String> testmap=new HashMap<String,String>();
+                testmap.put("Rival",rivals.getText().toString());
+                testmap.put("Date",date.getText().toString());
+                testmap.put("Time",time.getText().toString());
+                popo_fixtures_ref.child(key).setValue(testmap);
+
+
+    /*
                     popo_fixtures_ref.child(key).child("Date").setValue(date.getText().toString());
                     popo_fixtures_ref.child(key).child("Time").setValue(time.getText().toString());
+                    popo_fixtures_ref.child(key).child("Rival").setValue(rivals.getText().toString());
+*/
                     Toast.makeText(getContext(),"Fixture Added", LENGTH_SHORT).show();
 
 
@@ -217,11 +229,7 @@ public class FixturesFragment extends Fragment {
                     //java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(date.getText().toString());
                     popo_fixtures_ref.child(key).child("TimeStamp").setValue(TS);
 
-                }
-                catch (FirebaseException i)
-                {
-                    Toast.makeText(getContext(), i.toString(), LENGTH_SHORT).show();
-                }
+
                 a.dismiss();
             }
         });
@@ -261,17 +269,25 @@ public class FixturesFragment extends Fragment {
         list.setAdapter(adapter);
 
 
-        try {
+
             FixturesRef.orderByChild("TimeStamp").addChildEventListener(new ChildEventListener() {
+
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Map<String, String> map = dataSnapshot.getValue(Map.class);
                     //  Toast.makeText(getApplicationContext(), dataSnapshot.getKey().toString(), Toast.LENGTH_LONG).show();
                     team1.add("Popo FC");
                     team2.add(dataSnapshot.child("Rival").getValue().toString());
-                    DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
-                            dataSnapshot.child("Time").getValue().toString());
 
+                    try {
+                        DateTime.add(dataSnapshot.child("Date").getValue().toString() + " | " +
+                                dataSnapshot.child("Time").getValue().toString());
+                    }
+                    catch(Exception e)
+                    {
+
+
+                    }
 
                     adapter.notifyDataSetChanged();
 
@@ -299,10 +315,7 @@ public class FixturesFragment extends Fragment {
                 }
             });
 
-        }
-        catch (Exception e)
-        {
-            Log.e("Exception",e.toString());
-        }
+
+
     }
 }

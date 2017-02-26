@@ -52,9 +52,10 @@ public class FixtureListView extends ArrayAdapter<String> {
 
         TextView txtDateTime = (TextView) rowView.findViewById(R.id.txtDateTime);
 
-        txtTeam1.setText(team1.get(position));
-//        txtTeam2.setText(team2.get(position));
         txtDateTime.setText(DateTime.get(position));
+        txtTeam1.setText(team1.get(position));
+        txtTeam2.setText(team2.get(position));
+
 
 
         byte[] logobyte1= Logos.logos.get(team1.get(position));

@@ -64,20 +64,23 @@ public class popo_players_adap extends ArrayAdapter<String> {
         StorageReference storageRef = storage.getReferenceFromUrl("gs://poponfa-8a11a.appspot.com/");
         StorageReference imagesRef = storageRef.child("Team_Logos/" + "Alliance Jr");
 
-        final long ONE_MEGABYTE = 240 * 240;
-        imagesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.img.setImageBitmap(bitmap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-            }
-        });
-
+        try {
+            final long ONE_MEGABYTE = 1024 * 1024;
+            imagesRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    holder.img.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
+        }
+        catch (Exception e)
+        {}
        // holder.img.setImageResource(R.drawable.football_player);
 
       //  Toast.makeText(context, teams.get(position), Toast.LENGTH_SHORT).show();

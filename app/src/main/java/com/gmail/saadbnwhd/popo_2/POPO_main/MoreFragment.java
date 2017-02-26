@@ -23,10 +23,7 @@ public class MoreFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        if (auth.getCurrentUser() != null)
-            Toast.makeText(getContext(),"Logged in",Toast.LENGTH_SHORT).show();
 
         }
 
@@ -60,6 +57,12 @@ public class MoreFragment extends Fragment {
                 firebaseAuth.signOut();
             }
         });
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+           Signout.setVisibility(View.VISIBLE);
+
 
         return view;
     }
