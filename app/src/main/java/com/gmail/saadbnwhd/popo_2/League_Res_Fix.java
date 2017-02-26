@@ -368,6 +368,8 @@ public class League_Res_Fix extends AppCompatActivity {
 
                 resultsRef.child(key).child("Team1").child("Total Goals").setValue(G1_TEMP.get(0));
                 resultsRef.child(key).child("Team2").child("Total Goals").setValue(G2_TEMP.get(0));
+
+
                 // Updating Results Node in Database
                 // For team 1
                 for (int i=1;i<T_Pl_1_temp.size();i++)
@@ -389,10 +391,9 @@ public class League_Res_Fix extends AppCompatActivity {
 
                 for (int i=1;i<T_Pl_1_temp.size();i++)
                 {
-                    Integer temp_apps,temp_goals;
+                    Integer temp_goals;
 
-                    temp_apps=playerApps1.get(T_Pl_1_temp.get(i));
-                    temp_apps++;
+
 
                     temp_goals= playerGoals1.get(T_Pl_1_temp.get(i));
                     temp_goals=temp_goals+
@@ -403,19 +404,28 @@ public class League_Res_Fix extends AppCompatActivity {
                             .child(T_Pl_1_temp.get(i))
                             .child("Goals").setValue(temp_goals);
 
-                    playersRef.child(Team1).child("Players")
-                            .child(T_Pl_1_temp.get(i)).child("Apps").setValue(temp_apps);
 
                 }
 
-                //For team2's players
+                //Team1 player Apps
+                for (int i=1;i<Team1_PlayersApp.size();i++) {
+                    Integer temp_apps;
+
+                    temp_apps = playerApps1.get(T_Pl_1_temp.get(i));
+                    temp_apps++;
+
+
+                    playersRef.child(Team1).child("Players")
+                            .child(T_Pl_1_temp.get(i)).child("Apps").setValue(temp_apps);
+                }
+
+                    //For team2's players Goals
 
                 for (int i=1;i<T_Pl_2_temp.size();i++)
                 {
-                    Integer temp_apps2,temp_goals2;
+                    Integer temp_goals2;
 
-                    temp_apps2=playerApps2.get(T_Pl_2_temp.get(i));
-                    temp_apps2++;
+
 
                     temp_goals2= playerGoals2.get(T_Pl_2_temp.get(i));
                     temp_goals2=temp_goals2+
@@ -423,8 +433,18 @@ public class League_Res_Fix extends AppCompatActivity {
 
 
                     playersRef.child(Team2).child("Players").child(T_Pl_2_temp.get(i)).child("Goals").setValue(temp_goals2);
-                    playersRef.child(Team2).child("Players").child(T_Pl_2_temp.get(i)).child("Apps").setValue(temp_apps2);
 
+                }
+
+                //Team 2 player Apps
+                for (int i=1;i<Team2_PlayersApp.size();i++) {
+                    Integer temp_apps2;
+
+                    temp_apps2 = playerApps2.get(T_Pl_2_temp.get(i));
+                    temp_apps2++;
+
+
+                    playersRef.child(Team2).child("Players").child(T_Pl_2_temp.get(i)).child("Apps").setValue(temp_apps2);
                 }
 
             }
