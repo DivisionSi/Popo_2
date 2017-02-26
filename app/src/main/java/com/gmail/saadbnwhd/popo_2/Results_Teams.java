@@ -172,44 +172,53 @@ public class Results_Teams extends AppCompatActivity {
         //final ArrayAdapter<String> myadapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,teams,locations);
         list.setAdapter(adapter);
 
-        FixturesRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        try {
+            FixturesRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                Keys.add(dataSnapshot.getKey());
+                    try{
+                    Keys.add(dataSnapshot.getKey());
 
-                team1.add(dataSnapshot.child("Team1").child("Name").getValue().toString() + "  " +
-                        dataSnapshot.child("Team1").child("Total Goals").getValue().toString());
+                    team1.add(dataSnapshot.child("Team1").child("Name").getValue().toString() + "  " +
+                            dataSnapshot.child("Team1").child("Total Goals").getValue().toString());
 
-                team2.add(" " + dataSnapshot.child("Team2").child("Total Goals").getValue().toString() + "  " +
-                        dataSnapshot.child("Team2").child("Name").getValue().toString());
+                    team2.add(" " + dataSnapshot.child("Team2").child("Total Goals").getValue().toString() + "  " +
+                            dataSnapshot.child("Team2").child("Name").getValue().toString());
 
-                DateTime.add(dataSnapshot.child("DateTime").getValue().toString());
+                    DateTime.add(dataSnapshot.child("DateTime").getValue().toString());
 
-                adapter.notifyDataSetChanged();
-            }
+                    adapter.notifyDataSetChanged();}
+                    catch (Exception e){}
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                }
 
-            }
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                }
 
-            }
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                }
 
-            }
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+                }
 
-            }
-        });
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
 
+                }
+            });
+        }
+        catch(Exception e)
+        {
+
+
+        }
     }
 
 }

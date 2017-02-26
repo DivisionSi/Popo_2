@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +19,12 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.Adapters.team_List_Adap;
+import com.gmail.saadbnwhd.popo_2.League_Res_Fix;
 import com.gmail.saadbnwhd.popo_2.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Result_Score_assign extends Activity {
     int Total_Goals;
@@ -33,7 +37,7 @@ public class Result_Score_assign extends Activity {
     String[] startTEAM1;
     Long int_pts1,int_pts2;
     Integer int_goals1,int_apps1,int_won1,int_lost1,int_drawn1,
-            int_goals2,int_apps2,int_won2,int_lost2,int_drawn2,
+
             fixtureGoals1,fixtureGoals2;
     Button Done;
     @Override
@@ -104,13 +108,89 @@ public class Result_Score_assign extends Activity {
         });
 
 
-        Done.setOnClickListener(new View.OnClickListener() {
+
+
+        final Firebase playersRef=new Firebase("https://poponfa-8a11a.firebaseio.com/").child("Popo");
+
+
+        final HashMap<String, Integer> playerApps1 = new HashMap<>();
+        final HashMap<String, Integer> playerGoals1 = new HashMap<>();
+
+        playersRef.child("Players").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(Result_Score_assign.this, "OKAS", Toast.LENGTH_SHORT).show();
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                playerApps1.put(dataSnapshot.getKey(),Integer.parseInt(dataSnapshot.child("Apps").getValue().toString()));
+                playerGoals1.put(dataSnapshot.getKey(),(Integer.parseInt(dataSnapshot.child("Goals").getValue().toString())));
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
             }
         });
 
+        Done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                fixtureGoals1=Integer.parseInt(G1_TEMP.get(0).toString());
+                fixtureGoals2=rival_goals;
+
+
+                //Updating Player Stats in Database
+                //For team1's players
+
+                for (int i=1;i<T_Pl_1_temp.size();i++)
+                {
+                    Integer temp_goals;
+
+
+
+                    temp_goals= playerGoals1.get(T_Pl_1_temp.get(i));
+                    temp_goals=temp_goals+ G1_TEMP.get(i);
+
+
+                    playersRef.child("Players")
+                            .child(T_Pl_1_temp.get(i))
+                            .child("Goals").setValue(temp_goals);
+
+
+                }
+
+                //Team1 player Apps
+                for (int i=0;i<POPO_PlayersApp.size();i++) {
+                    Integer temp_apps;
+
+                    Log.i("Player Apps1",POPO_PlayersApp.toString());
+
+                    temp_apps = playerApps1.get(POPO_PlayersApp.get(i));
+                    temp_apps++;
+
+
+                    playersRef.child("Players")
+                            .child(POPO_PlayersApp.get(i)).child("Apps").setValue(temp_apps);
+                }
+
+
+            }
+        });
     }
 
 

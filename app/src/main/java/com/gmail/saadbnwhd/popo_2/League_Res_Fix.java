@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -120,6 +121,7 @@ public class League_Res_Fix extends AppCompatActivity {
                            // }
                         }
                         Team1_PlayersApp = adap1.Players_Appeared();
+                        Log.i("App1",Team1_PlayersApp.toString());
                      //   Toast.makeText(League_Res_Fix.this, String.valueOf(adap1.Players_Appeared().size()), Toast.LENGTH_SHORT).show();
                         adap1 = new team_List_Adap(League_Res_Fix.this,T_Pl_1_temp,G1_TEMP,false);
                         TEAM1.setAdapter(adap1);
@@ -361,14 +363,31 @@ public class League_Res_Fix extends AppCompatActivity {
                 Firebase resultsRef=new Firebase ("https://poponfa-8a11a.firebaseio.com/").child("League").child("Results");
                 String key=resultsRef.push().getKey();
 
+                Map<String,HashMap> testmapRes=new HashMap<String,HashMap>();
+
+                Map<String,String> testmapTeam1=new HashMap<String,String>();
+                Map<String,String> testmapTeam2=new HashMap<String,String>();
+
+
+
+
+
+                testmapTeam1.put("Name",Team1);
+                testmapTeam1.put("Total Goals",G1_TEMP.get(0).toString());
+
+                testmapTeam2.put("Name",Team2);
+                testmapTeam2.put("Total Goals",G2_TEMP.get(0).toString());
+
+                resultsRef.child(key).child("Team1").setValue(testmapTeam1);
+                resultsRef.child(key).child("Team2").setValue(testmapTeam2);
+
                 resultsRef.child(key).child("DateTime").setValue(Datetime);
+                //resultsRef.child(key).child("Team2").child("Name").setValue(Team2);
 
-                resultsRef.child(key).child("Team1").child("Name").setValue(Team1);
-                resultsRef.child(key).child("Team2").child("Name").setValue(Team2);
+               // resultsRef.child(key).child("Team1").child("Total Goals").setValue(G1_TEMP.get(0));
+               // resultsRef.child(key).child("Team2").child("Total Goals").setValue(G2_TEMP.get(0));
 
-                resultsRef.child(key).child("Team1").child("Total Goals").setValue(G1_TEMP.get(0));
-                resultsRef.child(key).child("Team2").child("Total Goals").setValue(G2_TEMP.get(0));
-
+                Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
 
                 // Updating Results Node in Database
                 // For team 1
@@ -411,12 +430,14 @@ public class League_Res_Fix extends AppCompatActivity {
                 for (int i=1;i<Team1_PlayersApp.size();i++) {
                     Integer temp_apps;
 
-                    temp_apps = playerApps1.get(T_Pl_1_temp.get(i));
+                    Log.i("Player Apps1",playerApps1.toString());
+
+                    temp_apps = playerApps1.get(Team1_PlayersApp.get(i));
                     temp_apps++;
 
 
                     playersRef.child(Team1).child("Players")
-                            .child(T_Pl_1_temp.get(i)).child("Apps").setValue(temp_apps);
+                            .child(Team1_PlayersApp.get(i)).child("Apps").setValue(temp_apps);
                 }
 
                     //For team2's players Goals
@@ -440,11 +461,11 @@ public class League_Res_Fix extends AppCompatActivity {
                 for (int i=1;i<Team2_PlayersApp.size();i++) {
                     Integer temp_apps2;
 
-                    temp_apps2 = playerApps2.get(T_Pl_2_temp.get(i));
+                    temp_apps2 = playerApps2.get(Team2_PlayersApp.get(i));
                     temp_apps2++;
 
 
-                    playersRef.child(Team2).child("Players").child(T_Pl_2_temp.get(i)).child("Apps").setValue(temp_apps2);
+                    playersRef.child(Team2).child("Players").child(Team2_PlayersApp.get(i)).child("Apps").setValue(temp_apps2);
                 }
 
             }
