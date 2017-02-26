@@ -82,10 +82,15 @@ public class PlayersFragment extends Fragment {
         list_sr.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent stats=new Intent(getActivity(),PopoPlayers_stats.class);
-                stats.putExtra("passingPlayerName", Popo_players);
-                stats.putExtra("number", Popo_players_numbers);
-                stats.putExtra("position", Popo_players_postion);
+                String popoPlayerName=Popo_players.get(position).toString();
+                String poponumb=Popo_players_numbers.get(position).toString();
+                String popopos=Popo_players_postion.get(position).toString();
+
+
+                Intent stats = new Intent(getActivity(),    PopoPlayers_stats.class);
+                stats.putExtra("popoPlayerName", popoPlayerName);
+                stats.putExtra("poponumber", poponumb);
+                stats.putExtra("popoposition", popopos);
                 startActivity(stats);
             }
 
@@ -94,10 +99,15 @@ public class PlayersFragment extends Fragment {
         list_u16.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent stats = new Intent(getActivity(), PopoPlayers_stats.class);
-                stats.putExtra("passingPlayerName", Popo_players_u16);
-                stats.putExtra("number", Popo_players_u16_numbers);
-                stats.putExtra("position", Popo_players_u16_postion);
+                String popoPlayerName=Popo_players_u16.get(position).toString();
+                String poponumb=Popo_players_u16_numbers.get(position).toString();
+                String popopos=Popo_players_u16_postion.get(position).toString();
+
+
+                Intent stats = new Intent(getActivity(),    PopoPlayers_stats.class);
+                stats.putExtra("popoPlayerName", popoPlayerName);
+                stats.putExtra("poponumber", poponumb);
+                stats.putExtra("popoposition", popopos);
                 startActivity(stats);
             }
 
@@ -107,10 +117,15 @@ public class PlayersFragment extends Fragment {
 list_u14.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String popoPlayerName=Popo_players_u14.get(position).toString();
+        String poponumb=Popo_players_u14_numbers.get(position).toString();
+        String popopos=Popo_players_u14_postion.get(position).toString();
+
+
         Intent stats = new Intent(getActivity(),    PopoPlayers_stats.class);
-        stats.putExtra("passingPlayerName", Popo_players_u14);
-        stats.putExtra("number", Popo_players_u14_numbers);
-        stats.putExtra("position", Popo_players_u14_postion);
+        stats.putExtra("popoPlayerName", popoPlayerName);
+        stats.putExtra("poponumber", poponumb);
+        stats.putExtra("popoposition", popopos);
         startActivity(stats);
     }
 

@@ -25,10 +25,10 @@ public class PopoPlayers_stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popo_players_stats);
         Bundle bundle = getIntent().getExtras();
-        String passingPlayerName = bundle.getString("passingPlayerName");
-        String numb=bundle.getString("number");
-        String club=bundle.getString("passingTeamName");
-        String pos=bundle.getString("position");
+        String passingPlayerName = bundle.getString("popoPlayerName");
+        String numb=bundle.getString("poponumber");
+        String club=bundle.getString("popoTeamName");
+        String pos=bundle.getString("popoposition");
 
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -40,10 +40,10 @@ public class PopoPlayers_stats extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.newclr)));
         getSupportActionBar().setTitle(passingPlayerName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        TextView name=(TextView) findViewById(R.id.player_name);
-        TextView position=(TextView) findViewById(R.id.player_position);
-        TextView number=(TextView) findViewById(R.id.player_number);
-        TextView team=(TextView) findViewById(R.id.player_club);
+        TextView name=(TextView) findViewById(R.id.popo_player_name);
+        TextView position=(TextView) findViewById(R.id.popo_player_position);
+        TextView number=(TextView) findViewById(R.id.popo_player_number);
+        TextView team=(TextView) findViewById(R.id.popo_player_club);
         name.setText(passingPlayerName);
         position.setText(pos);
         number.setText(numb);
