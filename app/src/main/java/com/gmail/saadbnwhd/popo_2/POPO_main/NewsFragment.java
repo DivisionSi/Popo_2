@@ -39,6 +39,7 @@ public class NewsFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
+
     }
     private Handler handler = new Handler(){
         @Override
@@ -55,13 +56,17 @@ public class NewsFragment extends Fragment {
     {
 
         View view= inflater.inflate(R.layout.fragment_news, container, false);
+
+        if (savedInstanceState != null)
+            ((WebView)view.findViewById(R.id.webview)).restoreState(savedInstanceState);
+
         mWebView = (WebView) view.findViewById(R.id.webview);
         mWebView.getSettings().setAppCacheEnabled(true);
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setSupportMultipleWindows(true);
         mWebView.setWebViewClient(new WC());
-      //  mWebView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
+
         mWebView.loadUrl("https://www.facebook.com/popofootballclub");
 
 
@@ -92,6 +97,7 @@ public class NewsFragment extends Fragment {
 
         return view;
     }
+
     private class WC extends WebViewClient{
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -126,24 +132,11 @@ public class NewsFragment extends Fragment {
         mWebView.goBack();
     }
 
+    public void onSaveInstanceState(Bundle outState) {
+        mWebView.saveState(outState);
+    }
 
 
-/*
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
-
-            mWebView.goBack();
-
-            return true;
-        }
-        else
-        {
-            getActivity().finish();
-
-        }
-        return super.onKeyDown(keyCode,event);
-    }*/
 }
 
 

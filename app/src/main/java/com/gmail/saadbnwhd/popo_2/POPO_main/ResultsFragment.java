@@ -15,6 +15,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gmail.saadbnwhd.popo_2.FixtureListView;
+import com.gmail.saadbnwhd.popo_2.PopoGoalScorerPlayers;
 import com.gmail.saadbnwhd.popo_2.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -112,8 +113,13 @@ public class ResultsFragment extends Fragment {
             public void onItemClick(android.widget.AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-                String Slecteditem = team1.get(+position);
-                //    Toast.makeText(getApplicationContext(), Slecteditem, LENGTH_SHORT).show();
+              Intent scorers=new Intent(getActivity(), PopoGoalScorerPlayers.class);
+                scorers.putExtra("TEAM1",team1);
+                scorers.putExtra("TEAM2",team2);
+                scorers.putExtra("GOAL1",goals1);
+                scorers.putExtra("GOAL2",goals2);
+                startActivity(scorers);
+
             }
         });
 
