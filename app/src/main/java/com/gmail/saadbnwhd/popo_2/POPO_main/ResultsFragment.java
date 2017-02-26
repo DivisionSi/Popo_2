@@ -34,6 +34,7 @@ public class ResultsFragment extends Fragment {
     ArrayList<String> goals1 = new ArrayList<String>();
     ArrayList<String> goals2 = new ArrayList<String>();
     ArrayList<String> Keys = new ArrayList<String>();
+    String Rivalname;
 
     Integer[] imgid1 = {
             R.drawable.logo2,
@@ -115,11 +116,12 @@ public class ResultsFragment extends Fragment {
                                     int position, long id) {
                 // TODO Auto-generated method stub
               Intent scorers=new Intent(getActivity(), PopoGoalScorerPlayers.class);
-                scorers.putExtra("TEAM1",team1);
+                scorers.putExtra("TEAM1",team1.get(position));
                 scorers.putExtra("TEAM2",team2);
                 scorers.putExtra("GOAL1",goals1.get(position));
                 scorers.putExtra("GOAL2",goals2.get(position));
                 scorers.putExtra("Key",Keys.get(position));
+                scorers.putExtra("Rival",Rivalname);
                 startActivity(scorers);
 
             }
@@ -145,6 +147,8 @@ public class ResultsFragment extends Fragment {
 
                 goals1.add(dataSnapshot.child("Popo Score").getValue().toString());
                 goals2.add(dataSnapshot.child("Rival Score").getValue().toString());
+                Rivalname=dataSnapshot.child("Rival").getValue().toString();
+
                 Keys.add(dataSnapshot.getKey());
 
 

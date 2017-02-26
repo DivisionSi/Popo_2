@@ -45,10 +45,9 @@ public class PopoGoalScorerPlayers extends AppCompatActivity {
 
 
         Bundle bundle=getIntent().getExtras();
-        Team1 = bundle.getString("TEAM1");
         Goals1 = bundle.getString("GOAL1");
-        Team2 = bundle.getString("TEAM2");
         Goals2 = bundle.getString("GOAL2");
+        Team2=bundle.getString("Rival");
 
         Key = bundle.getString("Key");
 
@@ -101,7 +100,7 @@ public class PopoGoalScorerPlayers extends AppCompatActivity {
         TextView T2=(TextView) findViewById(R.id.team2);
         TextView G1=(TextView) findViewById(R.id.goals1);
         TextView G2=(TextView) findViewById(R.id.goals2);
-        T1.setText(Team1);
+        T1.setText("Popo");
         T2.setText(Team2);
         G1.setText(Goals1);
         G2.setText(Goals2);

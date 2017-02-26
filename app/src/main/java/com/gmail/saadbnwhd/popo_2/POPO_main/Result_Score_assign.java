@@ -215,8 +215,8 @@ public class Result_Score_assign extends Activity {
                 testmapRes.put("Rival",team2);
                 testmapRes.put("DateTime",Datetime);
                 testmapRes.put("Scorers",testmapscorer1);
-                testmapRes.put("Rival Score",G1_TEMP.get(0));
-                testmapRes.put("Popo Score",rival_goals);
+                testmapRes.put("Popo Score",G1_TEMP.get(0));
+                testmapRes.put("Rival Score",rival_goals);
 
                 resultsRef.child(key).setValue(testmapRes);
 
