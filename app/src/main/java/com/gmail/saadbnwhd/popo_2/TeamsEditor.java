@@ -28,6 +28,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TeamsEditor extends Activity {
     Button logo,btn_done;
@@ -89,6 +91,20 @@ public class TeamsEditor extends Activity {
                         String string_dwload = downloadUrl.toString();
 
                         Firebase teamsRef = ref.child("League").child("Teams").child(team_name.getText().toString());
+
+                        Map<String,Integer> statMap = new HashMap<>();
+
+                        statMap.put("Apps",0);
+                        statMap.put("Drawn",0);
+                        statMap.put("Goals",0);
+                        statMap.put("Lost",0);
+                        statMap.put("Pts",0);
+                        statMap.put("Won",0);
+
+
+                        Firebase StatsRef = ref.child("Stats").child(team_name.getText().toString());
+
+                        StatsRef.setValue(statMap);
 
 
                         teamsRef.child("Location").setValue(team_location.getText().toString());
