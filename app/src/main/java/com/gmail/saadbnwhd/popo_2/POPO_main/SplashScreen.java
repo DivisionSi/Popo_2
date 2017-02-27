@@ -18,12 +18,16 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
+import com.gmail.saadbnwhd.popo_2.Logos;
 import com.gmail.saadbnwhd.popo_2.R;
 
 public class SplashScreen extends AppCompatActivity {
 ImageView img,img1;
+    public Logos logos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        logos=new Logos();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

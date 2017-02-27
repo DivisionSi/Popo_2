@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainMenu extends AppCompatActivity {
 
-   public Logos logos;
+
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -50,7 +50,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logos=new Logos();
+
 
 
 
