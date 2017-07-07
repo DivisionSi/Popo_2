@@ -6,19 +6,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.realtime.util.StringListReader;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -52,6 +50,13 @@ FloatingActionButton pladd;
         players=new ArrayList<String>();
 
         pladd=(FloatingActionButton) findViewById(R.id.playerfab);
+        pladd.setVisibility(View.INVISIBLE);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            pladd.setVisibility(View.VISIBLE);
+
         pladd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

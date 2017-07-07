@@ -1,6 +1,5 @@
 package com.gmail.saadbnwhd.popo_2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -17,8 +16,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-
-import org.w3c.dom.Text;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LeaguePlayer_Stats extends AppCompatActivity {
     String dob,age_group;
@@ -76,6 +74,13 @@ public class LeaguePlayer_Stats extends AppCompatActivity {
         });
 
         final Button delete=(Button) findViewById(R.id.delete);
+        delete.setVisibility(View.INVISIBLE);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null)
+            delete.setVisibility(View.VISIBLE);
+
+
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

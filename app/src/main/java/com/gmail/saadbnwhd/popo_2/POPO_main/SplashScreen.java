@@ -13,9 +13,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 import com.gmail.saadbnwhd.popo_2.Logos;
@@ -34,15 +31,15 @@ ImageView img,img1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash__screen);
         img=(ImageView) findViewById(R.id.image);
-        img.setImageResource(R.drawable.poponfa);
+        img.setImageResource(R.drawable.popo_nfa_logo);
         img1=(ImageView) findViewById(R.id.image1);
         img1.setImageResource(R.drawable.football);
-        RotateAnimation anim;
+        /*RotateAnimation anim;
         anim = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         anim.setInterpolator(new LinearInterpolator());
         anim.setRepeatCount(Animation.INFINITE);
         anim.setDuration(2000);//timer
-        img1.startAnimation(anim);
+        img1.startAnimation(anim);*/
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {

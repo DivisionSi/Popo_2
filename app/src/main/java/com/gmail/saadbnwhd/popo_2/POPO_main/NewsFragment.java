@@ -1,14 +1,12 @@
 package com.gmail.saadbnwhd.popo_2.POPO_main;
 
 import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,6 +15,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.gmail.saadbnwhd.popo_2.R;
@@ -28,7 +27,9 @@ import com.gmail.saadbnwhd.popo_2.R;
 public class NewsFragment extends Fragment {
     public WebView mWebView;
     private static final String TAG = "Main";
-    private ProgressDialog progressBar;
+   // private ProgressDialog progressBar;
+    ProgressBar progressBar;
+    ProgressDialog pd;
     public NewsFragment() {
 
     }
@@ -73,6 +74,10 @@ public class NewsFragment extends Fragment {
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        pd = new ProgressDialog(getContext());
+        pd.setMessage("Loading...");
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
 

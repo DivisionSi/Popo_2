@@ -11,7 +11,7 @@
         android:name=".Logos"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/popo_nfa_logo"
         android:label="POPO"
         android:largeHeap="true"
         android:supportsRtl="true"
